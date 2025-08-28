@@ -10,20 +10,20 @@ design:
 sections:
   - block: hero
     content:
-      title: Build Your Landing Pages with Hugo Blox
-      text: 🧱 EASY. FREE (OPEN SOURCE). NO-CODE  🧱
-      primary_action:
-        text: Get Started
-        url: https://hugoblox.com/templates/
-        icon: rocket-launch
-      secondary_action:
-        text: Read the docs
-        url: https://docs.hugoblox.com
-      announcement:
-        text: "Announcing the release of version 1."
-        link:
-          text: "Read more"
-          url: "/blog/"
+      title: ISAT
+      text: Desarrollo de un sistema de alerta temprana inteligente para control de extracciones y de la contaminación de aguas subterráneas en abastecimiento urbanos durante períodos de sequía.
+      # primary_action:
+      #   text: Get Started
+      #   url: https://hugoblox.com/templates/
+      #   icon: rocket-launch
+      # secondary_action:
+      #   text: Read the docs
+      #   url: https://docs.hugoblox.com
+      # announcement:
+      #   text: "Announcing the release of version 1."
+      #   link:
+      #     text: "Read more"
+      #     url: "/blog/"
     design:
       spacing:
         padding: [0, 0, 0, 0]
@@ -34,112 +34,33 @@ sections:
         color: "navy"
         image:
           # Add your image background to `assets/media/`.
-          filename: bg-triangles.svg
+          filename: rose-petals.svg
           filters:
             brightness: 0.5
           size: cover
           position: center
           parallax: false
-  - block: stats
-    content:
-      items:
-        - statistic: "1M+"
-          description: |
-            Websites built  
-            with Hugo Blox
-        - statistic: "10k+"
-          description: |
-            GitHub stars  
-            since 2016
-        - statistic: "3k+"
-          description: |
-            Discord community  
-            for support
-    design:
-      # Section background color (CSS class)
-      css_class: "bg-gray-100 dark:bg-gray-900"
-      # Reduce spacing
-      spacing:
-        padding: ["1rem", 0, "1rem", 0]
   - block: features
-    id: features
+    id: about
     content:
-      title: Features
-      text: Build your site with blocks 🧱
+      title: Descripción del proyecto
+      text: El proyecto propone el desarrollo de un Sistema de Alerta Temprana inteligente (iSAT) para mejorar la gestión del agua subterránea en captaciones urbanas durante periodos de sequía. El iSAT integrará un conjunto de sensores de bajo coste para medir parámetros hidrogeológicos en continuo (nivel, caudal, conductividad, temperatura, turbidez y oxígeno disuelto), junto con algoritmos de inteligencia artificial (soft sensors) capaces de anticipar la disponibilidad y calidad del agua e identificar posibles episodios de contaminación. Los datos serán enviados de forma remota mediante comunicaciones multi-protocolo (GPRS, radio y satélite), garantizando la operatividad en entornos remotos. Con este sistema, se busca disponer de una herramienta predictiva y preventiva que apoye la toma de decisiones de gestores y operadores del agua, optimizando el aprovechamiento de acuíferos kársticos y reduciendo riesgos para el abastecimiento urbano.
+  - block: features
+    id: objetivos
+    content:
+      title: Objetivos del proyecto
+      text: Desarrollar un sistema inteligente de monitorización continua de parámetros físico-químicos para identificar patrones de afectación a caudales y detectar episodios de contaminación en abastecimientos urbanos.
       items:
-        - name: Optimized SEO
+        - description: Maximizar la versatilidad de los SAT en diferentes esquemas de captación.
           icon: magnifying-glass
-          description: Automatic sitemaps, RSS feeds, and rich metadata take the pain out of SEO and syndication.
-        - name: Fast
+          name: Maximización
+        - description: Crear un dispositivo pre-comercial, configurable, autónomo y con comunicación multi-protocolo.
           icon: bolt
-          description: Super fast page load with Tailwind CSS and super fast site building with Hugo.
-        - name: Easy
+          name: Diseño
+        - description: Mejorar la capacidad predictiva mediante IA y reducir costes de sensórica.
           icon: sparkles
-          description: One-click deployment to GitHub Pages. Have your new website live within 5 minutes!
-        - name: No-Code
+          name: Optimización
+        - description: Validar la tecnología en entornos controlados y reales.
           icon: code-bracket
-          description: Edit and design your site just using rich text (Markdown) and configurable YAML parameters.
-        - name: Highly Rated
-          icon: star
-          description: Rated 5-stars by the community.
-        - name: Swappable Blocks
-          icon: rectangle-group
-          description: Build your pages with blocks - no coding required!
-  - block: cta-image-paragraph
-    id: solutions
-    content:
-      items:
-        - title: Build your future-proof website
-          text: As easy as 1, 2, 3!
-          feature_icon: check
-          features:
-            - "Future-proof - edit your content in text files"
-            - "Website is generated by a single app, Hugo"
-            - "No JavaScript knowledge required"
-          # Upload image to `assets/media/` and reference the filename here
-          image: build-website.png
-          button:
-            text: Get Started
-            url: https://hugoblox.com/templates/
-        - title: Large Community
-          text: Join our large community on Discord - ask questions and get live responses
-          feature_icon: bolt
-          features:
-            - "Dedicated support channel"
-            - "3,000+ users on Discord"
-            - "Share your site and get feedback"
-          # Upload image to `assets/media/` and reference the filename here
-          image: coffee.jpg
-          button:
-            text: Join Discord
-            url: https://discord.gg/z8wNYzb
-    design:
-      # Section background color (CSS class)
-      css_class: "bg-gray-100 dark:bg-gray-900"
-  - block: testimonials
-    content:
-      title: ""
-      text: ""
-      items:
-        - name: "Hugo Smith"
-          role: "Marketing Executive at X"
-          # Upload image to `assets/media/` and reference the filename here
-          image: "testimonial-1.jpg"
-          text: "Awesome, so easy to use and saved me so much work with the swappable pre-designed sections!"
-    design:
-      spacing:
-        # Reduce bottom spacing so the testimonial appears vertically centered between sections
-        padding: ["6rem", 0, 0, 0]
-  - block: cta-card
-    content:
-      title: Build your future-proof website
-      text: As easy as 1, 2, 3!
-      button:
-        text: Get Started
-        url: https://hugoblox.com/templates/
-    design:
-      card:
-        # Card background color (CSS class)
-        css_class: "bg-primary-700"
-        css_style: ""
+          name: Validación
 ---

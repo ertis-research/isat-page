@@ -14,7 +14,7 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'A highly-customizable Hugo landing page theme powered by Hugo Blox website builder.'
+    description: 'Description page for ISAT project'
     twitter: 'GetResearchDev'
   analytics:
     google_analytics: ''
@@ -36,20 +36,25 @@ header:
     logo:
       text: ""
       # Logo filename in `assets/media/` folder
-      filename: "logo.svg"
-    button:
-      enable: true
-      text: "Get Started"
-      url: "https://hugoblox.com/templates/"
+      filename: "logo_uma.svg"
+    # button:
+    #   enable: true
+    #   text: "Get Started"
+    #   url: "https://hugoblox.com/templates/"
     show_search: true
     show_theme_chooser: true
 
 # Site footer
 footer:
+  notice: 'This is a sample notice for the footer.'
   copyright:
-    notice: '© {year} My Company'
+     notice: 'Background by SVGBackgrounds.com'
 
 # Localization
-locale:
-  date_format: 'Jan 2, 2006'
-  time_format: '3:04 PM'
+# locale:
+#   date_format: 'Jan 2, 2006'
+#   time_format: '3:04 PM'
+
+i_am_a_sponsor: true
+powerUps:
+  hide_published_with: false
