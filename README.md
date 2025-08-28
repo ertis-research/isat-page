@@ -1,6 +1,10 @@
-# [Hugo Landing Page Theme](https://github.com/HugoBlox/theme-landing-page)
+# [Pagina web proyecto ISAT](https://ertis-research.github.io/isat-page/)
 
-[![Screenshot](https://raw.githubusercontent.com/HugoBlox/theme-landing-page/main/.github/preview.webp)](https://hugoblox.com/templates/)
+El proyecto propone el desarrollo de un Sistema de Alerta Temprana inteligente (iSAT) para mejorar la gestión del agua subterránea en captaciones urbanas durante periodos de sequía. El iSAT integrará un conjunto de sensores de bajo coste para medir parámetros hidrogeológicos en continuo (nivel, caudal, conductividad, temperatura, turbidez y oxígeno disuelto), junto con algoritmos de inteligencia artificial (soft sensors) capaces de anticipar la disponibilidad y calidad del agua e identificar posibles episodios de contaminación. Los datos serán enviados de forma remota mediante comunicaciones multi-protocolo (GPRS, radio y satélite), garantizando la operatividad en entornos remotos. Con este sistema, se busca disponer de una herramienta predictiva y preventiva que apoye la toma de decisiones de gestores y operadores del agua, optimizando el aprovechamiento de acuíferos kársticos y reduciendo riesgos para el abastecimiento urbano.
+
+Esta página web se ha desarrollado utilizando la herramienta de Hugo Blox [Hugo Landing Page Theme](https://github.com/HugoBlox/theme-landing-page)
+
+<!-- [![Screenshot](https://raw.githubusercontent.com/HugoBlox/theme-landing-page/main/.github/preview.webp)](https://hugoblox.com/templates/)
 
 The Hugo **Landing Page Template** empowers you to easily create startup websites, marketing websites, and landing pages to accelerate your business growth.
 
@@ -29,4 +33,4 @@ Today we ask you to defend the open source independence of the Hugo Blox Builder
 
 We're an open source movement that depends on your support to stay online and thriving, but 99.9% of our creators don't give; they simply look the other way.
 
-### [❤️ Click here to become a GitHub Sponsor, unlocking awesome perks such as _exclusive academic templates and widgets_](https://github.com/sponsors/gcushen)
+### [❤️ Click here to become a GitHub Sponsor, unlocking awesome perks such as _exclusive academic templates and widgets_](https://github.com/sponsors/gcushen) -->
