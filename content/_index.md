@@ -10,7 +10,7 @@ design:
 sections:
   - block: hero
     content:
-      title: ISAT
+      title: iSAT
       text: Desarrollo de un sistema de alerta temprana inteligente para control de extracciones y de la contaminación de aguas subterráneas en abastecimiento urbanos durante períodos de sequía.
       # primary_action:
       #   text: Get Started

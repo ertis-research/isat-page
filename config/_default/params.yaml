@@ -36,7 +36,7 @@ header:
     logo:
       text: ""
       # Logo filename in `assets/media/` folder
-      filename: "logo_uma.svg"
+      filename: "logo_proy.png"
     # button:
     #   enable: true
     #   text: "Get Started"
