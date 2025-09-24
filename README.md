@@ -39,8 +39,8 @@ Hugo Blox incluye bloques predefinidos como `hero`, `features`, `team`, etc. Par
 
 ### 3. **En caso de querer generar nuevos bloques**
 
-    **Paso 1:**
-    -Crea un layout en layouts/partials/blox/.
+**Paso 1:**
+- Crea un layout en layouts/partials/blox/.
         ej:
             {{ $page := .wcPage }}
             {{ $block := .wcBlock }}
