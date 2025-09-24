@@ -41,7 +41,7 @@ Hugo Blox incluye bloques predefinidos como `hero`, `features`, `team`, etc. Par
 
 **Paso 1:**
 - Crea un layout en layouts/partials/blox/.
-        ej:
+**ej:**
             {{ $page := .wcPage }}
             {{ $block := .wcBlock }}
 
@@ -58,8 +58,8 @@ Hugo Blox incluye bloques predefinidos como `hero`, `features`, `team`, etc. Par
             </div>
             </section>
     
-    **Paso 2:**
-    - Agrega el bloque en el index
+**Paso 2:**
+- Agrega el bloque en el index
         - block: pilotos  <---- Nombre del archivo sin extensión (debe tener el nombre de el archivo)
         content:
             title: "Proyectos Piloto"
@@ -68,21 +68,21 @@ Hugo Blox incluye bloques predefinidos como `hero`, `features`, `team`, etc. Par
                 description: "Descripción"
 
 
-    ** Modificación y Significado de elementos**
+### ** Modificación y Significado de elementos**
 
-    ### Inicialización de variables de Hugo Blox
+- Inicialización de variables de Hugo Blox
 
     {{ $page := .wcPage }}
     {{ $block := .wcBlock }}
 
-    **¿Por qué se usa?**
-    Permite acceder fácilmente a los datos de la página y del bloque actual usando las variables $page y $block.
+**¿Por qué se usa?**
+Permite acceder fácilmente a los datos de la página y del bloque actual usando las variables $page y $block.
 
-    **¿Cómo modificar?**
-    No es necesario modificar esto salvo que quieras cambiar los nombres de las variables por claridad.
+**¿Cómo modificar?**
+No es necesario modificar esto salvo que quieras cambiar los nombres de las variables por claridad.
 
 
-    ### Estructura principal del bloque
+- Estructura principal del bloque
 
     <section class="py-16 lg:py-24">
         <div class="container mx-auto px-6 lg:px-8">
@@ -90,15 +90,15 @@ Hugo Blox incluye bloques predefinidos como `hero`, `features`, `team`, etc. Par
         </div>
     </section>
 
-    **¿Por qué se usa?**
-    Define el área del bloque con padding vertical (py-16, lg:py-24) y centra el contenido con un contenedor responsive.
+**¿Por qué se usa?**
+Define el área del bloque con padding vertical (py-16, lg:py-24) y centra el contenido con un contenedor responsive.
 
-    **¿Cómo modificar?**
-    Cambia las clases de padding (py-16, etc.) para ajustar el espacio vertical.
-    Cambia el ancho del contenedor (max-w-3xl, etc.) si necesitas más o menos ancho.
+**¿Cómo modificar?**
+Cambia las clases de padding (py-16, etc.) para ajustar el espacio vertical.
+Cambia el ancho del contenedor (max-w-3xl, etc.) si necesitas más o menos ancho.
 
 
-    ### Título y subtítulo
+- Título y subtítulo
 
     <div class="text-center mb-12">
         <h2 class="text-3xl font-bold ...">
@@ -111,18 +111,17 @@ Hugo Blox incluye bloques predefinidos como `hero`, `features`, `team`, etc. Par
         {{ end }}
     </div>
 
-    **¿Por qué se usa?**
-    Muestra el título y subtítulo definidos en el bloque del archivo _index.md.
+**¿Por qué se usa?**
+Muestra el título y subtítulo definidos en el bloque del archivo _index.md.
+ * markdownify permite usar Markdown en el título.
+ * emojify convierte atajos de emoji en emojis reales.
 
-    markdownify permite usar Markdown en el título.
-    emojify convierte atajos de emoji en emojis reales.
-
-    **¿Cómo modificar?**
-    Cambia el texto en content/_index.md bajo el bloque objetivos (title y subtitle).
-    Cambia las clases para modificar el tamaño, color o alineación del texto.
+**¿Cómo modificar?**
+Cambia el texto en content/_index.md bajo el bloque objetivos (title y subtitle).
+Cambia las clases para modificar el tamaño, color o alineación del texto.
 
 
-    ###Lista de objetivos
+- Lista de objetivos
 
     <div style="display: flex; justify-content: center;">
     <div class="objetivos-contenedor">
@@ -139,18 +138,18 @@ Hugo Blox incluye bloques predefinidos como `hero`, `features`, `team`, etc. Par
     </div>
     </div>
 
-    **¿Por qué se usa?**
-    Centra la lista de objetivos en la página.
-    Usa un <ul> para una lista semántica.
-    Cada objetivo se define en el YAML del bloque (items).
-    range recorre todos los objetivos definidos.
-    objetivo-viñeta es la viñeta (puedes cambiar el símbolo o usar un icono).
-    objetivo-contenido muestra el título y la descripción.
+**¿Por qué se usa?**
+Centra la lista de objetivos en la página.
+Usa un <ul> para una lista semántica.
+Cada objetivo se define en el YAML del bloque (items).
+range recorre todos los objetivos definidos.
+objetivo-viñeta es la viñeta (puedes cambiar el símbolo o usar un icono).
+objetivo-contenido muestra el título y la descripción.
 
-    **¿Cómo modificar?**
-    Añade, quita o edita objetivos en content/_index.md bajo items del bloque objetivos.
-    Cambia el símbolo de la viñeta en <span class="objetivo-viñeta">•</span>.
-    Cambia las clases o estructura HTML para modificar el diseño de la lista.
+**¿Cómo modificar?**
+Añade, quita o edita objetivos en content/_index.md bajo items del bloque objetivos.
+Cambia el símbolo de la viñeta en <span class="objetivo-viñeta">•</span>.
+Cambia las clases o estructura HTML para modificar el diseño de la lista.
 
 
 ### 4. **Modificar estilos**
