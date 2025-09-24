@@ -1,0 +1,40 @@
+{{/* Bloque personalizado para la sección de Pilotos */}}
+{{ $block := .wcBlock }}
+{{ $page := .wcPage }}
+
+{{/* 1. Carga nuestro CSS personalizado para que solo se use en esta sección */}}
+{{ $css := resources.Get "css/pilotos.css" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+{{/* 2. Estructura del contenedor de la sección, usando el título del _index.md */}}
+<div class="container-fluid py-3 px-20">
+  <div class="container">
+    <div class="text-center mx-auto" style="max-width: 500px; margin-bottom: 10rem;">
+      {{/* Título y subtítulo centrados */}}
+      {{/* Usamos clases de Tailwind para el estilo */}}
+      {{/* Aseguramos que el texto es responsivo y se ve bien en móviles */}}
+      {{ with $block.content.title }}
+        <h1 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">{{ . | $page.RenderString | emojify }}</h1>
+      {{ end }}
+      {{ with $block.content.subtitle }}
+        <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-8">{{ . | $page.RenderString | emojify }}</h2>
+      {{ end }}
+    </div>
+
+    {{/* 3. Renderiza la parrilla de tarjetas leyendo desde data/pilotos.yaml */}}
+    {{ if site.Data.pilotos }}
+    <div class="glass-grid">
+      {{ range site.Data.pilotos }}
+        <div class="glass-card {{ .color_clase }}">
+          <h3>{{ .titulo | markdownify }}</h3>
+          <h4>{{ .subtitulo }}</h4>
+          <p><strong>Entorno:</strong> {{ .entorno }}</p>
+          <p><strong>Retos:</strong> {{ .retos }}</p>
+          <p><strong>Objetivo:</strong> {{ .objetivo }}</p>
+        </div>
+      {{ end }}
+    </div>
+    {{ end }}
+
+  </div>
+</div>

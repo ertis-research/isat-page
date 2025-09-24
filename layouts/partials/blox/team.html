@@ -1,0 +1,63 @@
+{{/* --- INICIO: Estilos personalizados --- */}}
+{{ $css := resources.Get "css/team.css" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+
+{{/* Initialise */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+
+<section class="py-16 lg:py-24">
+  <div class="container mx-auto px-6 lg:px-8">
+    {{/* Solo incluir FontAwesome si hay iconos */}}
+    {{ range $item := $block.content.items }}
+      {{ if $item.icon }}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        {{ break }}
+      {{ end }}
+    {{ end }}
+    {{/* Título */}}
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-gray-900 mb-4">
+        {{ with $block.content.title }}{{ . | markdownify }}{{ end }}
+      </h2>
+      {{ with $block.content.subtitle }}
+        <p class="text-lg leading-8 text-gray-600 max-w-4xl mx-auto">
+          {{ . | $page.RenderString | emojify }}
+        </p>
+      {{ end }}
+    </div>
+    
+    {{/* Grupos de investigación */}}
+    {{ with $block.content.groups }}
+    <div class="equipo-grupos">
+        {{ range $group := . }}
+        <div class="equipo-grupo">
+            {{ if $group.icon }}
+            <span class="equipo-grupo-icono fas fa-{{ $group.icon }} text-black"></span>
+            {{ end }}
+            <div class="equipo-grupo-contenido">
+            <h3 class="equipo-grupo-titulo">{{ $group.name }}</h3>
+            <p class="equipo-grupo-descripcion">{{ $group.description | $page.RenderString | emojify }}</p>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+    
+    {{/* Investigadores clave */}}
+    {{ with $block.content.investigators }}
+      <div class="equipo-investigadores">
+        {{ with $block.content.investigators_title }}
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">{{ . }}</h3>
+        {{ end }}
+        {{ range $investigator := . }}
+          <div class="equipo-investigador text-center">
+            <span class="equipo-investigador-rol">{{ $investigator.role }}</span>
+            <span class="equipo-investigador-nombre">{{ $investigator.name }}</span>
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</section>

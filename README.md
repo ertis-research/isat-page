@@ -4,33 +4,160 @@ El proyecto propone el desarrollo de un Sistema de Alerta Temprana inteligente (
 
 Esta página web se ha desarrollado utilizando la herramienta de Hugo Blox [Hugo Landing Page Theme](https://github.com/HugoBlox/theme-landing-page)
 
-<!-- [![Screenshot](https://raw.githubusercontent.com/HugoBlox/theme-landing-page/main/.github/preview.webp)](https://hugoblox.com/templates/)
+----
 
-The Hugo **Landing Page Template** empowers you to easily create startup websites, marketing websites, and landing pages to accelerate your business growth.
+## Personalización de la Plantilla Hugo Blox
 
-️**Trusted by 250,000+ creators, teams, and organizations.** Highly customizable via the integrated **no-code, block-based website builder**, making every site truly personalized ⭐⭐⭐⭐⭐
+Hugo Blox es un constructor de sitios web basado en bloques modulares, lo que permite personalizar páginas de manera flexible sin necesidad de conocimientos avanzados de código. A continuación, se explica cómo modificar la plantilla usando bloques existentes y creando nuevos archivos, basado en la experiencia del proyecto iSAT. Esta guía es reutilizable para cualquier sitio basado en Hugo Blox.
 
-[![Get Started](https://img.shields.io/badge/-Get%20started-ff4655?style=for-the-badge)](https://hugoblox.com/templates/)
-[![Discord](https://img.shields.io/discord/722225264733716590?style=for-the-badge)](https://discord.com/channels/722225264733716590/742892432458252370/742895548159492138)  
-[![Twitter Follow](https://img.shields.io/twitter/follow/GetResearchDev?label=Follow%20on%20Twitter)](https://twitter.com/GetResearchDev)
+### 1. **Estructura General del Proyecto**
+Antes de personalizar, familiarízate con la estructura de archivos:
+- **`content/_index.md`**: Archivo principal donde defines las secciones (bloques) de la página de inicio. En este caso es un onepage, pero se pueden añadir nuevas páginas.
+- **`layouts/`**: Contiene layouts personalizados (ej. `partials/blox/` para bloques nuevos).
+- **`assets/css/`**: Archivos SCSS/CSS para estilos personalizados.
+- **`public/css/`**: CSS compilado (no editar directamente). Este es descargado desde un punto remoto cada vez que se lanza el proyecto.
+- **`data/`**: Archivos YAML/JSON para datos reutilizables (ej. listas de proyectos).
+- **`config/_default/`**: Configuraciones globales (colores, menús, etc.).
 
-[Check out the latest demo](https://theme-landing-page.netlify.app) of what you'll get in less than 10 minutes, or [view the showcase](https://hugoblox.com/creators/).
+### 2. **Usando Bloques Existentes**
+Hugo Blox incluye bloques predefinidos como `hero`, `features`, `team`, etc. Para modificarlos:
+- Edita `content/_index.md` y agrega o modifica secciones bajo `sections:`.
+- Ejemplo para una sección "hero" (cabecera):
 
-The integrated [**Hugo Blox**](https://hugoblox.com) website builder and CMS makes it easy to create a beautiful website for free. Edit your site in the CMS (or your favorite editor), generate it with [Hugo](https://github.com/gohugoio/hugo), and deploy with GitHub or Netlify. Customize anything on your site with widgets, light/dark themes, and language packs.
+  ```yaml
+  sections:
+    - block: hero
+      content:
+        title: "Título Principal"
+        text: "Descripción breve"
+        primary_action:
+          text: "Botón Principal"
+          url: "#seccion"
+      design:
+        background:
+          color: "bg-primary"  # Usa clases CSS personalizadas (predefinidas en la plantilla, por el momento los colores específicos están añadidos en los css)
 
-- 👉 [**Get Started**](https://hugoblox.com/templates/)
-- 📚 [View the **documentation**](https://docs.hugoblox.com/)
-- 💬 [Chat with the **Hugo Blox Builder community**](https://discord.gg/z8wNYzb) or [**Hugo community**](https://discourse.gohugo.io)
-- ⬇️ **Automatically import citations from BibTeX** with the [Hugo Academic CLI](https://github.com/GetRD/academic-file-converter)
-- 🐦 Share your new site with the community: [@GetResearchDev](https://twitter.com/GetResearchDev) [@GeorgeCushen](https://twitter.com/GeorgeCushen) [#MadeWithHugoBlox](https://twitter.com/search?q=%23MadeWithHugoBlox&src=typed_query)
-- 🗳 [Take the survey and help us improve #OpenSource](https://forms.gle/NioD9VhUg7PNmdCAA)
-- 🚀 [Contribute improvements](https://github.com/HugoBlox/hugo-blox-builder/blob/main/CONTRIBUTING.md) or [suggest improvements](https://github.com/HugoBlox/hugo-blox-builder/issues)
-- ⬆️ **Updating?** View the [Update Guide](https://docs.hugoblox.com/) and [Release Notes](https://github.com/HugoBlox/hugo-blox-builder/releases)
+### 3. **En caso de querer generar nuevos bloques**
 
-## We ask you, humbly, to support this open source movement
+    **Paso 1:**
+    -Crea un layout en layouts/partials/blox/.
+        ej:
+            {{ $page := .wcPage }}
+            {{ $block := .wcBlock }}
 
-Today we ask you to defend the open source independence of the Hugo Blox Builder and themes 🐧
+            <section class="py-16 lg:py-24">
+            <div class="container mx-auto px-6 lg:px-8">
+                <h2>{{ $block.content.title }}</h2>
+                ** Lógica personalizada aquí **
+                {{ range $item := $block.content.items }}
+                <div class="piloto-item">
+                    <h3>{{ $item.title }}</h3>
+                    <p>{{ $item.description }}</p>
+                </div>
+                {{ end }}
+            </div>
+            </section>
+    
+    **Paso 2:**
+    - Agrega el bloque en el index
+        - block: pilotos  <---- Nombre del archivo sin extensión (debe tener el nombre de el archivo)
+        content:
+            title: "Proyectos Piloto"
+            items:
+            - title: "Proyecto 1"
+                description: "Descripción"
 
-We're an open source movement that depends on your support to stay online and thriving, but 99.9% of our creators don't give; they simply look the other way.
 
-### [❤️ Click here to become a GitHub Sponsor, unlocking awesome perks such as _exclusive academic templates and widgets_](https://github.com/sponsors/gcushen) -->
+    ** Modificación y Significado de elementos**
+
+    ### Inicialización de variables de Hugo Blox
+
+    {{ $page := .wcPage }}
+    {{ $block := .wcBlock }}
+
+    **¿Por qué se usa?**
+    Permite acceder fácilmente a los datos de la página y del bloque actual usando las variables $page y $block.
+
+    **¿Cómo modificar?**
+    No es necesario modificar esto salvo que quieras cambiar los nombres de las variables por claridad.
+
+
+    ### Estructura principal del bloque
+
+    <section class="py-16 lg:py-24">
+        <div class="container mx-auto px-6 lg:px-8">
+            ...
+        </div>
+    </section>
+
+    **¿Por qué se usa?**
+    Define el área del bloque con padding vertical (py-16, lg:py-24) y centra el contenido con un contenedor responsive.
+
+    **¿Cómo modificar?**
+    Cambia las clases de padding (py-16, etc.) para ajustar el espacio vertical.
+    Cambia el ancho del contenedor (max-w-3xl, etc.) si necesitas más o menos ancho.
+
+
+    ### Título y subtítulo
+
+    <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold ...">
+            {{ with $block.content.title }}{{ . | markdownify }}{{ end }}
+        </h2>
+        {{ with $block.content.subtitle }}
+            <p class="text-lg ...">
+            {{ . | $page.RenderString | emojify }}
+            </p>
+        {{ end }}
+    </div>
+
+    **¿Por qué se usa?**
+    Muestra el título y subtítulo definidos en el bloque del archivo _index.md.
+
+    markdownify permite usar Markdown en el título.
+    emojify convierte atajos de emoji en emojis reales.
+
+    **¿Cómo modificar?**
+    Cambia el texto en content/_index.md bajo el bloque objetivos (title y subtitle).
+    Cambia las clases para modificar el tamaño, color o alineación del texto.
+
+
+    ###Lista de objetivos
+
+    <div style="display: flex; justify-content: center;">
+    <div class="objetivos-contenedor">
+        <ul class="objetivos-lista">
+        {{ range $item := $block.content.items }}
+            <li class="objetivo-item">
+            <span class="objetivo-viñeta">•</span>
+            <div class="objetivo-contenido">
+                <strong>{{ $item.title }}</strong> {{ $item.description | $page.RenderString | emojify }}
+            </div>
+            </li>
+        {{ end }}
+        </ul>
+    </div>
+    </div>
+
+    **¿Por qué se usa?**
+    Centra la lista de objetivos en la página.
+    Usa un <ul> para una lista semántica.
+    Cada objetivo se define en el YAML del bloque (items).
+    range recorre todos los objetivos definidos.
+    objetivo-viñeta es la viñeta (puedes cambiar el símbolo o usar un icono).
+    objetivo-contenido muestra el título y la descripción.
+
+    **¿Cómo modificar?**
+    Añade, quita o edita objetivos en content/_index.md bajo items del bloque objetivos.
+    Cambia el símbolo de la viñeta en <span class="objetivo-viñeta">•</span>.
+    Cambia las clases o estructura HTML para modificar el diseño de la lista.
+
+
+### 4. **Modificar estilos**
+
+    Se debe añadir lo siguiente al bloque .html para referenciar los estilos:
+    {{ $css := resources.Get "css/ejemplo.css" }} <--- ** Aquí se debe cambiar el nombre y la dirección del archivo**
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+    En el archivo css se puede programar normalmente, ya que afecta directamente al .html.
+

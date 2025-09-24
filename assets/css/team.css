@@ -1,0 +1,85 @@
+/* Grupos de investigación */
+  .equipo-grupos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .equipo-grupo {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #3b82f6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+  }
+  
+  .equipo-grupo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .equipo-grupo-icono {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .equipo-grupo-titulo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+  
+  .equipo-grupo-descripcion {
+    color: #6b7280;
+    line-height: 1.6;
+  }
+  
+  /* Investigadores */
+  .equipo-investigadores {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .equipo-investigador {
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .equipo-investigador:last-child {
+    border-bottom: none;
+  }
+  
+  .equipo-investigador-rol {
+    font-weight: 600;
+    color: #1e40af;
+    min-width: 200px;
+  }
+  
+  .equipo-investigador-nombre {
+    color: #374151;
+  }
+  
+  @media (max-width: 768px) {
+    .equipo-grupos {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .equipo-investigador {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .equipo-investigador-rol {
+      min-width: auto;
+      margin-bottom: 0.5rem;
+    }
+  }

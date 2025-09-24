@@ -1,0 +1,90 @@
+/* Animación sutil para los items */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .features-item {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .features-item:nth-child(1) { animation-delay: 0.1s; }
+  .features-item:nth-child(2) { animation-delay: 0.2s; }
+  .features-item:nth-child(3) { animation-delay: 0.3s; }
+  .features-item:nth-child(4) { animation-delay: 0.4s; }
+  
+  /* Iconos centrados y modernos */
+  .features-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem auto;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 50%;
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .features-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.5);
+  }
+  
+  /* Ajuste de tamaño para iconos FontAwesome y SVG */
+  .features-icon i {
+    font-size: 30px;
+    color: white;
+  }
+  
+  /* Títulos centrados */
+  .features-title {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+  
+  /* Descripciones centradas */
+  .features-description {
+    text-align: center;
+    color: #1d1d1d;
+    line-height: 1.6;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  /* Grid responsive */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .features-icon {
+      width: 70px;
+      height: 70px;
+    }
+    
+    .features-icon svg, .features-icon i {
+      width: 28px;
+      height: 28px;
+    }
+  }

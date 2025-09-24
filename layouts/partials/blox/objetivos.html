@@ -1,0 +1,42 @@
+{{/* Hugo Blox: Objetivos iSAT (Lista Dinámica) */}}
+{{/* Diseño de lista vertical con elementos desde el .md */}}
+
+{{/* --- INICIO: Estilos personalizados --- */}}
+{{ $css := resources.Get "css/objetivos.css" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+{{/* Initialise */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+
+<section class="py-16 lg:py-24">
+  <div class="container mx-auto px-6 lg:px-8">
+    {{/* Título */}}
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-gray-900 mb-4 dark:text-white">
+        {{ with $block.content.title }}{{ . | markdownify }}{{ end }}
+      </h2>
+      {{ with $block.content.subtitle }}
+        <p class="text-lg leading-8 text-gray-600 max-w-3xl mx-auto dark:text-gray-300">
+          {{ . | $page.RenderString | emojify }}
+        </p>
+      {{ end }}
+    </div>
+    
+    {{/* Lista de objetivos */}}
+    <div style="display: flex; justify-content: center;">
+        <div class="objetivos-contenedor">
+        <ul class="objetivos-lista">
+            {{ range $item := $block.content.items }}
+            <li class="objetivo-item">
+                <span class="objetivo-viñeta">•</span>
+                <div class="objetivo-contenido">
+                <strong>{{ $item.title }}</strong> {{ $item.description | $page.RenderString | emojify }}
+                </div>
+            </li>
+            {{ end }}
+        </ul>
+        </div>
+    </div>
+  </div>
+</section>

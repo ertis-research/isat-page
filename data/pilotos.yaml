@@ -1,0 +1,13 @@
+- titulo: "Sierra de Líbar"
+  subtitulo: "Abastecimiento de Benaoján"
+  color_clase: "glass-card-blue"
+  entorno: "Instalación en un manantial en una ubicación remota, sin acceso a la red eléctrica."
+  retos: "Problemas de contaminación del agua por prácticas agrícolas y vertidos industriales."
+  objetivo: "Probar la autonomía del sistema y su capacidad predictiva en un entorno con picos de contaminación definidos."
+
+- titulo: "Sierra de Archidona"
+  subtitulo: "Abastecimiento de Archidona"
+  color_clase: "glass-card-green"
+  entorno: "Configuración adaptada a un pozo de bombeo con toma de red en un entorno urbano."
+  retos: "Situación de sobreexplotación del acuífero y contaminación por vertidos."
+  objetivo: "Demostrar la flexibilidad de iSAT para integrarse en sistemas de bombeo y gestionar la extracción de manera eficiente."

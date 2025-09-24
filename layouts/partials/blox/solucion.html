@@ -1,0 +1,67 @@
+{{/* Hugo Blox: Solución iSAT (Flujo Dinámico) */}}
+{{/* Diseño visual del flujo de trabajo con pasos desde el .md */}}
+
+{{/* 1. Carga nuestro CSS personalizado para que solo se use en esta sección */}}
+{{ $css := resources.Get "css/solucion.css" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+{{/* Initialise */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+
+<section id="{{ $block.id }}" class="py-16 lg:py-24 ">
+  <div class="container mx-auto px-6 lg:px-8">
+    {{/* Solo incluir FontAwesome si hay iconos */}}
+    {{ range $item := $block.content.items }}
+      {{ if $item.icon }}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        {{ break }}
+      {{ end }}
+    {{ end }}
+    {{/* Título */}}
+    <div class="text-center mb-12">
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">
+        {{ with $block.content.title }}{{ . | markdownify }}{{ end }}
+      </h2>
+      {{ with $block.content.subtitle }}
+        <p class="text-2xl font-semibold text-gray-900 max-w-3xl dark:text-white mx-auto">
+          {{ . | $page.RenderString | emojify }}
+        </p>
+      {{ end }}
+    </div>
+    
+    {{/* Descripción */}}
+    {{ with $block.content.description }}
+      <div class="text-center mb-16">
+        <p class="text-xl text-gray-700 dark:text-gray-200 max-w-4xl mx-auto">
+          {{ . | $page.RenderString | emojify }}
+        </p>
+      </div>
+    {{ end }}
+    
+    {{/* Flujo de funcionamiento */}}
+    {{ with $block.content.steps }}
+      <div class="solucion-flujo">
+        {{ range $step := . }}
+          <div class="solucion-paso bg-white dark:bg-gray-800 border-l-4 dark:border-blue-400">
+            <div class="solucion-paso-numero">{{ $step.number }}</div>
+            {{ if $step.icon }}
+              <span class="solucion-paso-icono fas fa-{{ $step.icon }} text-black dark:text-gray-500"></span>
+            {{ end }}
+            <h3 class="solucion-paso-titulo">{{ $step.title }}</h3>
+            <p class="solucion-paso-descripcion">{{ $step.description | $page.RenderString | emojify }}</p>
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+    
+    {{/* Botón */}}
+    {{ if and $block.content.button_text $block.content.button_url }}
+      <div class="text-center">
+        <a href="{{ $block.content.button_url }}" class="solucion-boton">
+          {{ $block.content.button_text }}
+        </a>
+      </div>
+    {{ end }}
+  </div>
+</section>

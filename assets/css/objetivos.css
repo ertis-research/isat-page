@@ -1,0 +1,47 @@
+.contenedor.dark{
+        background-color: #121212 !important;
+    }
+  /* Contenedor de la lista */
+  .objetivos-contenedor {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid #1e40af;
+    margin: 2rem auto;  /* Centra horizontalmente */
+    max-width: 800px;
+  }
+  
+  .objetivos-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .objetivo-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .objetivo-item:last-child {
+    border-bottom: none;
+  }
+  
+  .objetivo-viñeta {
+    color: #1e40af;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .objetivo-contenido strong {
+    color: #1f2937;
+  }
+  
+  .objetivo-contenido {
+    color: #6b7280;
+  }
+
+  .objetivo-contenido:hover {
+    transform: scale(1.05);  /* Hace que crezca un 5% */
+  }

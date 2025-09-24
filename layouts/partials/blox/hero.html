@@ -1,0 +1,86 @@
+{{/* Hugo Blox: Hero (Versión Mejorada de una Columna) */}}
+{{/* Diseño centrado con imagen, título y botones llamativos */}}
+
+{{/* --- INICIO: Animación personalizada --- */}}
+{{/* Mantenemos la animación de flotación para la imagen */}}
+{{ $css := resources.Get "css/hero.css" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+
+{{/* Initialise */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+
+<section class="relative overflow-hidden">
+
+  <div class="container mx-auto px-6 lg:px-8 hero">
+    {{/* Contenedor principal ahora usa Flexbox para centrar todo */}}
+    <div class="mx-auto flex max-w-4xl flex-col items-center py-16 text-center sm:py-20 lg:py-24 hero-bg-cover">
+      
+      {{/* --- INICIO: Imagen (ahora arriba del texto) --- */}}
+      {{ with $block.content.image }}
+        <div class="mb-12">
+          {{ $img_path := . }}
+          {{ $img := "" }}
+          {{ if hasPrefix $img_path "http" }}
+            {{ $img = resources.GetRemote $img_path }}
+          {{ else }}
+            {{ $img = resources.Get $img_path }}
+          {{ end }}
+          {{ if $img }}
+            {{/* Limitamos el tamaño máximo de la imagen para que no sea demasiado grande */}}
+            <img src="{{ $img.RelPermalink }}" alt="Hero Image" class="relative hero-image-custom rounded-2xl animate-float">
+          {{ end }}
+        </div>
+      {{ end }}
+      {{/* --- FIN: Imagen --- */}}
+
+      {{/* --- INICIO: Contenido de Texto --- */}}
+      <div class="my-auto">
+        {{/* Anuncio (si existe) */}}
+        {{ if $block.content.announcement.text }}
+          {{ $announcement := $block.content.announcement }}
+          <div class="mb-6 flex justify-center">
+            <div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-gray-300 ring-1 ring-gray-900/10 dark:ring-gray-300 hover:ring-gray-900/20 dark:hover:ring-gray-400">
+              {{$announcement.text | markdownify}}
+              {{ if $announcement.link.text }}
+                <a href="{{ $announcement.link.url | relLangURL }}" class="font-semibold text-primary-600 dark:text-primary-300"><span class="absolute inset-0" aria-hidden="true"></span> {{$announcement.link.text}} <span aria-hidden="true">&rarr;</span></a>
+              {{ end }}
+            </div>
+          </div>
+        {{ end }}
+
+        {{/* Título con gradiente */}}
+        {{ with $block.content.title }}
+          <h1 class="text-3xl font-bold tracking-tight sm:text-5xl text-gray-900 dark:text-white">
+            {{ . | markdownify }}
+          </h1>
+        {{ end }}
+
+        {{/* Párrafo de texto */}}
+        {{ with $block.content.text }}
+          <p class="mt-4 text-xl leading-8 max-w-3xl mx-auto text-gray-900 dark:text-white">{{ . | $page.RenderString | emojify }}</p>
+        {{ end }}
+
+        {{/* Botones de acción */}}
+        {{ if or $block.content.primary_action.url $block.content.secondary_action.url }}
+          {{/* Hacemos los botones más grandes y con más separación */}}
+          <div class="mt-12 flex flex-col items-center justify-center gap-y-6 sm:flex-row sm:gap-x-6 sm:gap-y-0">
+            {{ if $block.content.primary_action.url }}
+              <a href="{{ $block.content.primary_action.url | relLangURL }}" class="btn-modern-primary">
+                {{ $block.content.primary_action.text | markdownify | emojify }}
+              </a>
+            {{ end }}
+            {{ if $block.content.secondary_action.url }}
+              <a href="{{ $block.content.secondary_action.url | relLangURL }}" class="btn-modern-secondary">
+                {{ $block.content.secondary_action.text | markdownify | emojify }} <span aria-hidden="true">→</span>
+              </a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+      {{/* --- FIN: Contenido de Texto --- */}}
+
+    </div>
+  </div>
+</section>

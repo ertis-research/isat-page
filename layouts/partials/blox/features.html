@@ -1,0 +1,65 @@
+{{/* Hugo Blox: Features (Versión Personalizada como Hero) */}}
+{{/* Diseño centrado con iconos, títulos y descripciones */}}
+
+{{/* --- INICIO: Estilos personalizados --- */}}
+{{/* 1. Carga nuestro CSS personalizado para que solo se use en esta sección */}}
+{{ $css := resources.Get "css/features.css" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{/* --- FIN: Estilos personalizados --- */}}
+
+{{/* Initialise */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+
+<section class="py-16 lg:py-24">
+  <div class="container mx-auto px-6 lg:px-8">
+    {{/* Solo incluir FontAwesome si hay iconos */}}
+    {{ range $item := $block.content.items }}
+      {{ if $item.icon }}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        {{ break }}
+      {{ end }}
+    {{ end }}
+    {{/* Título de la sección */}}
+    {{ with $block.content.title }}
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-gray-900">
+          {{ . | markdownify }}
+        </h2>
+        {{ with $block.content.text }}
+          <p class="mt-4 text-xl leading-8 max-w-3xl mx-auto text-gray-900">
+            {{ . | $page.RenderString | emojify }}
+          </p>
+        {{ end }}
+      </div>
+    {{ end }}
+    
+    {{/* Grid de features */}}
+    <div class="features-grid">
+      {{ range $item := $block.content.items }}
+        <div class="features-item text-center">
+          {{/* Icono centrado */}}
+          <div class="features-icon">
+            {{ if $item.icon }}
+              <i class="fas fa-{{ $item.icon }}"></i>
+            {{ end }}
+          </div>
+          
+          {{/* Título */}}
+          {{ with $item.name }}
+            <h3 class="features-title">
+              {{ . | markdownify }}
+            </h3>
+          {{ end }}
+          
+          {{/* Descripción */}}
+          {{ with $item.description }}
+            <p class="features-description">
+              {{ . | $page.RenderString | emojify }}
+            </p>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

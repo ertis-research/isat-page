@@ -1,0 +1,115 @@
+html.dark #solucion {
+        background-color: #121212 !important;
+    }
+
+    /* Fondo blanco para tecnologia en modo oscuro */
+    html.dark #tecnologia {
+        color: #ffffff !important;
+    }
+
+    /* Cambiar colores de texto en tecnologia para modo oscuro */
+    html.dark #tecnologia h2,
+    html.dark #tecnologia h3,
+    html.dark #tecnologia p {
+    color: #ffffff !important;
+    }
+
+    /* Cambiar colores de tarjetas en tecnologia */
+    html.dark #tecnologia .features-item {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+    }
+
+    html.dark #tecnologia .features-item h3,
+    html.dark #tecnologia .features-item p {
+    color: #ffffff !important;
+    }
+
+  /* Flujo de pasos */
+  .solucion-flujo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .solucion-paso {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #3b82f6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  
+  .solucion-paso:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .solucion-paso-numero {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+  }
+  
+  .solucion-paso-icono {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .solucion-paso-titulo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+  
+  .solucion-paso-descripcion {
+    color: #6b7280;
+    line-height: 1.6;
+  }
+  
+  .solucion-boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  }
+  
+  .solucion-boton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .solucion-flujo {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .solucion-paso {
+      padding: 1.5rem;
+    }
+  }
