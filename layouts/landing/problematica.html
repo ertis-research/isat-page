@@ -1,0 +1,280 @@
+{{ define "main" }}
+
+{{/* Load Custom CSS */}}
+{{ $css := resources.Get "css/problematica.css" }}
+{{ $heroCss := resources.Get "css/hero.css" }}
+<link rel="stylesheet" href="{{ $heroCss.RelPermalink }}">
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+{{/* --- 1. HERO SECTION --- */}}
+{{ $hero := index (where .Params.sections "block" "hero") 0 }}
+{{ if $hero }}
+<section class="prob-hero relative pt-20 pb-32 overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-50 to-white -z-10"></div>
+  <div class="prob-hero-content animate-fade-in px-6">
+    <h1 class="prob-hero-title prob-gradient-text">{{ $hero.content.title }}</h1>
+    <p class="prob-hero-subtitle">{{ $hero.content.text | markdownify }}</p>
+    
+    {{ if $hero.content.image }}
+      <div class="mt-8 mb-12 flex justify-center">
+        {{ $img := resources.Get $hero.content.image }}
+        {{ if $img }}
+          <div class="relative max-w-5xl mx-auto group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+            <img src="{{ $img.RelPermalink }}" alt="Hero Image" class="relative rounded-2xl shadow-2xl w-full border-4 border-white object-cover">
+          </div>
+        {{ else }}
+          {{/* Fallback if image not found */}}
+          <div class="bg-gray-200 dark:bg-gray-700 rounded-2xl h-64 w-full md:w-2/3 flex items-center justify-center">
+            <span class="text-gray-500">Imagen no encontrada: {{ $hero.content.image }}</span>
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+
+    <div class="flex flex-col md:flex-row justify-center gap-4 mb-6">
+      {{ if $hero.content.primary_action.url }}
+      <a href="{{ $hero.content.primary_action.url }}" class="btn-modern-primary text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 font-semibold inline-flex items-center gap-2">
+        {{ $hero.content.primary_action.text }} <i class="fas fa-arrow-right"></i>
+      </a>
+      {{ end }}
+      {{ if $hero.content.secondary_action.url }}
+      <a href="{{ $hero.content.secondary_action.url }}" class="btn-modern-secondary text-lg px-8 py-3 rounded-full shadow-sm hover:shadow-md transition-all font-semibold inline-flex items-center gap-2">
+        {{ $hero.content.secondary_action.text }}
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* Render Efectos (objetivos block) */}}
+{{ $efectosBlock := index (where .Params.sections "id" "efectos") 0 }}
+{{ if $efectosBlock }}
+  {{ partial "blox/objetivos.html" (dict "wcPage" . "wcBlock" $efectosBlock) }}
+{{ end }}
+
+{{/* --- HYDRATE: HERO METRICS (if exist) --- */}}
+{{ $heroMetrics := index (where .Params.sections "id" "hero-metrics") 0 }}
+{{ if $heroMetrics }}
+<section class="prob-section" id="hero-metrics">
+  <div class="container mx-auto px-6">
+    {{ partial "blox/features.html" (dict "wcPage" . "wcBlock" $heroMetrics) }}
+  </div>
+</section>
+{{ end }}
+
+{{/* --- 2. SEQUÍA (Split Layout) --- */}}
+{{ $sequiaIntro := index (where .Params.sections "id" "sequia-intro") 0 }}
+{{ $sequiaFacts := index (where .Params.sections "id" "sequia-facts") 0 }}
+
+{{ if $sequiaIntro }}
+<section class="prob-section prob-section-alt hero hero-bg-cover" id="sequia">
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
+    <svg class="sequia-overlay" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M40 0 L0 0 0 40" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+  </div>
+  <div class="container mx-auto px-6">
+    <div class="prob-split">
+      <div class="prob-split-content">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">{{ $sequiaIntro.content.title }}</h2>
+        <div class="prose dark:prose-invert text-lg text-gray-600 dark:text-gray-300">
+          {{ $sequiaIntro.content.text | markdownify }}
+        </div>
+      </div>
+      
+      {{ if $sequiaFacts }}
+      <div class="prob-split-visual">
+        <div class="prob-stat-card w-full max-w-md">
+          <h3 class="text-xl font-bold mb-4 border-b border-white/20 pb-2">Datos Clave</h3>
+          <ul class="space-y-4">
+            {{ range $sequiaFacts.content.items }}
+            <li class="flex items-start gap-3">
+              <div class="mt-1 bg-white/20 p-1.5 rounded text-white">
+                <i class="fas fa-{{ .icon }} text-sm"></i>
+              </div>
+              <div>
+                <strong class="block text-white">{{ .name }}</strong>
+                <span class="text-blue-100 text-sm">{{ .description }}</span>
+              </div>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* --- 3. CALIDAD (Grid Layout) --- */}}
+{{ $calidadIntro := index (where .Params.sections "id" "calidad-intro") 0 }}
+{{ $calidadIndicadores := index (where .Params.sections "id" "calidad-indicadores") 0 }}
+{{ $calidadContaminantes := index (where .Params.sections "id" "calidad-contaminantes") 0 }}
+
+{{ if $calidadIntro }}
+<section class="prob-section" id="calidad">
+  <div class="container mx-auto px-6">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">{{ $calidadIntro.content.title }}</h2>
+      <div class="text-lg text-gray-600 dark:text-gray-300">
+        {{ $calidadIntro.content.text | markdownify }}
+      </div>
+    </div>
+
+    {{ if $calidadIndicadores }}
+    <h3 class="text-2xl font-semibold mb-8 text-center text-gray-800 dark:text-gray-200">{{ $calidadIndicadores.content.title }}</h3>
+    <div class="prob-grid mb-16">
+      {{ range $calidadIndicadores.content.items }}
+      <div class="prob-card text-center">
+        <div class="prob-icon-wrapper">
+          <i class="fas fa-{{ .icon }}"></i>
+        </div>
+        <h4 class="prob-card-title">{{ .name }}</h4>
+        <p class="prob-card-text">{{ .description }}</p>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ if $calidadContaminantes }}
+    <h3 class="text-2xl font-semibold mb-8 text-center text-gray-800 dark:text-gray-200">{{ $calidadContaminantes.content.title }}</h3>
+    <div class="prob-grid">
+      {{ range $calidadContaminantes.content.items }}
+      <div class="prob-card flex items-center gap-4 text-left p-6">
+        <div class="prob-icon-wrapper mb-0 w-12 h-12 text-lg flex-shrink-0">
+          <i class="fas fa-{{ .icon }}"></i>
+        </div>
+        <div>
+          <h4 class="prob-card-title mb-1 text-lg">{{ .name }}</h4>
+          <p class="prob-card-text text-sm">{{ .description }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{/* --- 4. RIESGOS (Alert Cards) --- */}}
+{{ $riesgos := index (where .Params.sections "id" "riesgos-operativos") 0 }}
+{{ if $riesgos }}
+<section class="prob-section prob-section-alt" id="riesgos">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">{{ $riesgos.content.title }}</h2>
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      {{ range $riesgos.content.items }}
+      <div class="bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 rounded-xl p-6 hover:shadow-lg transition-shadow">
+        <div class="text-red-500 dark:text-red-400 text-3xl mb-4">
+          <i class="fas fa-{{ .icon }}"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ .name }}</h3>
+        <p class="text-gray-600 dark:text-gray-300">{{ .description }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* --- 5. LIMITACIONES & SOLUCIÓN (Timeline/Steps) --- */}}
+{{ $limitaciones := index (where .Params.sections "id" "limitaciones") 0 }}
+{{ $solucion := index (where .Params.sections "id" "que-necesita-gestor") 0 }}
+
+<section class="prob-section" id="solucion">
+  <div class="container mx-auto px-6">
+    
+    {{ if $limitaciones }}
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold mb-10 text-center text-gray-900 dark:text-white">{{ $limitaciones.content.title }}</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        {{ range $limitaciones.content.items }}
+        <div class="prob-limit-item bg-gray-100 dark:bg-gray-800 px-6 py-4 rounded-full flex items-center gap-3 text-gray-700 dark:text-gray-200">
+          <i class="fas fa-{{ .icon }} text-gray-400"></i>
+          <span>{{ .name }}</span>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    {{ if $solucion }}
+    <div class="max-w-4xl mx-auto bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-8 md:p-12 shadow-xl border border-blue-100 dark:border-gray-700">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">{{ $solucion.content.title }}</h2>
+        <p class="text-blue-600 dark:text-blue-400 font-medium">{{ $solucion.content.subtitle }}</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {{ range $solucion.content.steps }}
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-lg">
+            {{ .number }}
+          </div>
+          <div>
+            <h4 class="font-bold text-lg text-gray-900 dark:text-white mb-1">{{ .title }}</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{{ .description }}</p>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+
+      <div class="mt-12 text-center">
+        <a href="/#tecnologia" class="btn-modern-primary inline-flex items-center gap-2 px-8 py-3 rounded-full text-lg shadow-lg hover:shadow-blue-500/30 transition-all">
+          Ver cómo lo aborda iSAT <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    {{ end }}
+
+  </div>
+</section>
+
+{{/* --- 6. CTA DIAGRAMA --- */}}
+{{ $ctaDiagrama := index (where .Params.sections "id" "cta-diagrama") 0 }}
+{{ if $ctaDiagrama }}
+<section class="prob-section text-center" id="cta-diagrama">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">{{ $ctaDiagrama.content.title }}</h2>
+    <div class="prose dark:prose-invert mx-auto">
+      {{ $ctaDiagrama.content.text | markdownify }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* --- 7. FAQ --- */}}
+{{ $faq := index (where .Params.sections "id" "faq") 0 }}
+{{ if $faq }}
+<section class="prob-section prob-section-alt" id="faq">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">{{ $faq.content.title }}</h2>
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {{ range $faq.content.items }}
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
+        <div class="flex items-start gap-4">
+          <div class="text-blue-500 mt-1">
+            <i class="fas fa-{{ .icon }}"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-2">{{ .name }}</h3>
+            <p class="text-gray-600 dark:text-gray-300">{{ .description }}</p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,115 @@
+{{ define "main" }}
+
+{{ $css := resources.Get "css/grupos.css" }}
+{{ $heroCss := resources.Get "css/hero.css" }}
+{{ $probCss := resources.Get "css/problematica.css" }}
+<link rel="stylesheet" href="{{ $heroCss.RelPermalink }}">
+<link rel="stylesheet" href="{{ $probCss.RelPermalink }}">
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- HERO -->
+{{ $hero := index (where .Params.sections "block" "hero") 0 }}
+{{ if $hero }}
+<section class="relative pt-24 pb-20 bg-white border-b border-gray-100">
+  <div class="container mx-auto px-6 max-w-6xl animate-fade-in">
+    <div class="flex flex-col md:flex-row items-center gap-12">
+      <div class="w-full md:w-1/3 flex justify-center md:justify-end">
+        {{ with $hero.content.logo }}
+          <div class="w-64 h-32 bg-white border-2 border-slate-100 rounded-xl flex items-center justify-center p-4 shadow-sm relative group">
+            {{ if . }}<img src="{{ . }}" alt="Logo {{ $hero.content.title }}" class="max-h-full object-contain" />{{ end }}
+          </div>
+        {{ end }}
+      </div>
+      <div class="w-full md:w-2/3 text-center md:text-left">
+        {{ with $hero.content.announcement }}
+          <span class="inline-block py-1 px-3 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-4 border border-indigo-100">{{ .text }}</span>
+        {{ end }}
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900 leading-tight">{{ $hero.content.title }} <br><span class="prob-gradient-text">{{ $hero.content.highlight }}</span></h1>
+        <p class="text-lg text-gray-600 leading-relaxed mb-4">{{ $hero.content.text }}</p>
+        {{ with $hero.content.short }}<p class="text-slate-500 text-sm font-medium">{{ . }}</p>{{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+<!-- ROLES / SOLUTIONS -->
+{{ $roles := index (where .Params.sections "id" "roles") 0 }}
+{{ if $roles }}
+<section class="py-24 bg-slate-50 prob-section-alt">
+  <div class="container mx-auto px-6 max-w-7xl">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-gray-900">{{ $roles.content.title }}</h2>
+      <p class="text-gray-600 mt-2">{{ $roles.content.subtitle }}</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {{ range $roles.content.items }}
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 tech-card group">
+        <div class="w-12 h-12 {{ if .bg }}bg-{{ .bg }}{{ end }} text-{{ .color }} rounded-lg flex items-center justify-center text-xl mb-4 group-hover:bg-{{ .bg | replace "-" "" }} group-hover:text-white transition-colors">
+          <i class="fas fa-{{ .icon }}"></i>
+        </div>
+        <h3 class="font-bold text-lg text-gray-900 mb-3">{{ .title }}</h3>
+        <p class="text-sm text-gray-600">{{ .text }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+<!-- TEAM -->
+{{ $team := index (where .Params.sections "id" "team") 0 }}
+{{ if $team }}
+<section class="py-24 bg-white prob-section">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <h2 class="text-3xl font-bold text-center mb-16 text-gray-900">{{ $team.content.title }}</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {{ range $team.content.items }}
+      <div class="text-center group profile-card">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-2 border-slate-100 group-hover:border-indigo-500 transition-colors p-1">
+          {{ if .image }}<img src="{{ .image }}" alt="{{ .name }}" class="w-full h-full rounded-full object-cover">{{ end }}
+        </div>
+        <h3 class="font-bold text-gray-900">{{ .name }}</h3>
+        <p class="text-xs text-indigo-600 font-bold uppercase mb-2">{{ .role }}</p>
+        <p class="text-sm text-slate-500 px-2">{{ .bio }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+<!-- EXPERIENCIA -->
+{{ $exp := index (where .Params.sections "id" "experiencia") 0 }}
+{{ if $exp }}
+<section class="py-20 bg-slate-900 text-white prob-section">
+  <div class="container mx-auto px-6 max-w-5xl">
+    <div class="flex flex-col md:flex-row items-center gap-10">
+      <div class="w-full md:w-1/2">
+        <h2 class="text-3xl font-bold mb-6">{{ $exp.content.title }}</h2>
+        <p class="text-slate-300 mb-8 leading-relaxed">Experiencia técnica y proyectos que sustentan nuestra participación en iSAT.</p>
+        <div class="space-y-4">
+          {{ range $exp.content.items }}
+          <div class="flex items-start gap-4 p-4 bg-white/5 rounded-lg border border-white/10">
+            <i class="fas fa-project-diagram text-indigo-400 mt-1"></i>
+            <div>
+              <h4 class="font-bold text-white">{{ .title }}</h4>
+              <p class="text-sm text-slate-400">{{ .text }}</p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 flex justify-center">
+        <div class="relative w-full max-w-md aspect-square bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full flex items-center justify-center animate-pulse">
+          <div class="absolute inset-4 border border-white/10 rounded-full border-dashed animate-[spin_10s_linear_infinite]"></div>
+          <i class="fas fa-network-wired text-9xl text-white/10"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

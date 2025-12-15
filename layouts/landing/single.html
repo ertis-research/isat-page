@@ -1,0 +1,21 @@
+{{ define "main" }}
+  {{ $page := .Page }}
+  {{/* Render sections defined in front matter by invoking block partials */}}
+  {{ range $index, $block := .Params.sections }}
+    {{ $blockName := $block.block }}
+    {{/* If partial exists, render it. */}}
+    {{ $partialPath := printf "blox/%s.html" $blockName }}
+    {{ if templates.Exists $partialPath }}
+      {{ partial $partialPath (dict "wcPage" $.Page "wcBlock" $block) }}
+    {{ else }}
+      {{/* Fallback: if block has text content, render it directly */}}
+      {{ with $block.content.text }}
+        <section class="py-8">
+          <div class="container mx-auto px-6 lg:px-8">
+            {{ . | $page.RenderString | emojify }}
+          </div>
+        </section>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}

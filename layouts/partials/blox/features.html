@@ -23,7 +23,7 @@
     {{/* Título de la sección */}}
     {{ with $block.content.title }}
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-gray-900">
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-gray-900 dark:text-white">
           {{ . | markdownify }}
         </h2>
         {{ with $block.content.text }}
@@ -47,14 +47,14 @@
           
           {{/* Título */}}
           {{ with $item.name }}
-            <h3 class="features-title">
+            <h3 class="features-title text-gray-900">
               {{ . | markdownify }}
             </h3>
           {{ end }}
           
           {{/* Descripción */}}
           {{ with $item.description }}
-            <p class="features-description">
+            <p class="features-description text-gray-900">
               {{ . | $page.RenderString | emojify }}
             </p>
           {{ end }}

@@ -1,0 +1,51 @@
+/* Styles specific to the financiacion landing page */
+
+.prob-gradient-text {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.donut-chart {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #2563eb 0% 74%,
+    #0d9488 74% 93%,
+    #f59e0b 93% 99%,
+    #64748b 99% 100%
+  );
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.donut-chart::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: white;
+}
+
+.logo-placeholder { filter: grayscale(100%); opacity: 0.7; transition: all 0.3s; }
+.logo-placeholder:hover { filter: grayscale(0%); opacity: 1; }
+
+/* Small utilities specific to this page */
+.financiacion-table thead th { font-weight: 700; }
+.financiacion-cta { display:inline-block }
+
+/* Keep the file concise – global utilities are in Tailwind */

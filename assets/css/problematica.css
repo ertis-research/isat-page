@@ -1,0 +1,486 @@
+/* Modern Styles for Problemática Page */
+
+/* Variables & Utilities */
+:root {
+  --prob-primary: #2563eb; /* Blue 600 */
+  --prob-secondary: #0ea5e9; /* Sky 500 */
+  --prob-accent: #f59e0b; /* Amber 500 */
+  --prob-dark: #1e293b; /* Slate 800 */
+  --prob-light: #f8fafc; /* Slate 50 */
+}
+
+.prob-gradient-text {
+  background: linear-gradient(135deg, var(--prob-primary), var(--prob-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Primary gradient utility to mimic the 'ejemplo.html' header gradient */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+}
+
+
+.prob-section {
+  padding: 5rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* When a section is also a hero variant, prefer hero styles (transparent bg) */
+.prob-section.hero {
+  padding: 6rem 1rem;
+  min-height: 420px;
+  color: #ffffff; /* Default text for hero-style sections */
+}
+
+.prob-section.hero .prob-hero-title,
+.prob-section.hero h2,
+.prob-section.hero .text-lg {
+  color: #ffffff !important;
+}
+
+.prob-section.hero .prob-hero-subtitle,
+.prob-section.hero p,
+.prob-section.hero .prose {
+  color: rgba(255,255,255,0.9) !important;
+}
+
+.prob-section-alt {
+  background-color: var(--prob-light);
+}
+
+.dark .prob-section-alt {
+  background-color: #111827; /* Gray 900 */
+}
+
+/* Hero Section */
+.prob-hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top right, #dbeafe 0%, transparent 40%),
+              radial-gradient(circle at bottom left, #e0f2fe 0%, transparent 40%);
+}
+
+.dark .prob-hero {
+  background: radial-gradient(circle at top right, #1e3a8a 0%, transparent 40%),
+              radial-gradient(circle at bottom left, #0c4a6e 0%, transparent 40%);
+}
+
+.prob-hero-content {
+  text-align: center;
+  max-width: 1200px;
+  z-index: 10;
+}
+
+/* Buttons (primary/secondary) */
+.btn-modern-primary {
+  background: linear-gradient(90deg, var(--prob-primary), var(--prob-secondary));
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border: none;
+}
+.btn-modern-primary:hover {
+  filter: brightness(0.98);
+  transform: translateY(-2px);
+}
+.btn-modern-secondary {
+  background: white;
+  color: var(--prob-dark);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+.btn-modern-secondary:hover {
+  background: #f8fafc;
+}
+
+/* Hero image overlay group */
+.group > .absolute {
+  pointer-events: none;
+}
+.group:hover > .absolute {
+  opacity: 0.5;
+}
+
+/* Decorative hero small badge */
+.prob-hero-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.9);
+  color: #1f2937;
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.prob-hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.prob-hero-subtitle {
+  font-size: 1.25rem;
+  color: #4b5563;
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+}
+
+.dark .prob-hero-subtitle {
+  color: #9ca3af;
+}
+
+/* Cards & Grids */
+.prob-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.prob-card {
+  background: white;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(229, 231, 235, 0.5);
+}
+
+.dark .prob-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.prob-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Hero metrics specific styling (light and dark) */
+#hero-metrics .features-item {
+  padding: 1.8rem 1.25rem;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(37,99,235,0.09), rgba(14,165,233,0.05));
+  border: 1px solid rgba(37,99,235,0.16);
+  color: var(--prob-dark);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, background 0.2s ease;
+}
+
+#hero-metrics .features-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(2,6,23,0.16);
+  background: linear-gradient(180deg, rgba(59,130,246,0.12), rgba(14,165,233,0.08));
+}
+
+#hero-metrics .features-icon {
+  background: linear-gradient(135deg, rgba(37,99,235,0.95), rgba(14,165,233,0.95));
+  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--prob-secondary);
+  font-size: 1.2rem;
+  margin: 0 auto 0.75rem;
+}
+
+.dark #hero-metrics .features-item {
+  background: linear-gradient(180deg, rgba(17,24,39,0.42), rgba(15,23,42,0.6));
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #e6eef8;
+}
+
+/* Ensure features titles and descriptions use dark colors in light mode, white in dark mode */
+#hero-metrics .features-title {
+  color: #111827 !important; /* Slate 900 - black-ish */
+}
+#hero-metrics .features-description {
+  color: #374151 !important; /* Slate 700 */
+}
+.dark #hero-metrics .features-title {
+  color: #f3f4f6 !important; /* Gray 100/white for dark mode */
+}
+.dark #hero-metrics .features-description {
+  color: #d1d5db !important; /* Gray 300 for dark mode */
+}
+
+.dark #hero-metrics .features-icon {
+  background: rgba(255,255,255,0.06);
+  color: #a5f3fc;
+}
+
+/* Limitaciones: pill badges style */
+.prob-limit-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,250,0.95));
+  color: #0f172a;
+  font-weight: 600;
+  border: 1px solid rgba(2,6,23,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.prob-limit-item i {
+  color: var(--prob-accent);
+}
+
+.prob-limit-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(2,6,23,0.06);
+}
+
+.dark .prob-limit-item {
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: #e6eef8;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.dark .prob-limit-item i {
+  color: #ffd580;
+}
+
+.prob-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.75rem;
+  background: #eff6ff;
+  color: var(--prob-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.dark .prob-icon-wrapper {
+  background: #1e3a8a;
+  color: #60a5fa;
+}
+
+.prob-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #111827;
+}
+
+.dark .prob-card-title {
+  color: #f3f4f6;
+}
+
+.prob-card-text {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.dark .prob-card-text {
+  color: #9ca3af;
+}
+
+/* Feature Split Layout (Text + Image/Card) */
+.prob-split {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .prob-split {
+    flex-direction: row;
+  }
+  .prob-split.reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.prob-split-content {
+  flex: 1;
+}
+
+.prob-split-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.prob-stat-card {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+/* Specific adjustments for the sequía split content when using hero background */
+#sequia .prob-split-content h2,
+#sequia .prob-split-content .prose {
+  color: #ffffff;
+}
+
+#sequia .prob-stat-card {
+  background: linear-gradient(135deg, rgba(37,99,235,0.95), rgba(14,165,233,0.9));
+  color: white;
+}
+
+/* Sequía: overlay grid behind content and color adjustments */
+#sequia {
+  background-color: #003366; /* deep blue */
+  color: white;
+}
+
+#sequia .sequia-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0; /* ensure it's behind content */
+  opacity: 0.12;
+}
+
+#sequia .container {
+  position: relative;
+  z-index: 2; /* bring content above overlay */
+}
+
+#sequia .prob-split-visual .prob-stat-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+#sequia .prob-icon-wrapper {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+}
+
+#sequia .prob-card-title,
+#sequia .prob-card-text {
+  color: rgba(255,255,255,0.95);
+}
+
+/* Eficiencia hero metrics (match sequía background + grid) */
+#hero-metrics {
+  background-color: #002b4d; /* deep navy (slightly darker than #003366) */
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero-metrics .sequia-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.20; /* match sequía opacity better */
+}
+
+#hero-metrics .container {
+  position: relative;
+  z-index: 2;
+}
+
+#hero-metrics .features-item {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.06);
+  color: white; /* Cards should have white text on deep blue */
+}
+
+#hero-metrics .features-title {
+  color: #ffffff !important;
+}
+
+#hero-metrics .features-description {
+  color: rgba(255,255,255,0.92) !important;
+}
+
+/* hero metrics title and paragraph overrides */
+#hero-metrics h2, #hero-metrics .text-xl, #hero-metrics p {
+  color: rgba(255,255,255,0.95) !important;
+}
+
+#hero-metrics .features-title span {
+  color: rgba(255,255,255,0.9) !important; /* units pale white */
+}
+
+#hero-metrics .features-item .features-icon {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+}
+
+#sequia .prob-stat-card h3,
+#sequia .prob-stat-card span,
+#sequia .prob-stat-card strong {
+  color: #fff;
+}
+
+/* Steps / Timeline */
+.prob-steps {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.prob-step-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.prob-step-number {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  background: var(--prob-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+/* FAQ Accordion (Simple) */
+.prob-faq-item {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1.5rem 0;
+}
+
+.dark .prob-faq-item {
+  border-color: #374151;
+}
+
+.prob-faq-question {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.dark .prob-faq-question {
+  color: #f3f4f6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}

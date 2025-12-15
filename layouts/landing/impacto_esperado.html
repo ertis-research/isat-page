@@ -1,0 +1,166 @@
+{{ define "main" }}
+
+{{ $css := resources.Get "css/problematica.css" }}
+{{ $heroCss := resources.Get "css/hero.css" }}
+<link rel="stylesheet" href="{{ $heroCss.RelPermalink }}">
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+{{/* HERO */}}
+{{ $hero := index (where .Params.sections "block" "hero") 0 }}
+{{ if $hero }}
+<section class="relative pt-24 pb-20 bg-white overflow-hidden">
+  <div class="absolute top-0 right-0 w-2/3 h-full bg-blue-50/50 -skew-x-12 translate-x-1/4 -z-10"></div>
+  <div class="container mx-auto px-6 max-w-5xl text-center animate-fade-in">
+    {{ if $hero.content.announcement.text }}
+      <span class="inline-block py-1 px-3 rounded-full bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-wider mb-6">{{ $hero.content.announcement.text }}</span>
+    {{ end }}
+
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-8 leading-tight prob-gradient-text">{{ $hero.content.title }}</h1>
+
+    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{{ $hero.content.text }}</p>
+  </div>
+</section>
+{{ end }}
+
+{{/* BENEFITS */}}
+{{ $benef := index (where .Params.sections "id" "beneficios_directos") 0 }}
+{{ if $benef }}
+<section class="py-20 bg-white border-t border-gray-100">
+  <div class="container mx-auto px-6">
+    <div class="mb-12 text-center md:text-left">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4 prob-gradient-text">{{ $benef.content.title }}</h2>
+      <p class="text-gray-500">Para ayuntamientos, gestoras y ciudadanos usuarios de acuíferos.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {{ range $benef.content.items }}
+      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 impact-card">
+        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl mb-4">
+          <i class="fas fa-{{ .icon }}"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2 text-gray-900">{{ .name }}</h3>
+        <p class="text-sm text-gray-600">{{ .description }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* STATS/NUMBERS */}}
+{{ $stats := index (where .Params.sections "id" "eficiencia") 0 }}
+{{ if $stats }}
+<section class="py-20 relative bg-blue-900 overflow-hidden hero hero-bg-cover" id="hero-metrics">
+  <!-- Add grid overlay behind content (white lines) to match Sequía effect -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-12 pointer-events-none">
+    <svg class="sequia-overlay" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid-hero-metrics" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M40 0 L0 0 0 40" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid-hero-metrics)" />
+    </svg>
+  </div>
+  <div class="container mx-auto px-6 relative z-10 text-center">
+    <h2 class="text-2xl font-semibold mb-16 text-white uppercase tracking-widest">{{ $stats.content.title }}</h2>
+    <div class="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+      {{ range $stats.content.items }}
+      <div class="features-item group">
+        <div class="text-5xl md:text-6xl font-bold mb-4 features-title">{{ .value }} {{ with .unit }}<span class="text-2xl text-blue-100">{{ . }}</span>{{ end }}</div>
+        <p class="text-lg features-description font-medium">{{ .name }}</p>
+        <p class="text-sm features-description mt-2">{{ .desc }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* SPLIT (hidrogeo & digital) */}}
+{{ $split := index (where .Params.sections "id" "hidrogeo_dig") 0 }}
+{{ if $split }}
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16">
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="bg-blue-100 text-blue-700 p-2 rounded-lg"><i class="fas fa-{{ $split.content.left.tag_icon }}"></i></span>
+          <h2 class="text-2xl font-bold text-gray-900 prob-gradient-text">{{ $split.content.left.title }}</h2>
+        </div>
+        <ul class="space-y-4">
+          {{ range $split.content.left.points }}
+          <li class="flex gap-4">
+            <i class="fas fa-check text-green-500 mt-1"></i>
+            <span class="text-gray-600">{{ . }}</span>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="bg-purple-100 text-purple-700 p-2 rounded-lg"><i class="fas fa-{{ $split.content.right.tag_icon }}"></i></span>
+          <h2 class="text-2xl font-bold text-gray-900 prob-gradient-text">{{ $split.content.right.title }}</h2>
+        </div>
+        <ul class="space-y-4">
+          {{ range $split.content.right.points }}
+          <li class="flex gap-4">
+            <i class="fas fa-check text-purple-500 mt-1"></i>
+            <span class="text-gray-600">{{ . }}</span>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* PROJECTION GRID */}}
+{{ $proj := index (where .Params.sections "id" "proyeccion") 0 }}
+{{ if $proj }}
+<section class="py-20 bg-gray-50 border-y border-gray-200">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-16 prob-gradient-text">{{ $proj.content.title }}</h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {{ range $proj.content.items }}
+      <div class="prob-card bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-bold mb-4 text-blue-700 flex items-center gap-2"><i class="fas fa-{{ .icon }}"></i> {{ .name }}</h3>
+        <ul class="text-sm text-gray-600 space-y-3">
+          {{ range .bullets }}
+          <li class="border-b border-gray-100 pb-2">{{ . }}</li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* KPI FOOTER */}}
+{{ $kpi := index (where .Params.sections "id" "kpi") 0 }}
+{{ if $kpi }}
+<section class="py-12 bg-gradient-primary text-white">
+  <div class="container mx-auto px-6">
+    <h3 class="text-center text-blue-200 text-sm font-bold uppercase tracking-widest mb-8">Resumen de Indicadores Clave</h3>
+    <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+      {{ range $kpi.content.items }}
+      <div class="bg-white/10 backdrop-blur border border-white/20 px-6 py-3 rounded-full flex items-center gap-3">
+        <i class="fas fa-{{ .icon }} text-blue-300"></i>
+        <span class="font-bold">{{ .name }}</span>
+      </div>
+      {{ end }}
+    </div>
+
+    <div class="text-center mt-12">
+      <p class="text-sm opacity-75">&copy; 2024 Proyecto iSAT - Innovación en la Gestión del Agua</p>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}
