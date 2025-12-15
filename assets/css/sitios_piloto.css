@@ -10,6 +10,29 @@ body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 	background-clip: text;
 }
 
+/* Variante agraria (verde/azul) utilizada por Sierra de Yeguas */
+.prob-gradient-text-agr {
+    background: linear-gradient(135deg, #059669 0%, #10b981 50%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Variante Guadalteba (índigo/azul) utilizada por Teba */
+.prob-gradient-text-guad {
+	background: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #0ea5e9 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* Variante Manantial (cian/turquesa) utilizada por Cuevas del Becerro */
+.prob-gradient-text-man {
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 /* Animaciones */
 .animate-fade-in {
 	animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;

@@ -64,8 +64,7 @@ sections:
       announcement: "Ubicación Estratégica"
       title: "Red Provincial de Validación iSAT"
       text: "El proyecto despliega su tecnología en cuatro zonas estratégicas de la provincia de Málaga y áreas limítrofes, seleccionadas por su singularidad hidrogeológica."
-      iframe: |-
-        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d411606.3385759714!2d-4.997232353073748!3d36.92025828522384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sVillanueva%20de%20Tapia%2C%20Benaojan%2C%20Archidona%2C%20Ubrique!5e0!3m2!1ses!2ses!4v1709288000000!5m2!1ses!2ses" width="100%" height="100%" style="border:0; filter: grayscale(20%) contrast(1.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      iframe_src: "https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d411606.3385759714!2d-4.997232353073748!3d36.92025828522384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sVillanueva%20de%20Tapia%2C%20Benaojan%2C%20Archidona%2C%20Ubrique!5e0!3m2!1ses!2ses!4v1709288000000!5m2!1ses!2ses"
       points:
         - title: "Villanueva de Tapia"
           subtitle: "Bombeo Municipal (Piloto Activo)"

@@ -4,7 +4,7 @@
 
 main:
   - name: Inicio
-    url: /#top
+    url: index/
     weight: 10
     hasChildren: true
   - parent: Inicio
@@ -39,11 +39,11 @@ main:
     weight: 30
   - parent: Sitios Piloto
     name: Villanueva de Tapia
-    url: villanueva-de-tapia/
+    url: villanueva_de_tapia/
     weight: 30
   - parent: Sitios Piloto
     name: Sierra de Yeguas
-    url: sierra-de-yeguas/
+    url: sierra_de_yeguas/
     weight: 20
   - parent: Sitios Piloto
     name: Teba
@@ -51,7 +51,7 @@ main:
     weight: 10
   - parent: Sitios Piloto
     name: Cuevas del Becerro
-    url: cuevas-del-becerro/
+    url: cuevas_del_becerro/
     weight: 10
   - name: Divulgación
     url: /#divulgacion

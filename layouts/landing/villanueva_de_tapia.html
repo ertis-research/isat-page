@@ -57,109 +57,16 @@
             </div>
 
             <div class="lg:w-1/3">
-                {{ if $ficha }}
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 sticky top-10">
-                    <h3 class="text-xl font-bold text-gray-900 mb-6 border-b border-gray-100 pb-2">{{ $ficha.content.title }}</h3>
-                    <div class="space-y-6">
-                        {{ with $ficha.content.sensors }}
-                        <div>
-                            <div class="flex items-center gap-2 mb-2 text-blue-600">
-                                <i class="fas fa-microchip"></i>
-                                <span class="font-bold text-sm uppercase">Sensores Instalados</span>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                {{ range . }}<span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600">{{ . }}</span>{{ end }}
-                            </div>
-                        </div>
-                        {{ end }}
-
-                        {{ with $ficha.content.connectivity }}
-                        <div>
-                            <div class="flex items-center gap-2 mb-2 text-indigo-600">
-                                <i class="fas fa-satellite-dish"></i>
-                                <span class="font-bold text-sm uppercase">Conectividad</span>
-                            </div>
-                            <p class="text-sm text-gray-600">{{ . }}</p>
-                        </div>
-                        {{ end }}
-
-                        {{ with $ficha.content.estado }}
-                        <div>
-                            <div class="flex items-center gap-2 mb-2 text-green-600">
-                                <i class="fas fa-check-circle"></i>
-                                <span class="font-bold text-sm uppercase">Estado</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-                                <span class="text-sm font-medium text-gray-900">{{ . }}</span>
-                            </div>
-                        </div>
-                        {{ end }}
-
-                    </div>
-                </div>
-                {{ end }}
+                {{ with $ficha }}{{ partial "landing/ficha.html" . }}{{ end }}
             </div>
         </div>
     </div>
 </section>
 
 {{ $gal := index (where .Params.sections "id" "galeria") 0 }}
-{{ if $gal }}
-<section class="py-24 bg-white">
-  <div class="container mx-auto px-6 max-w-6xl">
-    <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">{{ $gal.content.title }}</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {{ range $gal.content.items }}
-            <div class="gallery-item rounded-xl bg-gray-100 aspect-video group cursor-pointer shadow-sm">
-                {{ if .image }}<img src="{{ .image }}" alt="{{ .title }}" class="w-full h-full object-cover">{{ end }}
-                <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
-                    <span class="text-white font-bold text-lg">{{ .title }}</span>
-                    {{ with .caption }}<span class="text-gray-300 text-sm">{{ . }}</span>{{ end }}
-                </div>
-            </div>
-            {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
+        {{ with $gal }}{{ partial "landing/galeria.html" . }}{{ end }}
 
 {{ $map := index (where .Params.sections "id" "ubicacion") 0 }}
-{{ if $map }}
-<section class="py-20 bg-slate-900 text-white relative">
-    <div class="container mx-auto px-6 max-w-6xl relative z-10">
-        <div class="text-center mb-12">
-            <span class="text-blue-400 font-bold uppercase tracking-widest text-xs">{{ with $map.content.announcement }}{{ . }}{{ else }}Ubicación Estratégica{{ end }}</span>
-            <h2 class="text-3xl font-bold mt-2">{{ $map.content.title }}</h2>
-            {{ with $map.content.text }}<p class="text-gray-400 mt-4 max-w-2xl mx-auto">{{ . }}</p>{{ end }}
-        </div>
-
-        <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-700 relative h-[500px]">
-            {{ with $map.content.iframe }}
-                {{ . | safeHTML }}
-            {{ else }}
-                <!-- No iframe provided -->
-            {{ end }}
-
-            {{ with $map.content.points }}
-            <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur text-gray-800 p-4 rounded-xl shadow-xl max-w-xs">
-                <h4 class="font-bold border-b border-gray-200 pb-2 mb-2">Puntos de Validación</h4>
-                <ul class="space-y-2 text-sm">
-                    {{ range . }}
-                    <li class="flex items-start gap-2 {{ if .opacity }}opacity-70{{ end }}">
-                        <i class="fas fa-map-marker-alt {{ if .color }}{{ .color }}{{ else }}text-gray-500{{ end }} mt-1"></i>
-                        <div>
-                            <span class="font-semibold block">{{ .title }}</span>
-                            <span class="text-xs text-gray-500">{{ .subtitle }}</span>
-                        </div>
-                    </li>
-                    {{ end }}
-                </ul>
-            </div>
-            {{ end }}
-        </div>
-    </div>
-</section>
-{{ end }}
+{{ with $map }}{{ partial "landing/map.html" . }}{{ end }}
 
 {{ end }}

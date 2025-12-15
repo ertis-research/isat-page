@@ -1,0 +1,51 @@
+{{/* Partial: Hero de Landing. Se espera recibir la sección completa como `.` */}}
+{{ $s := . }}
+{{ if $s }}
+  {{ $v := cond (isset $s.content "variant") $s.content.variant "" }}
+  {{ $gradient := "prob-gradient-text" }}
+  {{ $bg := "bg-blue-50/50 rounded-xl p-6 border-l-4 border-blue-500 mb-8" }}
+  {{ $icon := "fa-faucet-drip text-blue-500" }}
+  {{ if eq $v "agr" }}
+    {{ $gradient = "prob-gradient-text-agr" }}
+    {{ $bg = "bg-emerald-50/50 rounded-xl p-6 border-l-4 border-emerald-500 mb-8" }}
+    {{ $icon = "fa-bore-hole text-emerald-600" }}
+  {{ end }}
+  {{ if eq $v "guad" }}
+    {{ $gradient = "prob-gradient-text-guad" }}
+    {{ $bg = "bg-indigo-50/50 rounded-xl p-6 border-l-4 border-indigo-500 mb-8" }}
+    {{ $icon = "fa-layer-group text-indigo-600" }}
+  {{ end }}
+  {{ if eq $v "man" }}
+    {{ $gradient = "prob-gradient-text-man" }}
+    {{ $bg = "bg-cyan-50/50 rounded-xl p-6 border-l-4 border-cyan-500 mb-8" }}
+    {{ $icon = "fa-arrow-up-from-ground-water text-cyan-600" }}
+  {{ end }}
+
+<section class="relative pt-24 pb-20 bg-white border-b border-gray-100">
+  <div class="container mx-auto px-6 max-w-6xl animate-fade-in">
+    <div class="flex flex-col lg:flex-row gap-12 items-start">
+      <div class="w-full">
+        {{ with $s.content.announcement }}
+          <span class="inline-block py-1 px-3 rounded-full bg-orange-50 text-orange-700 text-xs font-bold uppercase tracking-wider mb-4 border border-orange-100">{{ .text }}</span>
+        {{ end }}
+
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight">{{ $s.content.title }} <br><span class="{{ $gradient }}">{{ $s.content.highlight }}</span></h1>
+
+        <div class="{{ $bg }}">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              {{ with $s.content.left_title }}<h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">{{ . }}</h4>{{ end }}
+              {{ with $s.content.left_text }}<p class="font-bold text-gray-800 text-lg"><i class="fas {{ $icon }} mr-2"></i> {{ . }}</p>{{ end }}
+            </div>
+            <div>
+              {{ with $s.content.right_title }}<h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">{{ . }}</h4>{{ end }}
+              {{ with $s.content.right_text }}<p class="text-medium text-gray-700 text-sm leading-relaxed">{{ . }}</p>{{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

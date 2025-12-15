@@ -1,0 +1,22 @@
+{{ define "main" }}
+
+{{ $siteCss := resources.Get "css/sitios_piloto.css" }}
+{{ $heroCss := resources.Get "css/hero.css" }}
+<link rel="stylesheet" href="{{ $heroCss.RelPermalink }}">
+<link rel="stylesheet" href="{{ $siteCss.RelPermalink }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+{{ $hero := index (where .Params.sections "block" "hero") 0 }}
+{{ with $hero }}{{ partial "landing/hero.html" . }}{{ end }}
+
+{{ $infra := index (where .Params.sections "id" "infraestructura") 0 }}
+{{ $ficha := index (where .Params.sections "id" "ficha") 0 }}
+{{ with $infra }}{{ partial "landing/infra.html" (dict "section" $infra "ficha" $ficha) }}{{ end }}
+
+{{ $gal := index (where .Params.sections "id" "galeria") 0 }}
+{{ with $gal }}{{ partial "landing/galeria.html" . }}{{ end }}
+
+{{ $map := index (where .Params.sections "id" "ubicacion") 0 }}
+{{ with $map }}{{ partial "landing/map.html" . }}{{ end }}
+
+{{ end }}

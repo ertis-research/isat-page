@@ -1,0 +1,20 @@
+{{/* Partial: Galería de Actuaciones */}}
+{{ $sec := . }}
+{{ if $sec }}
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">{{ $sec.content.title }}</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {{ range $sec.content.items }}
+      <div class="gallery-item rounded-xl bg-gray-100 aspect-video group cursor-pointer shadow-sm">
+        {{ if .image }}<img src="{{ .image }}" alt="{{ .title }}" class="w-full h-full object-cover">{{ end }}
+        <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
+          <span class="text-white font-bold text-lg">{{ .title }}</span>
+          {{ with .caption }}<span class="text-gray-300 text-sm">{{ . }}</span>{{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
