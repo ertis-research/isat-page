@@ -374,12 +374,17 @@
   color: rgba(255,255,255,0.95);
 }
 
-/* Eficiencia hero metrics (match sequía background + grid) */
+/* Eficiencia hero metrics: light mode by default, dark overrides below */
 #hero-metrics {
-  background-color: #002b4d; /* deep navy (slightly darker than #003366) */
-  color: white;
+  background-color: var(--prob-light); /* light background in default (light mode) */
+  color: #111827; /* dark text for light mode */
   position: relative;
   overflow: hidden;
+}
+
+.dark #hero-metrics {
+  background-color: #002b4d; /* deep navy for dark mode */
+  color: white;
 }
 
 #hero-metrics .sequia-overlay {
@@ -395,29 +400,56 @@
 }
 
 #hero-metrics .features-item {
+  padding: 1.8rem 1.25rem;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(37,99,235,0.06), rgba(14,165,233,0.03));
+  border: 1px solid rgba(37,99,235,0.12);
+  color: var(--prob-dark);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, background 0.2s ease;
+}
+
+.dark #hero-metrics .features-item {
   background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
   border: 1px solid rgba(255,255,255,0.06);
   color: white; /* Cards should have white text on deep blue */
 }
 
 #hero-metrics .features-title {
-  color: #ffffff !important;
+  color: #111827 !important;
 }
 
 #hero-metrics .features-description {
-  color: rgba(255,255,255,0.92) !important;
+  color: #374151 !important;
+}
+
+.dark #hero-metrics .features-title {
+  color: #f3f4f6 !important; /* Gray 100/white for dark mode */
+}
+
+.dark #hero-metrics .features-description {
+  color: #d1d5db !important; /* Gray 300 for dark mode */
 }
 
 /* hero metrics title and paragraph overrides */
 #hero-metrics h2, #hero-metrics .text-xl, #hero-metrics p {
+  color: #111827 !important;
+}
+.dark #hero-metrics h2, .dark #hero-metrics .text-xl, .dark #hero-metrics p {
   color: rgba(255,255,255,0.95) !important;
 }
 
 #hero-metrics .features-title span {
-  color: rgba(255,255,255,0.9) !important; /* units pale white */
+  color: rgba(0,0,0,0.8) !important; /* units pale for light mode */
+}
+.dark #hero-metrics .features-title span {
+  color: rgba(255,255,255,0.9) !important;
 }
 
 #hero-metrics .features-item .features-icon {
+  background: linear-gradient(135deg, rgba(37,99,235,0.95), rgba(14,165,233,0.95));
+  color: var(--prob-secondary);
+}
+.dark #hero-metrics .features-item .features-icon {
   background: rgba(255,255,255,0.08);
   color: #ffffff;
 }

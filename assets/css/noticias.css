@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+body { font-family: 'Inter', sans-serif; }
+
+/* Gradientes Corporativos */
+.prob-gradient-text {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animate-fade-in { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+/* News card interactions */
+.news-card { transition: all 0.3s ease; }
+.news-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+.news-card:hover .news-title { color: #2563eb; }
+
+.tag-tech { background-color: #eff6ff; color: #2563eb; }
+.tag-event { background-color: #f0fdf4; color: #16a34a; }
+.tag-institucional { background-color: #f3f4f6; color: #4b5563; }
+
+.filter-btn.active { background-color: #111827; color: white; border-color: #111827; }
+
+.fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+
+/* Responsive tweaks */
+@media (min-width: 768px) {
+  .prob-hero-title { font-size: 3.5rem; }
+}

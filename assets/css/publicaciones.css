@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+body { font-family: 'Inter', sans-serif; }
+
+.prob-gradient-text {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animate-fade-in { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+.pub-card { transition: all 0.3s ease; border-left: 4px solid transparent; }
+.pub-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-left-color: #2563eb; }
+
+.badge-q1 { background-color: #fef3c7; color: #d97706; border: 1px solid #fcd34d; }
+.badge-oa { background-color: #ecfdf5; color: #059669; border: 1px solid #6ee7b7; }
+
+.filter-btn.active { background-color: #1e3a8a; color: white; border-color: #1e3a8a; }
+
+.fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+
+/* Topic button styles */
+.topic-btn.active { background-color: #1e3a8a; color: white; border-color: #1e3a8a; }

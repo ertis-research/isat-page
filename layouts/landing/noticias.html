@@ -1,0 +1,147 @@
+{{ define "main" }}
+
+{{ $css := resources.Get "css/noticias.css" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+{{ $hero := index (where .Params.sections "block" "hero") 0 }}
+{{ with $hero }}
+<section class="relative pt-24 pb-16 bg-white border-b border-gray-100">
+  <div class="container mx-auto px-6 max-w-4xl text-center animate-fade-in">
+    {{ with $hero.content.announcement }}<span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-800 text-xs font-bold uppercase tracking-wider mb-6 border border-blue-100">{{ . }}</span>{{ end }}
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-gray-900">{{ with $hero.content.title }}{{ . }}{{ else }}Actualidad del Proyecto <span class="prob-gradient-text">iSAT</span>{{ end }}</h1>
+    {{ with $hero.content.subtitle }}<p class="text-xl text-gray-600 mx-auto leading-relaxed">{{ . }}</p>{{ else }}<p class="text-xl text-gray-600 mx-auto leading-relaxed">Sigue de cerca los avances tecnológicos, hitos de implementación y eventos de divulgación relacionados con la gestión inteligente del agua subterránea.</p>{{ end }}
+  </div>
+</section>
+{{ end }}
+
+<section class="py-12 md:py-16">
+  <div class="container mx-auto px-6 max-w-6xl">
+    {{ $featured := index (where .Params.sections "block" "featured") 0 }}
+    {{ if $featured }}
+    <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col lg:flex-row group cursor-pointer hover:shadow-xl transition-shadow duration-300">
+      <div class="lg:w-1/2 overflow-hidden relative min-h-[300px]">
+        {{ with $featured.content.featured_image }}<img src="{{ . }}" alt="{{ $featured.content.title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">{{ end }}
+        {{ with $featured.content.announcement }}<div class="absolute top-6 left-6 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">{{ . }}</div>{{ end }}
+      </div>
+      <div class="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+        <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
+          <i class="far fa-calendar-alt"></i> {{ with $featured.date }}{{ . }}{{ end }}
+          <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+          {{ with $featured.content.category }}<span class="tag-{{ lower . }} px-2 py-0.5 rounded text-xs font-semibold">{{ . }}</span>{{ end }}
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">{{ with $featured.content.title }}{{ . }}{{ end }}</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">{{ with $featured.content.summary }}{{ . }}{{ end }}</p>
+        <div>
+          {{ if $featured.content.url }}
+            <a href="{{ $featured.content.url }}" class="inline-flex items-center text-blue-600 font-bold hover:text-blue-800 transition-colors">Leer noticia completa <i class="fas fa-arrow-right ml-2 text-sm transition-transform group-hover:translate-x-1"></i></a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<section class="pb-24">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <div class="flex flex-col md:flex-row items-center justify-between mb-10 gap-4">
+      <h3 class="text-2xl font-bold text-gray-900">Publicaciones</h3>
+      <div class="flex flex-wrap justify-center gap-2" id="filter-container">
+        <button onclick="filterNews('all')" class="filter-btn active px-4 py-2 text-sm font-medium rounded-full border border-gray-200 hover:bg-gray-100 transition-colors" data-filter="all">Todo</button>
+        <button onclick="filterNews('eventos')" class="filter-btn px-4 py-2 bg-white text-gray-600 text-sm font-medium rounded-full border border-gray-200 hover:bg-gray-50 transition-colors" data-filter="eventos">Eventos</button>
+        <button onclick="filterNews('tecnologia')" class="filter-btn px-4 py-2 bg-white text-gray-600 text-sm font-medium rounded-full border border-gray-200 hover:bg-gray-50 transition-colors" data-filter="tecnologia">Tecnología</button>
+        <button onclick="filterNews('institucional')" class="filter-btn px-4 py-2 bg-white text-gray-600 text-sm font-medium rounded-full border border-gray-200 hover:bg-gray-50 transition-colors" data-filter="institucional">Institucional</button>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="news-grid">
+      {{ $itemsBlock := index (where .Params.sections "block" "items") 0 }}
+      {{ range $idx, $item := $itemsBlock.content.items }}
+        {{ $cat := urlize $item.category }}
+        <article class="bg-white rounded-2xl overflow-hidden border border-gray-100 news-card flex flex-col h-full news-item" data-category="{{ $cat }}">
+          <div class="relative h-48 overflow-hidden">
+            {{ with $item.featured_image }}<img src="{{ . }}" alt="{{ $item.title }}" class="w-full h-full object-cover">{{ end }}
+            {{ with $item.category }}<span class="absolute top-4 left-4 tag-{{ $cat }} px-2 py-1 rounded text-xs font-bold uppercase tracking-wide bg-white/90 backdrop-blur">{{ . }}</span>{{ end }}
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <span class="text-xs text-gray-400 mb-2 font-medium">{{ with $item.date }}{{ . }}{{ end }}</span>
+            <h3 class="text-lg font-bold text-gray-900 mb-3 news-title leading-tight">{{ $item.title }}</h3>
+            <p class="text-sm text-gray-600 mb-4 flex-grow">{{ $item.summary }}</p>
+            {{ if $item.url }}<a href="{{ $item.url }}" class="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1">Leer más <i class="fas fa-chevron-right text-xs"></i></a>{{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+
+    <div class="mt-12 flex justify-center">
+      <nav class="flex gap-2" id="pagination-container">
+      </nav>
+    </div>
+  </div>
+</section>
+
+<script>
+let currentCategory = 'all';
+let currentPage = 1;
+const itemsPerPage = 6;
+
+document.addEventListener('DOMContentLoaded', () => { renderUI(); });
+
+function filterNews(category) { currentCategory = category; currentPage = 1; renderUI(); }
+function changePage(page) { currentPage = page; renderUI(); }
+
+function renderUI() {
+  const buttons = document.querySelectorAll('.filter-btn');
+  buttons.forEach(btn => {
+    if(btn.dataset.filter === currentCategory) {
+      btn.classList.add('active', 'bg-gray-900', 'text-white', 'border-gray-900');
+      btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+    } else {
+      btn.classList.remove('active', 'bg-gray-900', 'text-white', 'border-gray-900');
+      btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+    }
+  });
+
+  const allItems = Array.from(document.querySelectorAll('.news-item'));
+  const filteredItems = allItems.filter(item => currentCategory === 'all' || item.dataset.category === currentCategory);
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const itemsToShow = filteredItems.slice(startIndex, endIndex);
+
+  allItems.forEach(item => { item.classList.add('hidden'); item.classList.remove('fade-in-up'); });
+  itemsToShow.forEach(item => { item.classList.remove('hidden'); void item.offsetWidth; item.classList.add('fade-in-up'); });
+
+  renderPaginationButtons(totalPages);
+}
+
+function renderPaginationButtons(totalPages) {
+  const container = document.getElementById('pagination-container');
+  container.innerHTML = '';
+  if (totalPages <= 1) return;
+
+  const prevBtn = document.createElement('button');
+  prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+  const prevClass = currentPage === 1 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-white text-gray-600 hover:bg-gray-100 shadow-sm border border-gray-200';
+  prevBtn.className = `w-10 h-10 flex items-center justify-center rounded-full font-medium transition-colors ${prevClass}`;
+  if(currentPage > 1) prevBtn.onclick = () => changePage(currentPage - 1);
+  container.appendChild(prevBtn);
+
+  for(let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement('button'); btn.innerText = i;
+    const btnClass = i === currentPage ? 'bg-blue-600 text-white font-bold shadow-md transform scale-105' : 'bg-white text-gray-600 hover:bg-gray-100 font-medium transition-colors border border-gray-200';
+    btn.className = `w-10 h-10 flex items-center justify-center rounded-full ${btnClass}`;
+    btn.onclick = () => changePage(i);
+    container.appendChild(btn);
+  }
+
+  const nextBtn = document.createElement('button'); nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+  const nextClass = currentPage === totalPages ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-white text-gray-600 hover:bg-gray-100 shadow-sm border border-gray-200';
+  nextBtn.className = `w-10 h-10 flex items-center justify-center rounded-full font-medium transition-colors ${nextClass}`;
+  if(currentPage < totalPages) nextBtn.onclick = () => changePage(currentPage + 1);
+  container.appendChild(nextBtn);
+}
+</script>
+
+{{ end }}

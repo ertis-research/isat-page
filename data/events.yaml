@@ -1,0 +1,49 @@
+featured:
+  id: "featured-1"
+  date: "2024-05-15"
+  title: "Jornada de Demostración: \"Sensores Virtuales en Acción\""
+  description: "Únete a nosotros en la Facultad de Ciencias de la UMA para ver en directo cómo funcionan los algoritmos de iSAT. Demostración práctica con el prototipo de laboratorio y mesa redonda con expertos."
+  location: "Facultad de Ciencias de la UMA"
+  status: "Próximamente"
+  image: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=1000&auto=format&fit=crop"
+  signup: true
+  program: true
+
+upcoming:
+  - id: "e-22jun"
+    date: "2024-06-22"
+    day: "22"
+    month: "Jun"
+    title: "Taller con regantes: Optimización del bombeo"
+    description: "Sesión práctica sobre cómo interpretar las alertas de nitratos para mejorar la gestión del riego."
+    location: "Villanueva de Tapia"
+    status: "Inscripción Abierta"
+
+  - id: "e-05jul"
+    date: "2024-07-05"
+    day: "05"
+    month: "Jul"
+    title: "Webinar: Hardware IoT para zonas remotas"
+    description: "El equipo de ERTIS explica los retos de conectar sensores en la sierra sin cobertura móvil."
+    location: "Online (Zoom)"
+    status: "Próximamente"
+    waiting: true
+
+past:
+  - id: "p-ene2024"
+    month_short: "Ene 2024"
+    title: "Reunión de Lanzamiento del Proyecto iSAT"
+    image: "https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=1000&auto=format&fit=crop"
+    link: "#"
+
+  - id: "p-feb2024"
+    month_short: "Feb 2024"
+    title: "Visita técnica a los pilotos de la Sierra Norte"
+    image: "https://images.unsplash.com/photo-1596495577886-d920f1fb7238?q=80&w=1000&auto=format&fit=crop"
+    link: "#"
+
+  - id: "p-mar2024"
+    month_short: "Mar 2024"
+    title: "Participación en la Semana de la Ciencia"
+    image: "https://images.unsplash.com/photo-1475721027767-p05362ecd50d?q=80&w=1000&auto=format&fit=crop"
+    link: "#"

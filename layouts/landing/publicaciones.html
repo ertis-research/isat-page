@@ -1,0 +1,188 @@
+{{ define "main" }}
+
+{{ $css := resources.Get "css/publicaciones.css" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+{{ $hero := index (where .Params.sections "block" "hero") 0 }}
+{{ if $hero }}
+<section class="relative pt-24 pb-16 bg-white border-b border-gray-100">
+  <div class="container mx-auto px-6 max-w-5xl text-center animate-fade-in">
+    {{ with $hero.content.announcement }}<span class="inline-block py-1 px-3 rounded-full bg-indigo-50 text-indigo-800 text-xs font-bold uppercase tracking-wider mb-6 border border-indigo-100">{{ . }}</span>{{ end }}
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-gray-900">{{ with $hero.content.title }}{{ . }}{{ end }}</h1>
+    {{ with $hero.content.text }}<p class="text-xl text-gray-600 mx-auto leading-relaxed max-w-3xl">{{ . }}</p>{{ end }}
+
+    {{ if $hero.content.topics }}
+    <div class="mt-8 max-w-2xl mx-auto animate-fade-in">
+      <div class="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-gray-500 items-center">
+        <span class="font-semibold text-gray-400 uppercase tracking-wider text-xs self-center">Temáticas:</span>
+        {{ range $hero.content.topics }}<button data-topic="{{ urlize . }}" onclick="setTopic('{{ urlize . }}'); setSearch('{{ . }}')" class="topic-btn hover:text-blue-700 transition-colors border-b border-transparent hover:border-blue-200 cursor-pointer">{{ . }}</button>{{ end }}
+        <button onclick="setTopic('all'); setSearch('')" class="ml-2 text-sm text-gray-500 hover:text-gray-700">Mostrar todo</button>
+      </div>
+    </div>
+    {{ end }}
+
+    <div class="mt-6 max-w-2xl mx-auto">
+      <div class="relative group">
+        <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-blue-600 transition-colors">
+          <i class="fas fa-search"></i>
+        </div>
+        <input id="search-input" type="text" placeholder="Buscar por título, autor, palabra clave..." onkeyup="handleSearch(this.value)" class="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all text-gray-700 bg-white placeholder-gray-400 text-sm md:text-base font-medium">
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+<section class="py-16">
+  <div class="container mx-auto px-6 max-w-5xl">
+    <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
+      <h3 class="text-2xl font-bold text-gray-900">Catálogo Bibliográfico</h3>
+      <div class="flex flex-wrap justify-center gap-2" id="filter-container">
+        <button onclick="filterPubs('all')" class="filter-btn active px-4 py-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-600 transition-colors" data-filter="all">Todo</button>
+        <!-- dynamic categories will be added here -->
+      </div>
+    </div>
+
+    <div class="space-y-6" id="pubs-container">
+      {{ $itemsBlock := index (where .Params.sections "block" "items") 0 }}
+      {{ range $i, $p := $itemsBlock.content.items }}
+        {{ $cat := urlize $p.category }}
+        {{ $topicsAttr := "" }}
+        {{ with $p.topics }}
+          {{ $s := newScratch }}
+          {{ range . }}{{ $s.Add "t" (urlize .) }}{{ end }}
+          {{ $topicsAttr = delimit ($s.Get "t") "," }}
+        {{ end }}
+        <article class="pub-item bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 pub-card flex flex-col md:flex-row gap-6 items-start" data-category="{{ $cat }}" data-topics="{{ $topicsAttr }}">
+          <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">
+            {{ if in (printf "%v" $p.badges) "Q1" }}<i class="fas fa-file-invoice"></i>{{ else if eq $cat "thesis" }}<i class="fas fa-graduation-cap"></i>{{ else }}<i class="fas fa-file"></i>{{ end }}
+          </div>
+          <div class="flex-grow">
+            <div class="flex flex-wrap gap-2 mb-2">
+              {{ range $p.badges }}<span class="text-xs font-bold px-2 py-0.5 rounded {{ if eq . "Q1" }}badge-q1{{ else if eq . "OA" }}badge-oa{{ else }}bg-gray-100 text-gray-600 border border-gray-200{{ end }}">{{ . }}</span>{{ end }}
+              <span class="text-xs text-gray-400 font-medium py-0.5">{{ $p.venue }}</span>
+            </div>
+            <h2 class="text-xl font-bold text-gray-900 mb-2 hover:text-blue-700 cursor-pointer">{{ $p.title }}</h2>
+            <p class="text-gray-600 text-sm mb-3 italic">{{ $p.authors }}</p>
+            <p class="text-gray-500 text-sm mb-4 leading-relaxed line-clamp-2">{{ $p.summary }}</p>
+            <div class="flex gap-4">
+              {{ with $p.links.doi }}<a href="{{ . }}" class="text-sm font-bold text-blue-600 hover:text-blue-800 flex items-center gap-2"><i class="fas fa-link"></i> DOI</a>{{ end }}
+              {{ with $p.links.pdf }}<a href="{{ . }}" class="text-sm font-bold text-gray-600 hover:text-gray-800 flex items-center gap-2"><i class="far fa-file-pdf"></i> PDF</a>{{ end }}
+              {{ with $p.links.abstract }}<a href="{{ . }}" class="text-sm font-bold text-blue-600 hover:text-blue-800 flex items-center gap-2"><i class="fas fa-external-link-alt"></i> Ver Abstract</a>{{ end }}
+            </div>
+            {{ with $p.topics }}
+            <div class="mt-3 flex gap-2">
+              {{ range . }}<button data-topic="{{ urlize . }}" onclick="setTopic('{{ urlize . }}'); setSearch('{{ . }}')" class="topic-btn text-xs px-2 py-0.5 rounded bg-gray-100">{{ . }}</button>{{ end }}
+            </div>
+            {{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+
+    <div class="mt-12 flex justify-center">
+      <nav class="flex gap-2" id="pagination-container"></nav>
+    </div>
+  </div>
+</section>
+
+<script>
+let currentCategory = 'all';
+let currentTopic = 'all';
+let currentPage = 1;
+let searchTerm = '';
+const itemsPerPage = 4;
+
+document.addEventListener('DOMContentLoaded', () => {
+  // build dynamic category buttons from items
+  const cats = new Set();
+  document.querySelectorAll('.pub-item').forEach(i => cats.add(i.dataset.category));
+  const container = document.getElementById('filter-container');
+  cats.forEach(c => {
+    if (c === 'all') return;
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn px-4 py-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 transition-colors';
+    btn.dataset.filter = c;
+    btn.innerText = c.replace(/-/g, ' ');
+    btn.onclick = () => { filterPubs(c); };
+    container.appendChild(btn);
+  });
+
+  renderUI();
+});
+
+function filterPubs(category) { currentCategory = category; currentPage = 1; renderUI(); }
+function handleSearch(value) { searchTerm = value.toLowerCase(); currentPage = 1; renderUI(); }
+function setSearch(term) { document.getElementById('search-input').value = term; handleSearch(term); }
+function changePage(page) { currentPage = page; renderUI(); document.getElementById('pubs-container').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+
+function renderUI() {
+  // buttons
+  const buttons = document.querySelectorAll('.filter-btn');
+  buttons.forEach(btn => {
+    if(btn.dataset.filter === currentCategory) btn.classList.add('active'); else btn.classList.remove('active');
+  });
+
+  // filter and search
+  const allItems = Array.from(document.querySelectorAll('.pub-item'));
+  const filtered = allItems.filter(item => {
+    const itemTopics = item.dataset.topics ? item.dataset.topics.split(',') : [];
+    const matchesCategory = currentCategory === 'all' || item.dataset.category === currentCategory;
+    const matchesTopic = currentTopic === 'all' || itemTopics.includes(currentTopic);
+    const matchesSearch = searchTerm === '' || item.innerText.toLowerCase().includes(searchTerm);
+    return matchesCategory && matchesTopic && matchesSearch;
+  });
+
+  const totalPages = Math.ceil(filtered.length / itemsPerPage);
+  if (currentPage > totalPages) currentPage = totalPages || 1;
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const toShow = filtered.slice(start, end);
+
+  allItems.forEach(i => { i.classList.add('hidden'); i.classList.remove('fade-in-up'); });
+  toShow.forEach(i => { i.classList.remove('hidden'); void i.offsetWidth; i.classList.add('fade-in-up'); });
+
+  renderPagination(totalPages);
+}
+
+  function setTopic(topic) {
+    // toggle: select same topic again to clear
+    if (topic === currentTopic) {
+      currentTopic = 'all';
+    } else {
+      currentTopic = topic || 'all';
+    }
+    currentPage = 1;
+    // toggle active classes on topic buttons (hero and per-item)
+    document.querySelectorAll('[data-topic]').forEach(btn => {
+      if (currentTopic !== 'all' && btn.dataset.topic === currentTopic) btn.classList.add('active'); else btn.classList.remove('active');
+    });
+    renderUI();
+  }
+
+function renderPagination(totalPages) {
+  const container = document.getElementById('pagination-container');
+  container.innerHTML = '';
+  if (totalPages <= 1) return;
+
+  const prevBtn = document.createElement('button'); prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+  prevBtn.className = `w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 transition-colors ${currentPage === 1 ? 'bg-gray-100 text-gray-300' : 'bg-white text-gray-600 hover:bg-gray-50'}`;
+  if(currentPage > 1) prevBtn.onclick = () => changePage(currentPage - 1);
+  container.appendChild(prevBtn);
+
+  for(let i=1;i<=totalPages;i++){
+    const btn = document.createElement('button'); btn.innerText = i;
+    btn.className = `w-10 h-10 flex items-center justify-center rounded-full border transition-colors ${i===currentPage ? 'bg-indigo-600 text-white border-indigo-600 shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'}`;
+    btn.onclick = () => changePage(i);
+    container.appendChild(btn);
+  }
+
+  const nextBtn = document.createElement('button'); nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+  nextBtn.className = `w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 transition-colors ${currentPage === totalPages ? 'bg-gray-100 text-gray-300' : 'bg-white text-gray-600 hover:bg-gray-50'}`;
+  if(currentPage < totalPages) nextBtn.onclick = () => changePage(currentPage + 1);
+  container.appendChild(nextBtn);
+}
+</script>
+
+{{ end }}

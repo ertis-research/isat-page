@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Global */
+body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+
+/* Gradientes Corporativos */
+.prob-gradient-text {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Animaciones */
+.animate-fade-in {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tarjetas de Evento */
+.event-card {
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+.event-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-left-color: #2563eb;
+}
+
+/* Date Badge Style */
+.date-badge {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+}
+.date-day { font-size: 1.5rem; font-weight: 800; line-height: 1; color: #1e3a8a; }
+.date-month { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #64748b; margin-top: 2px; }
+
+/* Status Tags */
+.status-open { background-color: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+.status-closed { background-color: #f3f4f6; color: #6b7280; border: 1px solid #e5e7eb; }
+.status-soon { background-color: #fffbeb; color: #d97706; border: 1px solid #fde68a; }

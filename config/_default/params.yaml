@@ -44,11 +44,11 @@ header:
     show_search: true
     show_theme_chooser: true
 
-# Site footer
-footer:
-  notice: 'This is a sample notice for the footer.'
-  copyright:
-     notice: 'Background by SVGBackgrounds.com'
+# # Site footer
+# footer:
+#   notice: 'This is a sample notice for the footer.'
+#   copyright:
+#      notice: 'Background by SVGBackgrounds.com'
 
 # Localization
 # locale:
@@ -58,3 +58,29 @@ footer:
 i_am_a_sponsor: true
 powerUps:
   hide_published_with: false
+
+# Labels and external assets for the Eventos page
+eventos:
+  agenda_title: "Agenda Próxima"
+  view_calendar: "Ver calendario completo"
+  calendar_url: "#"
+  register_text: "Inscribirse Gratis"
+  program_text: "Programa (PDF)"
+  waiting_text: "Esperando fecha"
+  details_text: "Detalles"
+  details_url: "#"
+  past_gallery_text: "Ver Galería"
+  read_summary_text: "Leer resumen"
+  contact_cta_title: "¿Quieres organizar una actividad con nosotros?"
+  contact_cta_text: "Estamos abiertos a colaborar con instituciones educativas y asociaciones para divulgar la ciencia del agua."
+  contact_email: "info@isat-project.es"
+  contact_button_text: "Contactar con el equipo de Divulgación"
+  date_format: "2 Jan, 2006"
+  status_classes:
+    "Inscripción Abierta": "status-open"
+    "Próximamente": "status-soon"
+    "default": "status-closed"
+
+assets:
+  tailwind_cdn: "https://cdn.tailwindcss.com"
+  fontawesome_css: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
