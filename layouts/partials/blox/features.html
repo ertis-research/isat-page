@@ -35,11 +35,11 @@
     {{ end }}
     
     {{/* Grid de features */}}
-    <div class="features-grid">
+    <div class="features-grid landing-cards">
       {{ range $item := $block.content.items }}
-        <div class="features-item text-center">
+        <div class="features-item landing-card text-center">
           {{/* Icono centrado */}}
-          <div class="features-icon">
+          <div class="features-icon mb-3 text-blue-600 text-3xl">
             {{ if $item.icon }}
               <i class="fas fa-{{ $item.icon }}"></i>
             {{ end }}
@@ -47,14 +47,14 @@
           
           {{/* Título */}}
           {{ with $item.name }}
-            <h3 class="features-title text-gray-900">
+            <h3 class="features-title text-gray-900 text-lg font-semibold">
               {{ . | markdownify }}
             </h3>
           {{ end }}
           
           {{/* Descripción */}}
           {{ with $item.description }}
-            <p class="features-description text-gray-900">
+            <p class="features-description text-gray-700 mt-2">
               {{ . | $page.RenderString | emojify }}
             </p>
           {{ end }}

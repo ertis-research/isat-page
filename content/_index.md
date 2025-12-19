@@ -115,6 +115,27 @@ sections:
           start: "#f1f5f9"
           end: "#e2e8f0"
 
+  # Sección de Mapa de Ubicación
+  - block: map
+    id: ubicacion
+    content:
+      announcement: "Ubicación de las 4 Zonas"
+      title: "Red Provincial de Validación iSAT"
+      text: "La validación tecnológica del proyecto iSAT se lleva a cabo en cuatro emplazamientos representativos de la problemática hídrica andaluza."
+      points:
+        - title: "Teba"
+          subtitle: "Control en Guadalteba (Piloto Activo)"
+          color: "text-indigo-600"
+        - title: "Sierra de Líbar (Benaoján)"
+          subtitle: "Manantial Remoto"
+          color: "text-blue-500"
+        - title: "Sierra de Yeguas"
+          subtitle: "Presión Agrícola"
+          color: "text-emerald-500"
+        - title: "Villanueva de Tapia"
+          subtitle: "Bombeo Municipal"
+          color: "text-orange-500"
+
     # Sección del Equipo
   - block: team
     id: equipo

@@ -57,7 +57,6 @@ sections:
       announcement: "Red Provincial Completa"
       title: "Red Provincial de Validación iSAT"
       text: "La red de pilotos iSAT cubre puntos estratégicos desde manantiales de montaña hasta sistemas de bombeo en zonas agrícolas."
-      iframe_src: "https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d411606.3385759714!2d-4.997232353073748!3d36.92025828522384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sCuevas%20del%20Becerro%2C%20Teba%2C%20Sierra%20de%20Yeguas%2C%20Villanueva%20de%20Tapia%2C%20Benaojan!5e0!3m2!1ses!2ses!4v1709288000000!5m2!1ses!2ses"
       points:
         - title: "Cuevas del Becerro"
           subtitle: "Manantial Urbano (Piloto Activo)"

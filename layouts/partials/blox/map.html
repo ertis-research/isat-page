@@ -1,0 +1,205 @@
+{{/* Partial: BloX Map - Dynamic geocoding with Leaflet + Nominatim */}}
+{{ $block := .wcBlock }}
+{{ $page := .wcPage }}
+
+{{/* Fallback for different contexts */}}
+{{ if not $block }}
+  {{ if .content }}
+    {{ $block = . }}
+    {{ $page = site.Home }}
+  {{ else if .Params }}
+    {{ $block = .Params }}
+    {{ $page = . }}
+  {{ end }}
+{{ end }}
+
+{{ if $block }}
+
+<section class="py-20 bg-slate-900 text-white relative">
+  <div class="container mx-auto px-6 max-w-6xl relative z-10">
+    <div class="text-center mb-12">
+      <span class="text-blue-400 font-bold uppercase tracking-widest text-xs">{{ with $block.content.announcement }}{{ . }}{{ else }}Ubicación Estratégica{{ end }}</span>
+      <h2 class="text-3xl font-bold mt-2">{{ $block.content.title }}</h2>
+      {{ with $block.content.text }}<p class="text-gray-400 mt-4 max-w-2xl mx-auto">{{ . }}</p>{{ end }}
+    </div>
+
+    {{/* Get points from content */}}
+    {{ $points := slice }}
+    {{ if $block.content }}
+      {{ with $block.content.points }}{{ $points = . }}{{ end }}
+    {{ end }}
+
+    {{ if gt (len $points) 0 }}
+    <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-700 relative h-[500px]">
+      
+      {{/* Map container */}}
+      {{ $mapId := printf "leaflet-map-%d" (now.Unix) }}
+      <div id="{{ $mapId }}" class="w-full h-full z-0"></div>
+      
+      {{/* Leaflet CSS & JS */}}
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          console.log('iSAT Map: Script started');
+          var points = JSON.parse('{{ $points | jsonify }}');
+          console.log('iSAT Map: Points to process:', points);
+          var mapId = '{{ $mapId }}';
+          
+          // Initialize map centered on Andalusia
+          var map = L.map(mapId, { scrollWheelZoom: false }).setView([37.0, -4.8], 8);
+          
+          // OpenStreetMap tiles
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          }).addTo(map);
+
+          // Helper: Get marker color from Tailwind class
+          function getMarkerColor(colorClass) {
+            var colorMap = {
+              'text-indigo-600': '#4f46e5',
+              'text-blue-500': '#3b82f6',
+              'text-emerald-500': '#10b981',
+              'text-emerald-600': '#059669',
+              'text-orange-500': '#f97316',
+              'text-red-500': '#ef4444'
+            };
+            return colorMap[colorClass] || '#6b7280';
+          }
+          
+          // Helper: Create custom colored marker icon
+          function createColoredIcon(color) {
+            return L.divIcon({
+              className: 'custom-marker',
+              html: '<div style="background-color: ' + color + '; width: 25px; height: 25px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"><div style="transform: rotate(45deg); width: 100%; height: 100%;"></div></div>',
+              iconSize: [25, 25],
+              iconAnchor: [12, 25],
+              popupAnchor: [0, -25]
+            });
+          }
+
+          // Helper: Delay function for rate limiting
+          function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+          }
+          
+          // Geocode a single point using Nominatim
+          async function geocodePoint(point) {
+            // If point already has coordinates, use them
+            if (point.lat && point.lon) {
+              console.log('iSAT Map: Using provided coordinates for', point.title);
+              return {
+                point: point,
+                lat: point.lat,
+                lon: point.lon
+              };
+            }
+            
+            // Clean title for search (remove parentheses content like "(Piloto Activo)")
+            var cleanTitle = point.title.replace(/\s*\(.*?\)\s*/g, '');
+            var query = cleanTitle + ', Málaga, España';
+            console.log('iSAT Map: Geocoding query:', query);
+            
+            try {
+              // No User-Agent header to avoid browser restrictions
+              var response = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(query));
+              if (!response.ok) throw new Error('Network response was not ok');
+              var data = await response.json();
+              console.log('iSAT Map: Geocoding response for', query, ':', data);
+              
+              if (data && data.length > 0) {
+                return {
+                  point: point,
+                  lat: parseFloat(data[0].lat),
+                  lon: parseFloat(data[0].lon)
+                };
+              } else {
+                console.warn('iSAT Map: No geocoding results for: ' + query);
+                return null;
+              }
+            } catch (err) {
+              console.error('iSAT Map: Error geocoding ' + point.title + ':', err);
+              return null;
+            }
+          }
+          
+          // Process points sequentially to respect Nominatim rate limits (1 req/sec)
+          async function processPoints() {
+            var markers = [];
+            
+            for (var i = 0; i < points.length; i++) {
+              var point = points[i];
+              
+              // Add delay before request if it's not the first one and we need to geocode
+              if (i > 0 && (!point.lat || !point.lon)) {
+                console.log('iSAT Map: Waiting before next request...');
+                await delay(1200); 
+              }
+              
+              var result = await geocodePoint(point);
+              
+              if (result && result.lat && result.lon) {
+                console.log('iSAT Map: Adding marker for:', result.point.title, 'at', result.lat, result.lon);
+                var color = getMarkerColor(result.point.color);
+                var icon = createColoredIcon(color);
+                
+                var marker = L.marker([result.lat, result.lon], { icon: icon })
+                  .bindPopup('<strong>' + result.point.title + '</strong><br/>' + (result.point.subtitle || ''))
+                  .addTo(map);
+                markers.push(marker);
+              } else {
+                console.warn('iSAT Map: Skipping marker for:', point.title, '- No coordinates found');
+              }
+            }
+            
+            // Fit map to show all markers
+            if (markers.length > 0) {
+              console.log('iSAT Map: Fitting bounds for', markers.length, 'markers');
+              var group = L.featureGroup(markers);
+              try {
+                map.fitBounds(group.getBounds(), { padding: [40, 40] });
+              } catch(e) {
+                console.error('iSAT Map: Error fitting bounds:', e);
+              }
+            } else {
+              console.warn('iSAT Map: No markers created to fit bounds');
+            }
+            
+            // Force map resize
+            setTimeout(function(){ map.invalidateSize(); }, 100);
+          }
+          
+          processPoints();
+        });
+      </script>
+
+      {{/* Legend overlay */}}
+      <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur text-gray-800 p-4 rounded-xl shadow-xl max-w-xs hidden md:block">
+        <h4 class="font-bold border-b border-gray-200 pb-2 mb-2">Puntos de Validación</h4>
+        <ul class="space-y-2 text-sm">
+          {{ range $points }}
+          <li class="flex items-start gap-2 {{ if .opacity }}opacity-70{{ end }}">
+            <i class="fas fa-map-marker-alt {{ if .color }}{{ .color }}{{ else }}text-gray-500{{ end }} mt-1"></i>
+            <div>
+              <span class="font-semibold block">{{ .title }}</span>
+              <span class="text-xs text-gray-500">{{ .subtitle }}</span>
+            </div>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+
+    </div>
+    {{ else }}
+    <div class="bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-700 relative h-[500px]">
+      <div class="w-full h-full flex items-center justify-center text-gray-400">
+        No hay puntos configurados para el mapa.
+      </div>
+    </div>
+    {{ end }}
+
+  </div>
+</section>
+{{ end }}

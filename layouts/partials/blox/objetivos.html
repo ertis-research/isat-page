@@ -25,10 +25,10 @@
     
     {{/* Lista de objetivos */}}
     <div style="display: flex; justify-content: center;">
-        <div class="objetivos-contenedor">
+        <div class="objetivos-contenedor landing-objetivos">
         <ul class="objetivos-lista">
             {{ range $item := $block.content.items }}
-            <li class="objetivo-item">
+            <li class="objetivo-item landing-objetivo">
                 <span class="objetivo-viñeta">•</span>
                 <div class="objetivo-contenido">
                 <strong>{{ $item.title }}</strong> {{ $item.description | $page.RenderString | emojify }}

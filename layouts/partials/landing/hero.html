@@ -1,6 +1,9 @@
 {{/* Partial: Hero de Landing. Se espera recibir la sección completa como `.` */}}
 {{ $s := . }}
 {{ if $s }}
+  {{/* Cargar estilos del landing */}}
+  {{ $landingCss := resources.Get "css/landing.css" }}
+  {{ if $landingCss }}<link rel="stylesheet" href="{{ $landingCss.RelPermalink }}">{{ end }}
   {{ $v := cond (isset $s.content "variant") $s.content.variant "" }}
   {{ $align := cond (isset $s.content "align") $s.content.align "left" }}
 
