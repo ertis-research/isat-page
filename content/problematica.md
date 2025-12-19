@@ -9,16 +9,17 @@ sections:
   - block: hero
     id: hero
     content:
+      align: "center"
       title: "Problemática: sequía y deterioro de la calidad del agua"
       text: >-
         En periodos de sequía la disponibilidad disminuye y, además, la calidad puede empeorar. La mayor dependencia de aguas subterráneas incrementa el riesgo de sobreexplotación y de episodios de contaminación.
-      image: "media/acuifero.png"
+      image: "media/CAPTACIONES.png"
       primary_action:
-        text: "Ver Memoria iSAT"
-        url: "/memoria/isat-1.pdf"
+        text: "Ver Publicaciones"
+        url: "/publicaciones"
       secondary_action:
-        text: "Ver tecnología"
-        url: "/#tecnologia"
+        text: "¿Qué objetivos tenemos?"
+        url: "/objetivos"
 
   - block: features
     id: hero-metrics

@@ -2,9 +2,13 @@
 {{ $s := . }}
 {{ if $s }}
   {{ $v := cond (isset $s.content "variant") $s.content.variant "" }}
+  {{ $align := cond (isset $s.content "align") $s.content.align "left" }}
+
   {{ $gradient := "prob-gradient-text" }}
   {{ $bg := "bg-blue-50/50 rounded-xl p-6 border-l-4 border-blue-500 mb-8" }}
   {{ $icon := "fa-faucet-drip text-blue-500" }}
+  {{ $pillClass := "bg-blue-100 text-blue-800 border-blue-200" }}
+
   {{ if eq $v "agr" }}
     {{ $gradient = "prob-gradient-text-agr" }}
     {{ $bg = "bg-emerald-50/50 rounded-xl p-6 border-l-4 border-emerald-500 mb-8" }}
@@ -20,18 +24,65 @@
     {{ $bg = "bg-cyan-50/50 rounded-xl p-6 border-l-4 border-cyan-500 mb-8" }}
     {{ $icon = "fa-arrow-up-from-ground-water text-cyan-600" }}
   {{ end }}
+  
+  {{ if $v }}
+    {{ $pillClass = "bg-orange-50 text-orange-700 border-orange-100" }}
+  {{ end }}
 
-<section class="relative pt-24 pb-20 bg-white border-b border-gray-100">
-  <div class="container mx-auto px-6 max-w-6xl animate-fade-in">
-    <div class="flex flex-col lg:flex-row gap-12 items-start">
-      <div class="w-full">
+  {{ $containerClass := "flex flex-col lg:flex-row gap-12 items-start" }}
+  {{ $textClass := "text-left" }}
+  {{ $maxWidth := "max-w-6xl" }}
+  
+  {{ if eq $align "center" }}
+    {{ $containerClass = "flex flex-col items-center text-center" }}
+    {{ $textClass = "text-center" }}
+    {{ $maxWidth = "max-w-5xl" }}
+  {{ end }}
+
+  {{/* Image Resolution - Simple approach using resources.Get as requested */}}
+  {{ $imgResource := "" }}
+  {{ if $s.content.image }}
+    {{ $imgResource = resources.Get $s.content.image }}
+  {{ end }}
+
+<section class="relative pt-24 pb-20 bg-white border-b border-gray-100 overflow-hidden">
+  {{ if eq $align "center" }}
+  <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-50 to-transparent -z-10"></div>
+  {{ end }}
+
+  <div class="container mx-auto px-6 {{ $maxWidth }} animate-fade-in">
+    <div class="{{ $containerClass }}">
+      <div class="w-full {{ if and $imgResource (eq $align "left") }}lg:w-1/2{{ end }}">
         {{ with $s.content.announcement }}
-          <span class="inline-block py-1 px-3 rounded-full bg-orange-50 text-orange-700 text-xs font-bold uppercase tracking-wider mb-4 border border-orange-100">{{ .text }}</span>
+          <span class="inline-block py-1 px-3 rounded-full {{ $pillClass }} text-xs font-bold uppercase tracking-wider mb-6 border">{{ .text }}</span>
         {{ end }}
 
-        <h1 class="text-3xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight">{{ $s.content.title }} <br><span class="{{ $gradient }}">{{ $s.content.highlight }}</span></h1>
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight {{ $textClass }}">{{ $s.content.title }} 
+        {{ if $s.content.highlight }}<br><span class="{{ $gradient }}">{{ $s.content.highlight }}</span>{{ end }}
+        </h1>
 
-        <div class="{{ $bg }}">
+        {{ with $s.content.text }}
+          <p class="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed font-light {{ $textClass }}">{{ . | markdownify }}</p>
+        {{ end }}
+
+        {{/* Actions / Buttons */}}
+        {{ if or $s.content.primary_action $s.content.secondary_action }}
+        <div class="flex flex-col md:flex-row {{ if eq $align "center" }}justify-center{{ else }}justify-start{{ end }} gap-4 mb-8">
+          {{ if $s.content.primary_action.url }}
+          <a href="{{ $s.content.primary_action.url }}" class="btn-modern-primary text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 font-semibold inline-flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700">
+            {{ $s.content.primary_action.text }} <i class="fas fa-arrow-right"></i>
+          </a>
+          {{ end }}
+          {{ if $s.content.secondary_action.url }}
+          <a href="{{ $s.content.secondary_action.url }}" class="btn-modern-secondary text-lg px-8 py-3 rounded-full shadow-sm hover:shadow-md transition-all font-semibold inline-flex items-center gap-2 bg-gray-100 text-gray-700 hover:bg-gray-200">
+            {{ $s.content.secondary_action.text }}
+          </a>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        {{ if or $s.content.left_title $s.content.right_title }}
+        <div class="{{ $bg }} text-left">
           <div class="grid md:grid-cols-2 gap-6">
             <div>
               {{ with $s.content.left_title }}<h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">{{ . }}</h4>{{ end }}
@@ -43,7 +94,31 @@
             </div>
           </div>
         </div>
+        {{ end }}
+
+        {{ if $s.content.features }}
+        <div class="flex flex-wrap justify-center gap-8 md:gap-16 mt-8">
+          {{ range $s.content.features }}
+          <div class="flex flex-col items-center gap-3 group">
+            <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+              <i class="fas fa-{{ .icon }}"></i>
+            </div>
+            <span class="text-sm font-semibold text-gray-500 group-hover:text-blue-700 transition-colors">{{ .label }}</span>
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+
       </div>
+
+      {{ if $imgResource }}
+      <div class="w-full {{ if eq $align "left" }}lg:w-1/2{{ else }}mt-12 max-w-5xl{{ end }}">
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+          <img src="{{ $imgResource.RelPermalink }}" alt="{{ $s.content.title }}" class="relative rounded-2xl shadow-2xl w-full border-4 border-white object-cover">
+        </div>
+      </div>
+      {{ end }}
     </div>
   </div>
 </section>

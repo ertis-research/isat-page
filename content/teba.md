@@ -41,13 +41,13 @@ sections:
     content:
       title: "Galería de Actuaciones"
       items:
-        - image: "https://images.unsplash.com/photo-1533378531776-590d96d74026?q=80&w=1000&auto=format&fit=crop"
+        - image: "media/tebas/1764688485334.jpg"
           title: "Entorno de Teba"
           caption: "Relieves carbonatados y zonas de cultivo."
-        - image: "https://images.unsplash.com/photo-1584907797015-7f5471905c87?q=80&w=1000&auto=format&fit=crop"
+        - image: "media/tebas/1764688478809.jpg"
           title: "Caseta de Bombeo"
           caption: "Caseta de bombeo municipal."
-        - image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1000&auto=format&fit=crop"
+        - image: "media/tebas/1764688478897.jpg"
           title: "Montaje de Sensores"
           caption: "Detalle del manifold de derivación."
 

@@ -13,7 +13,17 @@ sections:
       title: "Objetivos del Proyecto"
       text: >-
         iSAT persigue mejorar la gestión de aguas subterráneas en sequía mediante un Sistema de Alerta Temprana inteligente que integra monitorización continua, comunicaciones y analítica avanzada.
-      image: ""
+      image: "media/CONFIGURACIÓN2.png"
+      align: "center"
+      features:
+        - icon: "tower-broadcast"
+          label: "Monitorización"
+        - icon: "bell"
+          label: "Alertas"
+        - icon: "chart-line"
+          label: "Predicción"
+        - icon: "clipboard-check"
+          label: "Validación"
 
   - block: markdown
     id: objetivo-general

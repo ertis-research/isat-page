@@ -8,44 +8,7 @@
 
 {{ $hero := index (where .Params.sections "block" "hero") 0 }}
 {{ if $hero }}
-<section class="relative pt-20 pb-24 bg-white overflow-hidden">
-  <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-50 to-transparent -z-10"></div>
-  <div class="container mx-auto px-6 text-center max-w-5xl animate-fade-in">
-    {{ if $hero.content.announcement.text }}
-      <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider mb-6">{{ $hero.content.announcement.text }}</span>
-    {{ end }}
-
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 prob-gradient-text">{{ $hero.content.title }}</h1>
-    <p class="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed font-light">{{ $hero.content.text }}</p>
-
-    <div class="flex flex-wrap justify-center gap-8 md:gap-16 mt-8">
-      <div class="flex flex-col items-center gap-3 group">
-        <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-          <i class="fas fa-tower-broadcast"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-500 group-hover:text-blue-700 transition-colors">Monitorización</span>
-      </div>
-      <div class="flex flex-col items-center gap-3 group">
-        <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-          <i class="fas fa-bell"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-500 group-hover:text-blue-700 transition-colors">Alertas</span>
-      </div>
-      <div class="flex flex-col items-center gap-3 group">
-        <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-          <i class="fas fa-chart-line"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-500 group-hover:text-blue-700 transition-colors">Predicción</span>
-      </div>
-      <div class="flex flex-col items-center gap-3 group">
-        <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-          <i class="fas fa-clipboard-check"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-500 group-hover:text-blue-700 transition-colors">Validación</span>
-      </div>
-    </div>
-  </div>
-</section>
+  {{ partial "landing/hero.html" $hero }}
 {{ end }}
 
 {{ $objGeneral := index (where .Params.sections "id" "objetivo-general") 0 }}

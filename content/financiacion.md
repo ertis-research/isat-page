@@ -49,36 +49,36 @@ sections:
           bg: "blue-100"
           color: "blue-600"
 
-  - block: presupuesto
-    id: presupuesto
-    content:
-      title: "Inversión y Distribución de Recursos"
-      subtitle: "Presupuesto total y su distribución"
-      total: "336.431,80 €"
-      total_short: "336k €"
-      total_label: "TOTAL"
-      headers:
-        concept: "Concepto Financiable"
-        amount: "Importe (€)"
-        percent: "%"
-      note: "Distribución porcentual del presupuesto"
-      items:
-        - concept: "Personal Investigador y Técnico"
-          amount: "247.882,20 €"
-          percent: "73.7%"
-          dot: "blue-600"
-        - concept: "Instrumental y Material Inventariable"
-          amount: "65.340,00 €"
-          percent: "19.4%"
-          dot: "teal-600"
-        - concept: "Costes Indirectos"
-          amount: "22.009,60 €"
-          percent: "6.5%"
-          dot: "amber-500"
-        - concept: "Auditoría"
-          amount: "1.200,00 €"
-          percent: "0.4%"
-          dot: "slate-500"
+  # - block: presupuesto
+  #   id: presupuesto
+  #   content:
+  #     title: "Inversión y Distribución de Recursos"
+  #     subtitle: "Presupuesto total y su distribución"
+  #     total: "336.431,80 €"
+  #     total_short: "336k €"
+  #     total_label: "TOTAL"
+  #     headers:
+  #       concept: "Concepto Financiable"
+  #       amount: "Importe (€)"
+  #       percent: "%"
+  #     note: "Distribución porcentual del presupuesto"
+  #     items:
+  #       - concept: "Personal Investigador y Técnico"
+  #         amount: "247.882,20 €"
+  #         percent: "73.7%"
+  #         dot: "blue-600"
+  #       - concept: "Instrumental y Material Inventariable"
+  #         amount: "65.340,00 €"
+  #         percent: "19.4%"
+  #         dot: "teal-600"
+  #       - concept: "Costes Indirectos"
+  #         amount: "22.009,60 €"
+  #         percent: "6.5%"
+  #         dot: "amber-500"
+  #       - concept: "Auditoría"
+  #         amount: "1.200,00 €"
+  #         percent: "0.4%"
+  #         dot: "slate-500"
 
   - block: equipamiento
     id: equipamiento

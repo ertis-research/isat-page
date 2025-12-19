@@ -40,22 +40,20 @@ sections:
     content:
       title: "Galería de Actuaciones"
       items:
-        - image: "https://images.unsplash.com/photo-1625246333195-58197bd47d26?q=80&w=1000&auto=format&fit=crop"
-          title: "Entorno Hidrogeológico"
-          caption: "Panorámica de la zona de captación."
-        - image: "https://images.unsplash.com/photo-1590059530462-811c7595958d?q=80&w=1000&auto=format&fit=crop"
+
+        - image: "media/sierra_yeguas/1764688479676.jpg"
           title: "Cabezal de Pozo"
           caption: "Infraestructura de bombeo intervenida."
-        - image: "https://images.unsplash.com/photo-1615811361269-8c9037c86239?q=80&w=1000&auto=format&fit=crop"
+        - image: "media/sierra_yeguas/1764688480807.jpg"
           title: "Instrumentación"
           caption: "Alojamiento de células de medida."
-        - image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1000&auto=format&fit=crop"
+        - image: "media/sierra_yeguas/1764688479770.jpg"
           title: "Calibración IA"
           caption: "Toma de muestras manuales."
-        - image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop"
+        - image: "media/sierra_yeguas/1764688483830.jpg"
           title: "Cuadro de Control"
           caption: "Integración del datalogger iSAT."
-        - image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1000&auto=format&fit=crop"
+        - image: "media/sierra_yeguas/1764688480005.jpg"
           title: "Mantenimiento"
           caption: "Verificación de sondas."
 

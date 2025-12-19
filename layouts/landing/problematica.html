@@ -10,43 +10,7 @@
 {{/* --- 1. HERO SECTION --- */}}
 {{ $hero := index (where .Params.sections "block" "hero") 0 }}
 {{ if $hero }}
-<section class="prob-hero relative pt-20 pb-32 overflow-hidden">
-  <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-50 to-white -z-10"></div>
-  <div class="prob-hero-content animate-fade-in px-6">
-    <h1 class="prob-hero-title prob-gradient-text">{{ $hero.content.title }}</h1>
-    <p class="prob-hero-subtitle">{{ $hero.content.text | markdownify }}</p>
-    
-    {{ if $hero.content.image }}
-      <div class="mt-8 mb-12 flex justify-center">
-        {{ $img := resources.Get $hero.content.image }}
-        {{ if $img }}
-          <div class="relative max-w-5xl mx-auto group">
-            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-            <img src="{{ $img.RelPermalink }}" alt="Hero Image" class="relative rounded-2xl shadow-2xl w-full border-4 border-white object-cover">
-          </div>
-        {{ else }}
-          {{/* Fallback if image not found */}}
-          <div class="bg-gray-200 dark:bg-gray-700 rounded-2xl h-64 w-full md:w-2/3 flex items-center justify-center">
-            <span class="text-gray-500">Imagen no encontrada: {{ $hero.content.image }}</span>
-          </div>
-        {{ end }}
-      </div>
-    {{ end }}
-
-    <div class="flex flex-col md:flex-row justify-center gap-4 mb-6">
-      {{ if $hero.content.primary_action.url }}
-      <a href="{{ $hero.content.primary_action.url }}" class="btn-modern-primary text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 font-semibold inline-flex items-center gap-2">
-        {{ $hero.content.primary_action.text }} <i class="fas fa-arrow-right"></i>
-      </a>
-      {{ end }}
-      {{ if $hero.content.secondary_action.url }}
-      <a href="{{ $hero.content.secondary_action.url }}" class="btn-modern-secondary text-lg px-8 py-3 rounded-full shadow-sm hover:shadow-md transition-all font-semibold inline-flex items-center gap-2">
-        {{ $hero.content.secondary_action.text }}
-      </a>
-      {{ end }}
-    </div>
-  </div>
-</section>
+  {{ partial "landing/hero.html" $hero }}
 {{ end }}
 
 {{/* Render Efectos (objetivos block) */}}

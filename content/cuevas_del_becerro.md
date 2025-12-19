@@ -41,13 +41,13 @@ sections:
     content:
       title: "Galería de Actuaciones"
       items:
-        - image: "https://images.unsplash.com/photo-1519810755548-3924041b83b9?q=80&w=1000&auto=format&fit=crop"
+        - image: "media/cuevas_del_becerro/1764688483083.jpg"
           title: "El Nacimiento"
           caption: "Surgencia kárstica principal."
-        - image: "https://images.unsplash.com/photo-1621430006248-c98f80479133?q=80&w=1000&auto=format&fit=crop"
+        - image: "media/cuevas_del_becerro/1764688483594.jpg"
           title: "Punto de Medida"
           caption: "Cámara de carga del manantial."
-        - image: "https://images.unsplash.com/photo-1581093458891-2f6a7ca5230e?q=80&w=1000&auto=format&fit=crop"
+        - image: "media/cuevas_del_becerro/1764688483496.jpg"
           title: "Sondas iSAT"
           caption: "Turbidez, temperatura y conductividad."
 
