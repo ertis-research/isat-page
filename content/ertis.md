@@ -14,7 +14,7 @@ sections:
       highlight: "Tiempo Real (ERTIS) - UMA"
       text: "ERTIS aporta la fuerza ingenieril al proyecto. Experiencia en integración de hardware/firmware y sistemas edge/cloud para iSAT."
       short: "Ingeniería aplicada: sensórica, comunicaciones y Cloud/Edge."
-      logo: "media/logo-ertis.png"
+      logo: "media/ertis_icon.svg"
 
   - block: roles
     id: roles

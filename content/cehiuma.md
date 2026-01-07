@@ -14,7 +14,7 @@ sections:
       highlight: "Universidad de Málaga (CEHIUMA)"
       text: "El CEHIUMA es un centro de referencia especializado en la gestión y protección de los recursos hídricos, con una trayectoria consolidada de varias décadas en la investigación de aguas subterráneas y superficiales."
       short: "Transferencia de resultados al sector productivo y administrativo del agua."
-      logo: "media/logo-cehiuma.png"
+      logo: "media/logo_uma_cehiuma.jpg"
 
   - block: roles
     id: roles

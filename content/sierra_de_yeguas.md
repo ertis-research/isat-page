@@ -68,16 +68,4 @@ sections:
         - title: "Sierra de Yeguas"
           subtitle: "Zona de Presión Agrícola (Piloto Activo)"
           color: "text-emerald-600"
-        - title: "Sierra de Líbar (Benaoján)"
-          subtitle: "Manantial de Montaña"
-          color: "text-blue-500"
-          opacity: true
-        - title: "Sierra de Archidona"
-          subtitle: "Acuífero Periurbano"
-          color: "text-blue-500"
-          opacity: true
-        - title: "Villanueva de Tapia"
-          subtitle: "Bombeo Municipal"
-          color: "text-blue-500"
-          opacity: true
 ---

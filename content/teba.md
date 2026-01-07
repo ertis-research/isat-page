@@ -62,16 +62,4 @@ sections:
         - title: "Teba"
           subtitle: "Control en Guadalteba (Piloto Activo)"
           color: "text-indigo-600"
-        - title: "Sierra de Líbar (Benaoján)"
-          subtitle: "Manantial Remoto"
-          color: "text-blue-500"
-          opacity: true
-        - title: "Sierra de Yeguas"
-          subtitle: "Presión Agrícola"
-          color: "text-emerald-500"
-          opacity: true
-        - title: "Villanueva de Tapia"
-          subtitle: "Bombeo Municipal"
-          color: "text-orange-500"
-          opacity: true
 ---

@@ -61,20 +61,4 @@ sections:
         - title: "Cuevas del Becerro"
           subtitle: "Manantial Urbano (Piloto Activo)"
           color: "text-cyan-600"
-        - title: "Teba"
-          subtitle: "Control Guadalteba"
-          color: "text-indigo-500"
-          opacity: true
-        - title: "Sierra de Líbar (Benaoján)"
-          subtitle: "Manantial Remoto"
-          color: "text-blue-500"
-          opacity: true
-        - title: "Sierra de Yeguas"
-          subtitle: "Presión Agrícola"
-          color: "text-emerald-500"
-          opacity: true
-        - title: "Villanueva de Tapia"
-          subtitle: "Bombeo Municipal"
-          color: "text-orange-500"
-          opacity: true
 ---

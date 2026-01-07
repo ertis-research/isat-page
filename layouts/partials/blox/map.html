@@ -48,7 +48,7 @@
           var mapId = '{{ $mapId }}';
           
           // Initialize map centered on Andalusia
-          var map = L.map(mapId, { scrollWheelZoom: false }).setView([37.0, -4.8], 8);
+          var map = L.map(mapId, { scrollWheelZoom: false }).setView([37.0, -4.8], 6);
           
           // OpenStreetMap tiles
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -80,77 +80,33 @@
             });
           }
 
-          // Helper: Delay function for rate limiting
-          function delay(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-          }
+          // Hardcoded coordinates mapping
+          var locationCoords = {
+            "Teba": { lat: 36.980539, lon: -4.880926 },
+            "Sierra de Líbar (Benaoján)": { lat: 36.871269, lon: -5.044803 },
+            "Cuevas del Becerro": { lat: 36.871269, lon: -5.044803 },
+            "Sierra de Yeguas": { lat: 37.149253, lon: -4.855323 },
+            "Villanueva de Tapia": { lat: 37.143270, lon: -4.342527 }
+          };
           
-          // Geocode a single point using Nominatim
-          async function geocodePoint(point) {
-            // If point already has coordinates, use them
-            if (point.lat && point.lon) {
-              console.log('iSAT Map: Using provided coordinates for', point.title);
-              return {
-                point: point,
-                lat: point.lat,
-                lon: point.lon
-              };
-            }
-            
-            // Clean title for search (remove parentheses content like "(Piloto Activo)")
-            var cleanTitle = point.title.replace(/\s*\(.*?\)\s*/g, '');
-            var query = cleanTitle + ', Málaga, España';
-            console.log('iSAT Map: Geocoding query:', query);
-            
-            try {
-              // No User-Agent header to avoid browser restrictions
-              var response = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(query));
-              if (!response.ok) throw new Error('Network response was not ok');
-              var data = await response.json();
-              console.log('iSAT Map: Geocoding response for', query, ':', data);
-              
-              if (data && data.length > 0) {
-                return {
-                  point: point,
-                  lat: parseFloat(data[0].lat),
-                  lon: parseFloat(data[0].lon)
-                };
-              } else {
-                console.warn('iSAT Map: No geocoding results for: ' + query);
-                return null;
-              }
-            } catch (err) {
-              console.error('iSAT Map: Error geocoding ' + point.title + ':', err);
-              return null;
-            }
-          }
-          
-          // Process points sequentially to respect Nominatim rate limits (1 req/sec)
-          async function processPoints() {
+          function processPoints() {
             var markers = [];
             
             for (var i = 0; i < points.length; i++) {
               var point = points[i];
+              var coords = locationCoords[point.title];
               
-              // Add delay before request if it's not the first one and we need to geocode
-              if (i > 0 && (!point.lat || !point.lon)) {
-                console.log('iSAT Map: Waiting before next request...');
-                await delay(1200); 
-              }
-              
-              var result = await geocodePoint(point);
-              
-              if (result && result.lat && result.lon) {
-                console.log('iSAT Map: Adding marker for:', result.point.title, 'at', result.lat, result.lon);
-                var color = getMarkerColor(result.point.color);
+              if (coords) {
+                console.log('iSAT Map: Adding marker for:', point.title, 'at', coords.lat, coords.lon);
+                var color = getMarkerColor(point.color);
                 var icon = createColoredIcon(color);
                 
-                var marker = L.marker([result.lat, result.lon], { icon: icon })
-                  .bindPopup('<strong>' + result.point.title + '</strong><br/>' + (result.point.subtitle || ''))
+                var marker = L.marker([coords.lat, coords.lon], { icon: icon })
+                  .bindPopup('<strong>' + point.title + '</strong><br/>' + (point.subtitle || ''))
                   .addTo(map);
                 markers.push(marker);
               } else {
-                console.warn('iSAT Map: Skipping marker for:', point.title, '- No coordinates found');
+                console.warn('iSAT Map: No coordinates found for:', point.title);
               }
             }
             
@@ -159,7 +115,7 @@
               console.log('iSAT Map: Fitting bounds for', markers.length, 'markers');
               var group = L.featureGroup(markers);
               try {
-                map.fitBounds(group.getBounds(), { padding: [40, 40] });
+                map.fitBounds(group.getBounds(), { padding: [80, 80], maxZoom: 8 });
               } catch(e) {
                 console.error('iSAT Map: Error fitting bounds:', e);
               }

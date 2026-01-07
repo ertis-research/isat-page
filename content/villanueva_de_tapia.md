@@ -60,18 +60,6 @@ sections:
         - title: "Villanueva de Tapia"
           subtitle: "Bombeo Municipal (Piloto Activo)"
           color: "text-red-500"
-        - title: "Sierra de Líbar / Benaoján"
-          subtitle: "Manantial de Montaña"
-          color: "text-blue-500"
-          opacity: true
-        - title: "Sierra de Archidona"
-          subtitle: "Sondeo Periurbano"
-          color: "text-blue-500"
-          opacity: true
-        - title: "Ubrique"
-          subtitle: "Zona de Control"
-          color: "text-gray-500"
-          opacity: true
 ---
 
 
