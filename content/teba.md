@@ -12,6 +12,7 @@ sections:
         text: "Comarca de Guadalteba"
       title: "Zona Piloto:"
       highlight: "Teba"
+      image: "media/tebas/1764688478809.jpg"
       variant: "guad"
       left_title: "Tipología de Captación"
       left_text: "Acuífero Carbonatado"

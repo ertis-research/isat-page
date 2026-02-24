@@ -1,0 +1,162 @@
+{{ define "main" }}
+
+{{ $css := resources.Get "css/problematica.css" }}
+{{ $heroCss := resources.Get "css/hero.css" }}
+{{ $solCss := resources.Get "css/solucion.css" }}
+<link rel="stylesheet" href="{{ $heroCss.RelPermalink }}">
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<link rel="stylesheet" href="{{ $solCss.RelPermalink }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+{{ $hero := index (where .Params.sections "block" "hero") 0 }}
+{{ if $hero }}
+{{ $heroImg := "" }}
+{{ if $hero.content.image }}{{ $heroImg = resources.Get $hero.content.image }}{{ end }}
+<section class="relative pt-24 pb-20 bg-white border-b border-gray-100 overflow-hidden">
+  <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-50 to-transparent -z-10"></div>
+  <div class="container mx-auto px-6 max-w-6xl animate-fade-in">
+    <div class="flex flex-col {{ if $heroImg }}lg:flex-row gap-12{{ end }} items-center">
+
+      {{/* Texto */}}
+      <div class="w-full {{ if $heroImg }}lg:w-1/2{{ end }} {{ if not $heroImg }}text-center max-w-3xl mx-auto{{ end }}">
+        {{ if $hero.content.announcement.text }}
+          <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-800 border border-blue-200 text-xs font-bold uppercase tracking-wider mb-6">{{ $hero.content.announcement.text }}</span>
+        {{ end }}
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-gray-900">{{ $hero.content.title }}</h1>
+        <p class="text-xl text-gray-600 mb-10 leading-relaxed">{{ $hero.content.text }}</p>
+        {{ if or $hero.content.primary_action.url $hero.content.secondary_action.url }}
+        <div class="flex flex-col md:flex-row gap-4">
+          {{ if $hero.content.primary_action.url }}
+          <a href="{{ $hero.content.primary_action.url }}" class="btn-modern-primary text-base px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 font-semibold inline-flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700">
+            {{ $hero.content.primary_action.text }} <i class="fas fa-arrow-right"></i>
+          </a>
+          {{ end }}
+          {{ if $hero.content.secondary_action.url }}
+          <a href="{{ $hero.content.secondary_action.url }}" class="btn-modern-secondary text-base px-8 py-3 rounded-full shadow-sm hover:shadow-md transition-all font-semibold inline-flex items-center gap-2 bg-gray-100 text-gray-700 hover:bg-gray-200">
+            {{ $hero.content.secondary_action.text }} <span aria-hidden="true">→</span>
+          </a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+
+      {{/* Imagen */}}
+      {{ if $heroImg }}
+      <div class="w-full lg:w-1/2">
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+          <div class="relative rounded-2xl overflow-hidden border-4 border-white shadow-2xl">
+            <img src="{{ $heroImg.RelPermalink }}" alt="{{ $hero.content.title }}" class="w-full h-auto object-cover">
+          </div>
+        </div>
+      </div>
+      {{ end }}
+
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* ─── FLUJO METODOLÓGICO ─────────────────────────────────────────────── */}}
+{{ $flujo := index (where .Params.sections "id" "flujo") 0 }}
+{{ if $flujo }}
+<section class="py-20 bg-slate-900 text-white relative overflow-hidden" id="flujo">
+
+  {{/* Decoración de fondo */}}
+  <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+    <i class="fas fa-diagram-project absolute top-10 left-10 text-9xl"></i>
+    <i class="fas fa-route absolute bottom-10 right-10 text-8xl"></i>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+
+    {{/* Cabecera — igual que objetivo-general en objetivos.html */}}
+    <div class="max-w-4xl mx-auto text-center animate-fade-in delay-100 mb-16">
+      <h2 class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-4">Sistema iSAT</h2>
+      <h3 class="text-3xl md:text-4xl font-bold mb-8 leading-tight">{{ $flujo.content.title }}</h3>
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-10 border border-white/10 shadow-2xl">
+        <p class="text-lg md:text-xl text-gray-200 leading-relaxed mb-3 font-medium">{{ $flujo.content.subtitle }}</p>
+        <p class="text-gray-400 leading-relaxed">{{ $flujo.content.description }}</p>
+      </div>
+    </div>
+
+    {{/* Pasos conectados */}}
+    <div class="relative max-w-5xl mx-auto">
+
+      {{/* Línea conectora (escritorio) */}}
+      <div class="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-blue-900 via-blue-500 to-blue-900 opacity-60 z-0"></div>
+
+      <div class="grid md:grid-cols-4 gap-0 md:gap-0">
+        {{ range $i, $step := $flujo.content.steps }}
+        <div class="flex flex-col items-center text-center px-3 relative z-10 mb-8 md:mb-0 animate-fade-in delay-{{ add 100 (mul $i 100) }}">
+
+          {{/* Círculo icono */}}
+          <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center text-xl shadow-lg shadow-blue-900/40 border-4 border-slate-900 mb-3 relative z-10 transition-transform duration-300 hover:-translate-y-1">
+            <i class="fas fa-{{ $step.icon }}"></i>
+          </div>
+          <span class="text-xs font-bold tracking-widest text-blue-500 uppercase mb-4">Paso {{ $step.number }}</span>
+
+          {{/* Tarjeta */}}
+          <div class="bg-slate-800 border border-slate-700 border-t-2 border-t-blue-500 rounded-xl p-5 w-full hover:bg-slate-700/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-900/30">
+            <h3 class="text-base font-bold text-white mb-2">{{ $step.title }}</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">{{ $step.description }}</p>
+          </div>
+
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+  </div>
+</section>
+{{ end }}
+
+{{/* ─── TECNOLOGÍA ─────────────────────────────────────────────────────── */}}
+{{ $tec := index (where .Params.sections "id" "tecnologia") 0 }}
+{{ if $tec }}
+<section class="py-24 bg-gray-50" id="tecnologia">
+  <div class="container mx-auto px-6">
+
+    <div class="text-center max-w-2xl mx-auto mb-16 animate-fade-in">
+      <span class="inline-block uppercase tracking-widest text-xs font-bold text-blue-500 mb-3">Innovación Tecnológica</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{{ $tec.content.title }}</h2>
+      <p class="text-gray-500 leading-relaxed">Tecnologías clave que hacen posible la monitorización continua y anticipada de acuíferos y ríos.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      {{ range $i, $item := $tec.content.items }}
+      <div class="bg-white rounded-2xl shadow-sm border-l-4 border-blue-500 p-8 hover-lift animate-fade-in delay-{{ add 100 (mul $i 100) }}">
+        <div class="flex items-start gap-5">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl flex-shrink-0">
+            <i class="fas fa-{{ $item.icon }}"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">{{ $item.name }}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{{ $item.description }}</p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+  </div>
+</section>
+{{ end }}
+
+{{/* ─── CTA FINAL ───────────────────────────────────────────────────────── */}}
+<section class="py-20 bg-gradient-to-br from-blue-900 to-slate-900 text-white text-center">
+  <div class="container mx-auto px-6 max-w-3xl">
+    <h2 class="text-2xl md:text-3xl font-bold mb-5 leading-snug">¿Listo para conocer los resultados en campo?</h2>
+    <p class="text-gray-300 mb-8 text-lg">Visita los sitios piloto donde iSAT está siendo probado en condiciones reales.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="/#ubicacion" class="inline-flex items-center gap-3 bg-blue-500 hover:bg-blue-400 text-white px-8 py-4 rounded-full text-base font-bold shadow-lg hover:shadow-blue-500/40 hover:-translate-y-1 transition-all duration-300">
+        <i class="fas fa-map-marker-alt"></i> Ver sitios piloto
+      </a>
+      <a href="/publicaciones/" class="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full text-base font-bold border border-white/20 hover:-translate-y-1 transition-all duration-300">
+        <i class="fas fa-file-alt"></i> Publicaciones
+      </a>
+    </div>
+  </div>
+</section>
+
+{{ end }}

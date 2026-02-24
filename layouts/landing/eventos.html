@@ -37,7 +37,19 @@
               <a class="bg-white text-blue-900 hover:bg-blue-50 font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:-translate-y-1 flex items-center gap-2" href="#">{{ default "Inscribirse Gratis" .Site.Params.eventos.register_text }} <i class="fas fa-arrow-right"></i></a>
             {{ end }}
             {{ if $f.program }}
-              <a class="bg-transparent border border-white/30 hover:bg-white/10 text-white font-semibold py-3 px-6 rounded-full transition-colors" href="#"><i class="fas fa-download mr-2"></i> {{ default "Programa (PDF)" .Site.Params.eventos.program_text }}</a>
+              {{ $progUrl := "#" }}
+              {{ $isLocal := false }}
+              {{ if $f.program_url }}
+                {{ if strings.HasPrefix $f.program_url "http" }}
+                  {{ $progUrl = $f.program_url }}
+                {{ else if strings.HasPrefix $f.program_url "/" }}
+                  {{ $progUrl = $f.program_url }}
+                {{ else }}
+                  {{ $res := resources.Get $f.program_url }}
+                  {{ if $res }}{{ $progUrl = $res.RelPermalink }}{{ $isLocal = true }}{{ end }}
+                {{ end }}
+              {{ end }}
+              <a class="bg-transparent border border-white/30 hover:bg-white/10 text-white font-semibold py-3 px-6 rounded-full transition-colors" href="{{ $progUrl | safeURL }}"{{ if $isLocal }} download{{ end }}><i class="fas fa-download mr-2"></i> {{ default "Programa (PDF)" .Site.Params.eventos.program_text }}</a>
             {{ end }}
           </div>
         </div>
@@ -48,7 +60,7 @@
 {{ end }}
 
 <!-- AGENDA -->
-<section class="py-16 bg-white border-t border-gray-100">
+<!-- <section class="py-16 bg-white border-t border-gray-100">
   <div class="container mx-auto px-6 max-w-5xl">
     <div class="flex items-center justify-between mb-10">
       <h3 class="text-2xl font-bold text-gray-900">{{ default "Agenda Próxima" .Site.Params.eventos.agenda_title }}</h3>
@@ -79,7 +91,7 @@
       {{ end }}
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- HISTORICO -->
 <section class="py-16 bg-gray-50 border-t border-gray-200">
@@ -89,8 +101,15 @@
       {{ range .Site.Data.events.past }}
       <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-md transition-shadow group">
         <div class="relative h-40 overflow-hidden">
-          <img src="{{ .image }}" alt="{{ .title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><span class="text-white border border-white px-4 py-1 rounded-full text-sm font-semibold">{{ default "Ver Galería" .Site.Params.eventos.past_gallery_text }}</span></div>
+          {{ if .image }}
+          {{ if hasPrefix .image "http" }}
+            <img src="{{ .image }}" alt="{{ .title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          {{ else }}
+            {{ $mimg := resources.Get .image }}
+            {{ if $mimg }}<img src="{{ $mimg.RelPermalink }}" alt="{{ .title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">{{ end }}
+          {{ end }}
+        {{ end }}
+          <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </div>
         <div class="p-5">
           <span class="text-xs font-bold text-gray-400 uppercase mb-1 block">{{ .month_short }}</span>

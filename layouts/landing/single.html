@@ -5,7 +5,8 @@
     {{ $blockName := $block.block }}
     {{/* If partial exists, render it. */}}
     {{ $partialPath := printf "blox/%s.html" $blockName }}
-    {{ if templates.Exists $partialPath }}
+    {{ $partialTemplate := printf "partials/%s" $partialPath }}
+    {{ if templates.Exists $partialTemplate }}
       {{ partial $partialPath (dict "wcPage" $.Page "wcBlock" $block) }}
     {{ else }}
       {{/* Fallback: if block has text content, render it directly */}}

@@ -63,12 +63,12 @@
               {{ range $p.badges }}<span class="text-xs font-bold px-2 py-0.5 rounded {{ if eq . "Q1" }}badge-q1{{ else if eq . "OA" }}badge-oa{{ else }}bg-gray-100 text-gray-600 border border-gray-200{{ end }}">{{ . }}</span>{{ end }}
               <span class="text-xs text-gray-400 font-medium py-0.5">{{ $p.venue }}</span>
             </div>
-            <h2 class="text-xl font-bold text-gray-900 mb-2 hover:text-blue-700 cursor-pointer">{{ $p.title }}</h2>
+            <h2 class="text-xl font-bold text-gray-900 mb-2 cursor-pointer">{{ $p.title }}</h2>
             <p class="text-gray-600 text-sm mb-3 italic">{{ $p.authors }}</p>
             <p class="text-gray-500 text-sm mb-4 leading-relaxed line-clamp-2">{{ $p.summary }}</p>
             <div class="flex gap-4">
-              {{ with $p.links.doi }}<a href="{{ . }}" class="text-sm font-bold text-blue-600 hover:text-blue-800 flex items-center gap-2"><i class="fas fa-link"></i> DOI</a>{{ end }}
-              {{ with $p.links.pdf }}<a href="{{ . }}" class="text-sm font-bold text-gray-600 hover:text-gray-800 flex items-center gap-2"><i class="far fa-file-pdf"></i> PDF</a>{{ end }}
+              {{ with $p.links.doi }}<a href="{{ . | safeURL }}" target="_blank" rel="noopener" class="text-sm font-bold text-blue-600 hover:text-blue-800 flex items-center gap-2"><i class="fas fa-link"></i> DOI</a>{{ end }}
+              {{ with $p.links.pdf }}{{ if strings.HasPrefix . "http" }}<a href="{{ . | safeURL }}" download class="text-sm font-bold text-gray-600 hover:text-gray-800 flex items-center gap-2"><i class="far fa-file-pdf"></i> PDF</a>{{ else }}{{ $pdfRes := resources.Get . }}{{ if $pdfRes }}<a href="{{ $pdfRes.RelPermalink }}" download class="text-sm font-bold text-gray-600 hover:text-gray-800 flex items-center gap-2"><i class="far fa-file-pdf"></i> PDF</a>{{ end }}{{ end }}{{ end }}
               {{ with $p.links.abstract }}<a href="{{ . }}" class="text-sm font-bold text-blue-600 hover:text-blue-800 flex items-center gap-2"><i class="fas fa-external-link-alt"></i> Ver Abstract</a>{{ end }}
             </div>
             {{ with $p.topics }}

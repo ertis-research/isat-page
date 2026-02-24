@@ -37,7 +37,20 @@
     {{/* Grid de features */}}
     <div class="features-grid landing-cards">
       {{ range $item := $block.content.items }}
-        <div class="features-item landing-card text-center">
+        {{ $itemURL := "" }}
+        {{ with $item.url }}
+          {{ if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "#") }}
+            {{ $itemURL = . }}
+          {{ else }}
+            {{ $itemURL = . | relLangURL }}
+          {{ end }}
+        {{ end }}
+
+        {{ if $itemURL }}
+          <a href="{{ $itemURL }}" class="features-item landing-card text-center features-card-link">
+        {{ else }}
+          <div class="features-item landing-card text-center">
+        {{ end }}
           {{/* Icono centrado */}}
           <div class="features-icon mb-3 text-blue-600 text-3xl">
             {{ if $item.icon }}
@@ -58,7 +71,17 @@
               {{ . | $page.RenderString | emojify }}
             </p>
           {{ end }}
-        </div>
+
+          {{ if $itemURL }}
+            <span class="features-link-cta">
+              {{ with $item.cta }}{{ . }}{{ else }}Ir al apartado{{ end }}
+            </span>
+          {{ end }}
+        {{ if $itemURL }}
+          </a>
+        {{ else }}
+          </div>
+        {{ end }}
       {{ end }}
     </div>
   </div>

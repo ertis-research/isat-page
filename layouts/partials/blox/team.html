@@ -1,63 +1,98 @@
-{{/* --- INICIO: Estilos personalizados --- */}}
+{{/* Hugo Blox: Team — Lista de investigadores, estilo corporativo */}}
 {{ $css := resources.Get "css/team.css" }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-
-{{/* Initialise */}}
 {{ $page := .wcPage }}
 {{ $block := .wcBlock }}
 
-<section class="py-16 lg:py-24">
+<section class="tm-section">
   <div class="container mx-auto px-6 lg:px-8">
-    {{/* Solo incluir FontAwesome si hay iconos */}}
-    {{ range $item := $block.content.items }}
-      {{ if $item.icon }}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        {{ break }}
-      {{ end }}
-    {{ end }}
-    {{/* Título */}}
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-gray-900 mb-4">
-        {{ with $block.content.title }}{{ . | markdownify }}{{ end }}
-      </h2>
-      {{ with $block.content.subtitle }}
-        <p class="text-lg leading-8 text-gray-600 max-w-4xl mx-auto">
-          {{ . | $page.RenderString | emojify }}
-        </p>
-      {{ end }}
+
+    {{/* Encabezado */}}
+    <div class="tm-header">
+      <div class="tm-header__left">
+        {{ with $block.content.eyebrow }}
+          <span class="tm-eyebrow">{{ . }}</span>
+        {{ end }}
+        {{ with $block.content.title }}
+          <h2 class="tm-heading">{{ . | markdownify }}</h2>
+        {{ end }}
+        {{ with $block.content.subtitle }}
+          <p class="tm-subheading">{{ . | $page.RenderString | emojify }}</p>
+        {{ end }}
+      </div>
     </div>
-    
-    {{/* Grupos de investigación */}}
+
+    {{/* Grupos de investigación (si los hay) */}}
     {{ with $block.content.groups }}
-    <div class="equipo-grupos">
+      <div class="equipo-grupos">
         {{ range $group := . }}
-        <div class="equipo-grupo">
+          <div class="equipo-grupo">
             {{ if $group.icon }}
-            <span class="equipo-grupo-icono fas fa-{{ $group.icon }} text-black"></span>
+              <span class="equipo-grupo-icono fas fa-{{ $group.icon }}"></span>
             {{ end }}
-            <div class="equipo-grupo-contenido">
-            <h3 class="equipo-grupo-titulo">{{ $group.name }}</h3>
-            <p class="equipo-grupo-descripcion">{{ $group.description | $page.RenderString | emojify }}</p>
+            <div>
+              <h3 class="equipo-grupo-titulo">{{ $group.name }}</h3>
+              <p class="equipo-grupo-descripcion">{{ $group.description | $page.RenderString | emojify }}</p>
             </div>
-        </div>
-        {{ end }}
-    </div>
-    {{ end }}
-    
-    {{/* Investigadores clave */}}
-    {{ with $block.content.investigators }}
-      <div class="equipo-investigadores">
-        {{ with $block.content.investigators_title }}
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">{{ . }}</h3>
-        {{ end }}
-        {{ range $investigator := . }}
-          <div class="equipo-investigador text-center">
-            <span class="equipo-investigador-rol">{{ $investigator.role }}</span>
-            <span class="equipo-investigador-nombre">{{ $investigator.name }}</span>
           </div>
         {{ end }}
       </div>
     {{ end }}
+
+    {{/* Lista de investigadores */}}
+    {{ with $block.content.investigators }}
+      {{ with $block.content.investigators_title }}
+        <h3 class="tm-list-title">{{ . }}</h3>
+      {{ end }}
+      <ul class="tm-list">
+        {{ range $i, $inv := . }}
+          {{/* Iniciales */}}
+          {{ $parts := split $inv.name " " }}
+          {{ $initials := "" }}
+          {{ if ge (len $parts) 2 }}
+            {{ $initials = printf "%s%s" (substr (index $parts 0) 0 1) (substr (index $parts (sub (len $parts) 1)) 0 1) }}
+          {{ else if ge (len $parts) 1 }}
+            {{ $initials = substr (index $parts 0) 0 1 }}
+          {{ end }}
+
+          <li class="tm-row">
+            {{/* Avatar */}}
+            <div class="tm-row__avatar">
+              {{ if $inv.photo }}
+                <img src="{{ $inv.photo | relURL }}" alt="{{ $inv.name }}" class="tm-row__photo">
+              {{ else }}
+                <span class="tm-row__initials">{{ $initials }}</span>
+              {{ end }}
+            </div>
+
+            {{/* Nombre */}}
+            <div class="tm-row__info">
+              <span class="tm-row__name">{{ $inv.name }}</span>
+              {{ with $inv.bio }}
+                <span class="tm-row__bio">{{ . | $page.RenderString }}</span>
+              {{ end }}
+            </div>
+
+            {{/* Rol */}}
+            <span class="tm-row__role">{{ $inv.role }}</span>
+
+            {{/* Contacto opcional */}}
+            {{ if or $inv.email $inv.orcid }}
+              <div class="tm-row__links">
+                {{ with $inv.email }}
+                  <a href="mailto:{{ . }}" class="tm-row__link" title="Email"><i class="fas fa-envelope"></i></a>
+                {{ end }}
+                {{ with $inv.orcid }}
+                  <a href="{{ . }}" class="tm-row__link" target="_blank" rel="noopener" title="ORCID"><i class="fab fa-orcid"></i></a>
+                {{ end }}
+              </div>
+            {{ end }}
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+
   </div>
 </section>

@@ -50,15 +50,23 @@ sections:
       items:
         - name: "Dr. Juan Antonio Barberá"
           role: "Investigador Principal"
-          image: "https://via.placeholder.com/200?text=JABF"
+          image: "media/members/cehiuma/JAB.jpg"
           bio: "Coordinación general del proyecto y responsable técnico del laboratorio de análisis avanzados de agua (HidroLab). Experto en trazadores ambientales."
         - name: "Dr. Bartolomé Andreo"
           role: "Director CEHIUMA"
-          image: "https://via.placeholder.com/200?text=BAN"
+          image: "media/members/cehiuma/Bartolome.jpg"
           bio: "Definición y configuración de los Sistemas de Alerta Temprana (SAT). Experto internacional en acuíferos kársticos y recursos hídricos."
         - name: "Dr. Matías Mudarra"
           role: "Profesor Titular"
-          image: "https://via.placeholder.com/200?text=MMM"
+          image: "media/members/cehiuma/team__0000_mmm.jpg"
+          bio: "Diseño del módulo operacional y validación en campo. Especialista en funcionamiento hidrodinámico de acuíferos y modelización."
+        - name: "Jaime Fernández Ortega"
+          role: "Investigador Postdoctoral"
+          image: "media/members/cehiuma/team__0008_jfo.jpg"
+          bio: "Definición y configuración de los Sistemas de Alerta Temprana (SAT). Experto internacional en acuíferos kársticos y recursos hídricos."
+        - name: "Álvaro Romero Sencianes"
+          role: "Investigador Predoctoral"
+          image: "media/members/cehiuma/team__0016_alv.jpg"
           bio: "Diseño del módulo operacional y validación en campo. Especialista en funcionamiento hidrodinámico de acuíferos y modelización."
 
   - block: infraestructura
@@ -70,7 +78,7 @@ sections:
           text: "Laboratorio de análisis avanzados de agua equipado con tecnología puntera (cromatografía iónica, espectrometría, etc.) para el control de calidad preciso de las muestras."
         - title: "Demostrador Físico (Ada Byron)"
           text: "Instalación de circuito de flujo en el edificio de investigación de la UMA. Permite simular escenarios de mezclas controladas para entrenar los algoritmos de IA antes del despliegue."
-      media: "https://images.unsplash.com/photo-1581093458891-2f6a7ca5230e?q=80&w=2070&auto=format&fit=crop"
+      media: "media/lab.jpg"
 
   - block: experiencia
     id: experiencia
@@ -80,12 +88,15 @@ sections:
         - title: "Proyecto KARMA (PRIMA)"
           text: "Desarrollo de estrategias de alerta temprana en acuíferos kársticos a nivel europeo."
           borderclass: "blue-500"
+          url: "http://karma-project.org/"
         - title: "LifeWatch EnBiC2-Lab"
           text: "Monitorización de biodiversidad y variables ambientales mediante sensores remotos."
           borderclass: "green-500"
+          url: "https://www.uma.es/laboratorio-de-geomorfologia-y-suelos/info/143235/proyecto-life-watch-enbic2-lab/"
         - title: "Transferencia"
           text: "Colaboraciones estratégicas con IGME, CHG y empresas gestoras del ciclo del agua."
           borderclass: "indigo-500"
+          url: "https://cehiuma.uma.es/asesoramiento-cientifico-tecnico/"
 
 ---
 

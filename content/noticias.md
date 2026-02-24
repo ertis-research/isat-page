@@ -16,27 +16,21 @@ sections:
   - block: featured
     id: featured
     content:
-      title: "Finalizada la instalación de sensores en Sierra de Yeguas"
-      date: "15 Marzo, 2024"
+      title: "'iSAT', la solución innovadora que propone la UMA para hacer frente a la falta de agua en Málaga"
+      date: "15 Marzo, 2025"
       category: "Tecnología"
-      featured_image: "https://images.unsplash.com/photo-1542601906990-b4d3fb7d5b73?q=80&w=2070&auto=format&fit=crop"
-      summary: "El equipo técnico de ERTIS y CEHIUMA ha completado el despliegue del nodo piloto en la zona de presión agrícola."
-      url: "/news/2025-03-15-instalacion-sierra-de-yeguas/"
+      featured_image: "media/noticias_youtube.png"
+      summary: "Optimizar la explotación del agua subterránea en Málaga es el objetivo principal del ‘iSAT’ -Sistema de Alerta Temprana Inteligente-, la solución innovadora propuesta por un equipo multidisciplinar de científicos de la UMA, que ha sido seleccionada por la Junta, a través de la Consejería de Universidad, Investigación e Innovación, para dar respuesta a las necesidades identificadas en el ‘PLAnd Sequía Andalucía’, según resolución provisional."
+      url: "https://www.youtube.com/watch?v=W1dJWIaObQM"
 
   - block: items
     id: items
     content:
       items:
-        - title: "Finalizada la instalación de sensores en Sierra de Yeguas"
-          date: "15 Marzo, 2024"
+        - title: "Proyecto de la UMA para la optimización del agua subterránea en Málaga"
+          date: "15 Enero, 2025"
           category: "Tecnología"
-          featured_image: "https://images.unsplash.com/photo-1542601906990-b4d3fb7d5b73?q=80&w=2070&auto=format&fit=crop"
+          featured_image: "media/noticia_diario_sur.webp"
           summary: "El equipo técnico completó el despliegue del nodo piloto; los primeros datos de nitratos ya llegan a la plataforma cloud."
-          url: "/news/2025-03-15-instalacion-sierra-de-yeguas/"
-        - title: "Validación en laboratorio de los algoritmos de IA"
-          date: "10 Febrero, 2024"
-          category: "Tecnología"
-          featured_image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop"
-          summary: "Pruebas en HidroLab confirman la correlación entre conductividad y nitratos con alta precisión."
-          url: "/news/2025-02-10-validacion-laboratorio/"
+          url: "https://www.diariosur.es/cronicauma/investigacion/proyecto-uma-optimizacion-agua-subterranea-malaga-20250115200353-nt.html"
 ---

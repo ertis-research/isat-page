@@ -1,0 +1,106 @@
+{{/* Hugo Blox: Divulgación — Layout 60/40 featured + feed secundario */}}
+{{ $css := resources.Get "css/divulgacion.css" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+
+<section class="dv-section lg:py-20">
+  <div class="container mx-auto px-6 lg:px-8">
+
+    {{/* Encabezado */}}
+    {{ with $block.content.title }}
+      <div class="text-center mb-12">
+        <span class="dv-eyebrow">Divulgación</span>
+        <h2 class="dv-heading">{{ . | markdownify }}</h2>
+        {{ with $block.content.text }}
+          <p class="dv-subheading">{{ . | $page.RenderString | emojify }}</p>
+        {{ end }}
+      </div>
+    {{ end }}
+
+    {{/* Layout 60/40 */}}
+    <div class="dv-layout">
+
+      {{/* ── NOTICIA DESTACADA (izquierda) ── */}}
+      {{ with $block.content.featured }}
+        {{ $feat := . }}
+        {{ $featColor := $feat.tag_color | default "blue" }}
+        {{ $featURL := "" }}
+        {{ with $feat.url }}
+          {{ if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "#") }}
+            {{ $featURL = . }}
+          {{ else }}
+            {{ $featURL = . | relLangURL }}
+          {{ end }}
+        {{ end }}
+        {{ $featImg := $feat.image }}
+        {{ if and $featImg (not (hasPrefix $featImg "http")) }}
+          {{ $res := resources.Get $featImg }}
+          {{ if $res }}{{ $featImg = $res.RelPermalink }}{{ end }}
+        {{ end }}
+
+        <a href="{{ $featURL }}" class="dv-featured" {{ if $featImg }}style="{{ printf "background-image: url('%s');" $featImg | safeCSS }}"{{ end }}>
+          <div class="dv-featured__overlay"></div>
+          <div class="dv-featured__body">
+            <div class="dv-featured__meta">
+              {{ with $feat.tag }}<span class="dv-card__tag dv-card__tag--light">{{ . }}</span>{{ end }}
+              {{ with $feat.date }}<span class="dv-featured__date"><i class="far fa-calendar-alt"></i> {{ . }}</span>{{ end }}
+            </div>
+            <h2 class="dv-featured__title">{{ $feat.name | markdownify }}</h2>
+            <p class="dv-featured__desc">{{ $feat.description | $page.RenderString }}</p>
+            <span class="dv-featured__cta">
+              {{ with $feat.cta }}{{ . }}{{ else }}Leer noticia completa{{ end }}
+              <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+        </a>
+      {{ end }}
+
+      {{/* ── FEED SECUNDARIO (derecha) ── */}}
+      <div class="dv-feed">
+        {{ range $i, $item := $block.content.items }}
+          {{ $tag_color := $item.tag_color | default "blue" }}
+          {{ $itemURL := "" }}
+          {{ with $item.url }}
+            {{ if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "#") }}
+              {{ $itemURL = . }}
+            {{ else }}
+              {{ $itemURL = . | relLangURL }}
+            {{ end }}
+          {{ end }}
+          {{ $itemImg := $item.image }}
+          {{ if and $itemImg (not (hasPrefix $itemImg "http")) }}
+            {{ $res := resources.Get $itemImg }}
+            {{ if $res }}{{ $itemImg = $res.RelPermalink }}{{ end }}
+          {{ end }}
+
+          <a href="{{ $itemURL }}" class="dv-feed-card dv-feed-card--{{ $tag_color }}">
+            {{/* Miniatura */}}
+            <div class="dv-feed-card__thumb">
+              {{ if $itemImg }}
+                <img src="{{ $itemImg }}" alt="{{ $item.name }}" class="dv-feed-card__img">
+              {{ else }}
+                <div class="dv-feed-card__icon-fallback dv-feed-card__icon-fallback--{{ $tag_color }}">
+                  {{ if $item.icon }}<i class="fas fa-{{ $item.icon }}"></i>{{ end }}
+                </div>
+              {{ end }}
+            </div>
+            {{/* Contenido */}}
+            <div class="dv-feed-card__content">
+              <div class="dv-feed-card__meta">
+                {{ with $item.tag }}<span class="dv-card__tag dv-card__tag--{{ $tag_color }}">{{ . }}</span>{{ end }}
+                {{ with $item.date }}<span class="dv-card__date"><i class="far fa-calendar-alt"></i> {{ . }}</span>{{ end }}
+              </div>
+              <h3 class="dv-feed-card__title">{{ $item.name | markdownify }}</h3>
+              <p class="dv-feed-card__desc">{{ $item.description | $page.RenderString }}</p>
+            </div>
+            <i class="fas fa-chevron-right dv-feed-card__arrow"></i>
+          </a>
+        {{ end }}
+      </div>
+
+    </div>{{/* /dv-layout */}}
+  </div>
+</section>

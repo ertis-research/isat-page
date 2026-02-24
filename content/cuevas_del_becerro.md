@@ -12,6 +12,7 @@ sections:
         text: "Surgencia Kárstica"
       title: "Zona Piloto:"
       highlight: "Cuevas del Becerro"
+      image: "media/cuevas_del_becerro/1764688483083.jpg"
       variant: "man"
       left_title: "Tipología de Captación"
       left_text: "Manantial (Surgencia Natural)"
@@ -31,7 +32,7 @@ sections:
     id: ficha
     content:
       title: "Resumen Técnico"
-      system: "Karst de la Sierra de las Nieves / Alta Cadena."
+      system: "Karst de la Sierra de las Nieves"
       sensors: ["Turbidez","Nitratos (UV)"]
       tech: "Predicción de eventos de turbidez/contaminación"
       estado: "Protección salud pública"

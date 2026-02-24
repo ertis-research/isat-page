@@ -1,115 +1,181 @@
-html.dark #solucion {
-        background-color: #121212 !important;
-    }
+/* ============================================================
+   Solucion iSAT - Timeline horizontal conectado
+   Inspirado en el estilo corporativo de objetivos.html
+   ============================================================ */
 
-    /* Fondo blanco para tecnologia en modo oscuro */
-    html.dark #tecnologia {
-        color: #ffffff !important;
-    }
+/* Seccion */
+.sol-section {
+  padding: 0 0 4rem 0;
+  background: #ffffff;
+}
 
-    /* Cambiar colores de texto en tecnologia para modo oscuro */
-    html.dark #tecnologia h2,
-    html.dark #tecnologia h3,
-    html.dark #tecnologia p {
-    color: #ffffff !important;
-    }
+/* Encabezado sin fondo */
+.sol-header {
+  padding: 3rem 2rem 2.5rem;
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.sol-eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 0.75rem;
+}
+.sol-heading {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.sol-subtitle {
+  font-size: 1.1rem;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.sol-description {
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.65;
+  max-width: 42rem;
+  margin: 0.5rem auto 0;
+}
 
-    /* Cambiar colores de tarjetas en tecnologia */
-    html.dark #tecnologia .features-item {
-    background-color: #111111 !important;
-    color: #ffffff !important;
-    }
+/* Timeline */
+.sol-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-    html.dark #tecnologia .features-item h3,
-    html.dark #tecnologia .features-item p {
-    color: #ffffff !important;
-    }
+/* Linea horizontal */
+.sol-timeline__line {
+  position: absolute;
+  top: 2.75rem;
+  left: calc(2rem + 12.5%);
+  right: calc(2rem + 12.5%);
+  height: 2px;
+  background: linear-gradient(90deg, #bfdbfe, #3b82f6, #1d4ed8, #3b82f6, #bfdbfe);
+  z-index: 0;
+}
 
-  /* Flujo de pasos */
-  .solucion-flujo {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+/* Cada paso */
+.sol-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+.sol-step__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+/* Burbuja del icono */
+.sol-step__bubble {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 18px rgba(37,99,235,0.35);
+  border: 3px solid #ffffff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  z-index: 2;
+}
+.sol-step:hover .sol-step__bubble {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 10px 28px rgba(37,99,235,0.45);
+}
+
+/* Numero */
+.sol-step__num {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #93c5fd;
+  letter-spacing: 0.1em;
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+}
+
+/* Cuerpo */
+.sol-step__body {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-top: 3px solid #3b82f6;
+  border-radius: 0.875rem;
+  padding: 1.25rem 1rem;
+  width: 100%;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.sol-step:hover .sol-step__body {
+  box-shadow: 0 8px 24px rgba(37,99,235,0.1);
+  transform: translateY(-2px);
+}
+.sol-step__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+.sol-step__desc {
+  font-size: 0.82rem;
+  color: #6b7280;
+  line-height: 1.55;
+}
+
+/* CTA */
+.sol-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 0.85rem 2rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+}
+.sol-btn:hover {
+  background: #1d4ed8;
+  box-shadow: 0 8px 22px rgba(37,99,235,0.4);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sol-timeline {
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-    margin: 3rem 0;
+    padding: 0 1rem;
   }
-  
-  .solucion-paso {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border-left: 4px solid #3b82f6;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-  }
-  
-  .solucion-paso:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  }
-  
-  .solucion-paso-numero {
-    position: absolute;
-    top: -15px;
-    left: -15px;
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
-  }
-  
-  .solucion-paso-icono {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-  
-  .solucion-paso-titulo {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #1f2937;
-  }
-  
-  .solucion-paso-descripcion {
-    color: #6b7280;
-    line-height: 1.6;
-  }
-  
-  .solucion-boton {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-  }
-  
-  .solucion-boton:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-    color: white;
-  }
-  
-  @media (max-width: 768px) {
-    .solucion-flujo {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    
-    .solucion-paso {
-      padding: 1.5rem;
-    }
-  }
+  .sol-timeline__line { display: none; }
+}
+@media (max-width: 540px) {
+  .sol-timeline { grid-template-columns: 1fr; gap: 1.5rem; }
+}

@@ -18,10 +18,8 @@ sections:
     id: logos
     content:
       items:
-        - label: "Financiado por la UE"
-        - label: "Gobierno de España"
-        - label: "Plan de Recuperación"
-        - label: "Entidad Ejecutora"
+        - label: 
+          image: "media/JuntaAndalucia.png"
 
   - block: ficha
     id: ficha_administrativa
@@ -44,7 +42,7 @@ sections:
           bg: "amber-100"
           color: "amber-600"
         - label: "Ubicación"
-          value: "Sierra de Líbar (Cádiz/Málaga) & Sierra de Archidona (Málaga)"
+          value: "Comarca Nororma en Ubicación y Serranía de Ronda"
           icon: "map-location-dot"
           bg: "blue-100"
           color: "blue-600"

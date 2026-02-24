@@ -28,7 +28,13 @@
 			{{ range $logos.content.items }}
 				<div class="logo-placeholder flex flex-col items-center text-center gap-2">
 					<div class="w-48 h-20 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-300 hover:bg-gray-200 transition-colors">
-						{{ if .image }}<img src="{{ .image }}" alt="{{ .label }}" class="max-h-full"/>{{ else }}<i class="fas fa-image text-2xl"></i>{{ end }}
+						{{ if .image }}
+							{{ $mimg := resources.Get .image }}
+            					{{ if $mimg }}<img src="{{ $mimg.RelPermalink }}" alt="{{ .label }}" class="max-h-full"/>
+						{{ else }}
+							<i class="fas fa-image text-2xl"></i>
+						{{ end }}
+						{{ end }}
 					</div>
 					<span class="text-xs text-gray-400 font-semibold uppercase">{{ .label }}</span>
 				</div>

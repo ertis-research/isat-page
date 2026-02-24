@@ -12,6 +12,7 @@ sections:
         text: "Entorno Agrícola"
       title: "Zona Piloto:"
       highlight: "Sierra de Yeguas"
+      image: "media/sierra_yeguas/1764688479676.jpg"
       left_title: "Tipología de Captación"
       left_text: "Sondeo Abastecimiento/Riego"
       right_title: "Reto Específico"

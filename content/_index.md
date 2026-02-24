@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Home'
 date: 2023-10-24
 type: landing
@@ -11,13 +11,18 @@ sections:
   # Sección 1: Cabecera renovada
   - block: hero
     content:
-      image: "media/logo_proy.png" 
+      image: "media/logo_proy.png"
+      gallery:
+        - "media/tebas/1764688478809.jpg"
+        - "media/sierra_yeguas/1764688479676.jpg"
+        - "media/tapia/1764688484025.jpg"
+        - "media/cuevas_del_becerro/1764688483083.jpg"
       title: "iSAT: Sistema de Alerta Temprana Inteligente"
       text: "Gestión predictiva de aguas subterráneas para combatir la sequía y garantizar la calidad del agua"
       primary_action:
         id: btn-technology
-        text: "Conoce la Tecnología"
-        url: "#tecnologia"
+        text: "Conoce la Metodología"
+        url: "/Metodología/#tecnologia"
       secondary_action:
         text: "Grupos"
         url: "#pilotos"
@@ -28,28 +33,28 @@ sections:
       css_class: "dark"
 
 
-  # Sección 2: El Reto - La Crisis del Agua
-  - block: features
-    id: reto
-    content:
-      title: "El Doble Desafío de la Sequía"
-      text: "**Los períodos de sequía conllevan una merma significativa en la disponibilidad de los recursos hídricos, pero también un empeoramiento de la calidad. Cuando los recursos superficiales son insuficientes, se recurre especialmente a los acuíferos.**"
-      items:
-        - name: "Riesgo de Sobreexplotación"
-          description: "Es necesario desarrollar tecnologías avanzadas que permitan optimizar el aprovechamiento del agua subterránea para evitar su sobreexplotación."
-          icon: "exclamation-triangle"
-        - name: "Vulnerabilidad a la Contaminación"
-          description: "Los acuíferos kársticos, muy permeables, son especialmente vulnerables a la contaminación, que puede transportarse a altas velocidades (superiores a 100 m/h)."
-          icon: "flask"
-        - name: "Escasez de Sistemas de Alerta"
-          description: "En España apenas hay implementados Sistemas de Alerta Temprana (SAT) en captaciones de agua procedentes de acuíferos."
-          icon: "bell"
-    design:
-      columns: '3'
-      background:
-        color: "#f8f9fa"
-      spacing:
-        padding: ["0", 0, "4rem", 0]
+  # # Sección 2: El Reto - La Crisis del Agua
+  # - block: features
+  #   id: reto
+  #   content:
+  #     title: "El Doble Desafío de la Sequía"
+  #     text: "**Los períodos de sequía conllevan una merma significativa en la disponibilidad de los recursos hídricos, pero también un empeoramiento de la calidad. Cuando los recursos superficiales son insuficientes, se recurre especialmente a los acuíferos.**"
+  #     items:
+  #       - name: "Riesgo de Sobreexplotación"
+  #         description: "Es necesario desarrollar tecnologías avanzadas que permitan optimizar el aprovechamiento del agua subterránea para evitar su sobreexplotación."
+  #         icon: "exclamation-triangle"
+  #       - name: "Vulnerabilidad a la Contaminación"
+  #         description: "Los acuíferos kársticos, muy permeables, son especialmente vulnerables a la contaminación, que puede transportarse a altas velocidades (superiores a 100 m/h)."
+  #         icon: "flask"
+  #       - name: "Escasez de Sistemas de Alerta"
+  #         description: "En España apenas hay implementados Sistemas de Alerta Temprana (SAT) en captaciones de agua procedentes de acuíferos."
+  #         icon: "bell"
+  #   design:
+  #     columns: '3'
+  #     background:
+  #       color: "#f8f9fa"
+  #     spacing:
+  #       padding: ["0", 0, "4rem", 0]
 
   # Sección 3: Nuestra Solución - Presentando iSAT
   - block: solucion
@@ -81,39 +86,42 @@ sections:
       spacing:
         padding: ["1rem", 0, "1rem", 0]
       
-  # Sección de Tecnología Innovadora
-  - block: features
-    id: tecnologia
+  # Sección de navegación con tarjetas métricas
+  - block: hero-metrics
+    id: exploracion
     content:
-      title: "Innovación en el Corazón de iSAT"
+      title: "Explora el proyecto por apartados"
+      text: "Accede directamente a las secciones clave del proyecto."
       items:
-        - name: "Inteligencia Artificial y Soft Sensors"
-          description: "iSAT utiliza soft sensors (sensores virtuales) basados en IA para estimar parámetros complejos, como la concentración de nitratos, a partir de mediciones más sencillas y económicas. Esto reduce costes y permite el control de contaminantes que hoy no se pueden medir en continuo."
-          icon: microchip
-        - name: "Sistema Abierto y Flexible"
-          description: "A diferencia de las soluciones comerciales con software propietario, iSAT es un sistema abierto y configurable. Permite acoplar un número flexible de sensores y adaptarse a distintos esquemas de captación."
-          icon: sliders-h
-        - name: "Bajo Coste y Bajo Consumo"
-          description: "El diseño se centra en una reducción significativa de costes tanto en hardware como en software para facilitar su expansión. Su bajo consumo le permite operar con autonomía en puntos remotos."
-          icon: dollar-sign
-        - name: "Conectividad Total"
-          description: "Para garantizar la conectividad en áreas con cobertura limitada, el sistema incorpora comunicación multi-protocolo, incluyendo GPRS y un módulo de comunicaciones por satélite (LEO)."
-          icon: signal
-      spacing:
-        padding: ["1rem", 0, "1rem", 0]
-
-  # Sección de Proyectos Piloto
-  - block: pilotos 
-    id: pilotos
-    content:
-      title: "Del Laboratorio al Terreno: Proyectos Piloto"
-      subtitle: |
-        El proyecto busca elevar la tecnología desde un nivel **TRL4** (prueba de concepto) hasta un **TRL7**, validando el prototipo pre-comercial en condiciones reales de operación.
+        - name: "Calidad del Agua"
+          description: "Contexto hidrogeológico y riesgos de contaminación en sequía."
+          icon: "flask"
+          url: "/problematica/#calidad"
+          metric: "kárstico"
+          metric_label: "acuífero"
+        - name: "Objetivos del Proyecto"
+          description: "Metas técnicas y alcance de validación del sistema iSAT."
+          icon: "bullseye"
+          url: "/objetivos/"
+          metric: "TRL7"
+          metric_label: "nivel objetivo"
+        - name: "Marco de Financiación"
+          description: "Ficha administrativa y dotación tecnológica del proyecto."
+          icon: "university"
+          url: "/financiacion/"
+          metric: "24 m"
+          metric_label: "duración"
+        - name: "Metodología iSAT"
+          description: "Tecnologías clave y enfoque de desarrollo del sistema."
+          icon: "microchip"
+          url: "/metodologia/#tecnologia"
+          metric: "4 nodos"
+          metric_label: "pilotos activos"
     design:
       background:
-        gradient:
-          start: "#f1f5f9"
-          end: "#e2e8f0"
+        color: "#ffffff"
+      spacing:
+        padding: ["1rem", 0, "1rem", 0]
 
   # Sección de Mapa de Ubicación
   - block: map
@@ -126,7 +134,7 @@ sections:
         - title: "Teba"
           subtitle: "Control en Guadalteba (Piloto Activo)"
           color: "text-indigo-600"
-        - title: "Sierra de Líbar (Benaoján)"
+        - title: "Cuevas del Becerro"
           subtitle: "Manantial Remoto"
           color: "text-blue-500"
         - title: "Sierra de Yeguas"
@@ -136,19 +144,54 @@ sections:
           subtitle: "Bombeo Municipal"
           color: "text-orange-500"
 
-    # Sección del Equipo
+  # Sección de Divulgación
+  - block: divulgacion
+    id: divulgacion
+    content:
+      title: "Últimas Noticias"
+      text: "Novedades recientes de desarrollo, validación y divulgación del proyecto iSAT."
+      featured:
+        name: "Instalación finalizada en Sierra de Yeguas"
+        description: "Despliegue completado del nodo piloto con comunicación LoRa y satélite. Las primeras lecturas en continuo de conductividad y nivel piezométrico ya se reciben en la plataforma cloud, marcando el inicio de la fase de validación en campo."
+        image: "media/sierra_yeguas/1764688479676.jpg"
+        tag: "Infraestructura"
+        tag_color: "blue"
+        date: "Enero 2026"
+        url: "/noticias/"
+        cta: "Leer noticia completa"
+      items:
+        - name: "Nueva jornada de demostración en la UMA"
+          description: "Sesión abierta para mostrar sensores virtuales, operación en campo y análisis de datos en tiempo real."
+          image: "media/tebas/1764688478809.jpg"
+          icon: "calendar-check"
+          tag: "Evento"
+          tag_color: "green"
+          date: "Febrero 2026"
+          url: "/eventos/"
+        - name: "Publicaciones técnicas iSAT"
+          description: "Consulta los documentos y avances científicos más recientes vinculados al proyecto."
+          image: "media/tapia/1764688484025.jpg"
+          icon: "book-open"
+          tag: "Ciencia"
+          tag_color: "purple"
+          date: "2025–2026"
+          url: "/publicaciones/"
+        - name: "Visita técnica a Cuevas del Becerro"
+          description: "El equipo realizó una jornada de campo para revisar el estado del prototipo instalado en el manantial urbano."
+          image: "media/cuevas_del_becerro/1764688483083.jpg"
+          icon: "map-marker-alt"
+          tag: "Campo"
+          tag_color: "orange"
+          date: "Diciembre 2025"
+          url: "/noticias/"
+
+  # Sección del Equipo
   - block: team
     id: equipo
     content:
-      title: "Un Equipo Multidisciplinar"
-      subtitle: "iSAT es fruto de la colaboración entre investigadores del Centro de Hidrogeología de la Universidad de Málaga (CEHIUMA), expertos en la gestión de recursos hídricos, y el grupo de investigación ERTIS, especialistas en desarrollo de software para infraestructuras críticas, IoT e Inteligencia Artificial."
-      groups:
-        - name: "CEHIUMA"
-          icon: water
-          description: "Con décadas de experiencia en la investigación de acuíferos y la participación en numerosos proyectos nacionales e internacionales sobre gestión hídrica."
-        - name: "ERTIS"
-          icon: laptop-code
-          description: "Amplia experiencia en la integración de dispositivos IoT, gemelos digitales, IA y computación en la nube (cloud), con una reconocida capacidad de transferencia tecnológica."
+      eyebrow: "Equipo de investigación"
+      title: "Las personas detrás de iSAT"
+      subtitle: "Un equipo multidisciplinar de expertos en hidrogeología, IoT, inteligencia artificial y desarrollo de software."
       investigators_title: "Investigadores Clave"
       investigators:
         - role: "Investigador Principal"
@@ -161,60 +204,40 @@ sections:
           name: "Manuel Díaz Rodríguez"
         - role: "IoT e Inteligencia Artificial"
           name: "Luis Llopis Torres"
-    design:
-      background:
-        color: "#f8f9fa"
 
-  # Sección de Detalles del Proyecto
-  - block: markdown
-    id: proyecto-intro
-    content:
-      title: "Detalles del Proyecto"
-      text: |
-        <div style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15);">
-          <h2 style="color: white; margin-bottom: 1rem; font-weight: 600;">Desarrollo de un Sistema de Alerta Temprana Inteligente</h2>
-          <p style="font-size: 1.1rem; opacity: 0.95; line-height: 1.6;">Control de extracciones y contaminación de aguas subterráneas en abastecimiento urbanos durante períodos de sequía</p>
-        </div>
+  # # Sección de Detalles del Proyecto
+  # - block: markdown
+  #   id: proyecto-intro
+  #   content:
+  #     title: "Detalles del Proyecto"
+  #     text: |
+  #       <div style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15);">
+  #         <h2 style="color: white; margin-bottom: 1rem; font-weight: 600;">Desarrollo de un Sistema de Alerta Temprana Inteligente</h2>
+  #         <p style="font-size: 1.1rem; opacity: 0.95; line-height: 1.6;">Control de extracciones y contaminación de aguas subterráneas en abastecimiento urbanos durante períodos de sequía</p>
+  #       </div>
 
-  # Información del proyecto con iconos
-  - block: features
-    id: proyecto-info
-    content:
-      items:
-        - name: "Duración del Proyecto"
-          description: "El proyecto tiene una duración total de 24 meses, dividido en fases de desarrollo, implementación y validación."
-          icon: clock
-        - name: "Desarrollo Experimental"
-          description: "Categoría de investigación aplicada enfocada en el desarrollo de prototipos funcionales y su validación en entornos reales."
-          icon: flask
-        - name: "Nivel Tecnológico TRL4 → TRL7"
-          description: "Evolución desde prueba de concepto hasta prototipo pre-comercial validado en entornos operacionales."
-          icon: chart-bar
-        - name: "Financiación Ministerio de Ciencia"
-          description: "Proyecto financiado por el Ministerio de Ciencia e Innovación dentro del programa de I+D+i."
-          icon: university
-    design:
-      background:
-        color: "white"
-      spacing:
-        padding: ["3rem", 0, "3rem", 0]
-
-  # Objetivos específicos
-    # Objetivos específicos
-  - block: objetivos
-    id: objetivos
-    content:
-      title: "Objetivos Específicos"
-      items:
-        - title: "Versatilidad máxima"
-          description: "en diferentes esquemas de captación"
-        - title: "Dispositivo pre-comercial"
-          description: "configurable, autónomo y con comunicación multi-protocolo"
-        - title: "Capacidad predictiva mejorada"
-          description: "mediante IA y reducción de costes de sensórica"
-        - title: "Validación tecnológica"
-          description: "en entornos controlados y reales"
-    design:
-      background:
-        color: "bg-primary"
+  # # Información del proyecto con iconos
+  # - block: features
+  #   id: proyecto-info
+  #   content:
+  #     items:
+  #       - name: "Duración del Proyecto"
+  #         description: "El proyecto tiene una duración total de 24 meses, dividido en fases de desarrollo, implementación y validación."
+  #         icon: clock
+  #       - name: "Desarrollo Experimental"
+  #         description: "Categoría de investigación aplicada enfocada en el desarrollo de prototipos funcionales y su validación en entornos reales."
+  #         icon: flask
+  #       - name: "Nivel Tecnológico TRL4 → TRL7"
+  #         description: "Evolución desde prueba de concepto hasta prototipo pre-comercial validado en entornos operacionales."
+  #         icon: chart-bar
+  #       - name: "Financiación Ministerio de Ciencia"
+  #         description: "Proyecto financiado por el Ministerio de Ciencia e Innovación dentro del programa de I+D+i."
+  #         icon: university
+  #   design:
+  #     background:
+  #       color: "white"
+  #     spacing:
+  #       padding: ["3rem", 0, "3rem", 0]
 ---
+
+

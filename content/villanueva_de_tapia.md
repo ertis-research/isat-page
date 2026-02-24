@@ -12,6 +12,7 @@ sections:
         text: "Emplazamiento Activo"
       title: "Zona Piloto:"
       highlight: "Villanueva de Tapia"
+      image: "media/tapia/1764688484025.jpg"
       left_title: "Tipología de Captación"
       left_text: "Bombeo Urbano"
       right_title: "Reto Específico"

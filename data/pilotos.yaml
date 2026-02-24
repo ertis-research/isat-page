@@ -11,3 +11,27 @@
   entorno: "Configuración adaptada a un pozo de bombeo con toma de red en un entorno urbano."
   retos: "Situación de sobreexplotación del acuífero y contaminación por vertidos."
   objetivo: "Demostrar la flexibilidad de iSAT para integrarse en sistemas de bombeo y gestionar la extracción de manera eficiente."
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EJEMPLO COMPLETO DE ENTRADA — copia y descomenta para añadir un nuevo piloto
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# - titulo: "Nombre del Piloto"
+#   # Texto principal de la tarjeta (admite **negrita** Markdown)
+#
+#   subtitulo: "Descripción breve del sistema o acuífero"
+#   # Subtítulo que aparece justo bajo el título en la tarjeta
+#
+#   color_clase: "glass-card-blue"
+#   # Color de acento de la tarjeta. Opciones disponibles:
+#   #   glass-card-blue  → acento azul  (#3b82f6)
+#   #   glass-card-green → acento verde (#10b981)
+#
+#   entorno: "Descripción del emplazamiento físico y condiciones de instalación."
+#   # Se muestra como «Entorno: …» en la tarjeta
+#
+#   retos: "Principales problemáticas hídricas o técnicas del punto de monitorización."
+#   # Se muestra como «Retos: …»
+#
+#   objetivo: "Qué se pretende demostrar o validar en este piloto concreto."
+#   # Se muestra como «Objetivo: …»

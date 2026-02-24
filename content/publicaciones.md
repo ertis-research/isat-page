@@ -18,41 +18,20 @@ sections:
     content:
       items:
         - category: "journal"
-          badges: ["Q1","OA"]
-          topics: ["Nitratos","Machine Learning"]
-          venue: "Journal of Hydrology · 2024"
-          title: "Application of Machine Learning for Nitrate Prediction in Karst Springs using low-cost soft sensors"
-          authors: "A.J. Chaves, M. Mudarra, B. Andreo, M. Díaz"
-          summary: "Novel approach for predicting nitrate concentrations in karst aquifers using ANN fed by conductivity and turbidity."
+          badges: ["AI-Driven","Deep Learning", "High Precision"]
+          topics: ["Deep Learning","Computer Vision", "Automated Data Analysis", "Hidrogeología"]
+          venue: "Journal of Computational Science (ScienceDirect / Elsevier)"
+          title: "A soft sensor open-source methodology for inexpensive monitoring of water quality: A case study of NO3− concentrations"
+          authors: "A.J. Chaves, J. Fernández-Ortega, C. Martín, M. Díaz, L. Llopis Torres, J.A. Barberá, B. Andreo"
+          summary: "This study introduces a novel Deep Learning framework for the automated identification of microfossils, streamlining biostratigraphic analysis through high-precision computer vision techniques"
           links:
-            doi: "#"
-            pdf: "#"
-        - category: "congress"
-          badges: ["EuroKarst 2024"]
-          topics: ["Field","Nitratos"]
-          venue: "Roma, Italia · Junio 2024"
-          title: "Preliminary results of the iSAT early warning system in Sierra de Yeguas pilot site"
-          authors: "J.A. Barberá, M.A. Fortes, C. Martín, B. Andreo"
-          summary: "Early field results and system performance at the pilot site."
-          links:
-            abstract: "#"
-        - category: "journal"
-          badges: ["Q1","OA"]
-          topics: ["IoT","Hardware"]
-          venue: "Sensors (MDPI) · 2023"
-          title: "Design of an autonomous IoT node for remote groundwater monitoring: The iSAT architecture"
-          authors: "L.M. Llopis, C. Martín, M. Díaz"
-          summary: "Low-power hardware architecture based on ESP32 with hybrid communications for remote deployment."
-          links:
-            doi: "#"
-            pdf: "#"
+            doi: "https://www.sciencedirect.com/science/article/pii/S1877750324003156"
+            pdf: "pdf/1-s2.0-S1877750324003156-main.pdf"
         - category: "thesis"
-          badges: ["Tesis Doctoral"]
-          topics: ["Machine Learning"]
-          venue: "Universidad de Málaga · En curso"
+          badges: ["Master's Tesis"]
+          topics: ["Contaminación por Nitratos", "Abastecimiento Urbano", "Hidrogeología"]
+          venue: "Master's Thesis (Master in Water Resources and Environment, UMA)"
           title: "Algoritmos predictivos para la gestión de la calidad del agua en acuíferos sobreexplotados"
-          authors: "A.J. Chaves"
-          summary: "Tesis doctoral en desarrollo que propone soft sensors y modelos predictivos para gestión en redes de abastecimiento."
-          links:
-            ficha: "#"
+          authors: "Á. Romero Sencianes"
+          summary: "A comprehensive assessment of nitrate contamination in urban water supply sources across Málaga, establishing a preliminary characterization of groundwater quality to support sustainable water resource management."
 ---

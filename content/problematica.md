@@ -9,6 +9,8 @@ sections:
   - block: hero
     id: hero
     content:
+      announcement:
+        text: "Problema a resolver"
       align: "center"
       title: "Problemática: sequía y deterioro de la calidad del agua"
       text: >-

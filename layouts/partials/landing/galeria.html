@@ -1,39 +1,42 @@
 {{/* Partial: Galería de Actuaciones */}}
 {{ $sec := . }}
 {{ if $sec }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
 <section class="py-24 bg-white">
   <div class="container mx-auto px-6 max-w-6xl">
     <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">{{ $sec.content.title }}</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 gallery-grid">
       {{ range $sec.content.items }}
-      <div class="gallery-item rounded-xl bg-gray-100 aspect-video group cursor-pointer shadow-sm landing-gallery-item">
+      {{ $imgURL := .image }}
+      {{ if and .image (not (hasPrefix .image "http")) }}
+        {{ $cleanPath := replaceRE "^/?(assets/|static/)" "" .image }}
+        {{ $res := resources.Get $cleanPath }}
+        {{ if not $res }}{{ $res = resources.Get (path.Join "media" $cleanPath) }}{{ end }}
+        {{ if $res }}{{ $imgURL = $res.RelPermalink }}{{ end }}
+      {{ end }}
+      <a href="{{ $imgURL }}"
+         class="glightbox gallery-item rounded-xl bg-gray-100 aspect-video group cursor-pointer shadow-sm landing-gallery-item"
+         data-gallery="gallery-{{ $sec.content.title | urlize }}">
         {{ if .image }}
-          {{ $imgURL := .image }}
-          {{ if not (hasPrefix .image "http") }}
-            {{/* Limpiar rutas para buscar en assets */}}
-            {{ $cleanPath := replaceRE "^/?(assets/|static/)" "" .image }}
-            
-            {{/* Intentar encontrar el recurso en assets */}}
-            {{ $res := resources.Get $cleanPath }}
-            
-            {{/* Si no se encuentra, intentar buscar asumiendo que está en media/ si no se especificó */}}
-            {{ if not $res }}
-               {{ $res = resources.Get (path.Join "media" $cleanPath) }}
-            {{ end }}
-
-            {{ if $res }}
-              {{ $imgURL = $res.RelPermalink }}
-            {{ end }}
-          {{ end }}
           <img src="{{ $imgURL }}" alt="{{ .title }}" class="w-full h-full object-cover">
         {{ end }}
         <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6 landing-gallery-overlay">
           <span class="text-white font-bold text-lg">{{ .title }}</span>
           {{ with .caption }}<span class="text-gray-200 text-sm">{{ . }}</span>{{ end }}
+          
+          <span class="mt-2 bg-black/40 text-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <i class="fas fa-expand text-xs"></i>
+          </span>
         </div>
-      </div>
+      </a>
       {{ end }}
     </div>
   </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true, autoplayVideos: false });
+</script>
 {{ end }}

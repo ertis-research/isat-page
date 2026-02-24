@@ -16,6 +16,10 @@ main:
     url: objetivos/
     weight: 20
   - parent: Inicio
+    name: Metodologia
+    url: metodologia/
+    weight: 15
+  - parent: Inicio
     name: Impacto esperado
     url: impacto_esperado/
     weight: 10

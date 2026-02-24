@@ -118,7 +118,9 @@
       <div class="w-full {{ if eq $align "left" }}lg:w-1/2{{ else }}mt-12 max-w-5xl{{ end }}">
         <div class="relative group">
           <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-          <img src="{{ $imgResource.RelPermalink }}" alt="{{ $s.content.title }}" class="relative rounded-2xl shadow-2xl w-full border-4 border-white object-cover">
+          <div class="relative rounded-2xl overflow-hidden border-4 border-white shadow-2xl" style="aspect-ratio:4/3;">
+            <img src="{{ $imgResource.RelPermalink }}" alt="{{ $s.content.title }}" class="w-full h-full object-cover">
+          </div>
         </div>
       </div>
       {{ end }}

@@ -1,85 +1,219 @@
-/* Grupos de investigación */
-  .equipo-grupos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 3rem 0;
+/* ============================================================
+   Team — Lista de investigadores, estilo corporativo
+   ============================================================ */
+
+/* ── Encabezado ── */
+.tm-header {
+  max-width: 42rem;
+  margin: 0 auto 2.5rem auto;
+  text-align: center;
+}
+.tm-eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 0.5rem;
+}
+.tm-heading {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+.tm-subheading {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ── Título de la lista ── */
+.tm-list-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+  margin-bottom: 0.75rem;
+  padding-left: 0.25rem;
+}
+
+/* ── Lista ── */
+.tm-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+/* ── Fila ── */
+.tm-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.18s ease;
+}
+.tm-row:last-child {
+  border-bottom: none;
+}
+.tm-row:hover {
+  background: #f0f7ff;
+}
+
+/* Avatar circular azul */
+.tm-row__avatar {
+  flex-shrink: 0;
+}
+.tm-row__photo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #dbeafe;
+}
+.tm-row__initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+  flex-shrink: 0;
+}
+
+/* Info (nombre + bio) */
+.tm-row__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.tm-row__name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.3;
+}
+.tm-row__bio {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  line-height: 1.4;
+  margin-top: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Badge de rol (azul monocolor) */
+.tm-row__role {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* Iconos de contacto */
+.tm-row__links {
+  display: flex;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+.tm-row__link {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+.tm-row__link:hover { color: #2563eb; }
+
+/* Responsive: ocultar badge en pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .tm-row {
+    padding: 0.85rem 1rem;
+    gap: 0.75rem;
   }
-  
-  .equipo-grupo {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border-top: 4px solid #3b82f6;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
+  .tm-row__role {
+    display: none;
   }
-  
-  .equipo-grupo:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  }
-  
-  .equipo-grupo-icono {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-  
-  .equipo-grupo-titulo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #1f2937;
-  }
-  
-  .equipo-grupo-descripcion {
-    color: #6b7280;
-    line-height: 1.6;
-  }
-  
-  /* Investigadores */
-  .equipo-investigadores {
-    background: #f8fafc;
-    border-radius: 8px;
-    padding: 2rem;
-    margin-top: 3rem;
-  }
-  
-  .equipo-investigador {
-    align-items: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid #e2e8f0;
-  }
-  
-  .equipo-investigador:last-child {
-    border-bottom: none;
-  }
-  
-  .equipo-investigador-rol {
-    font-weight: 600;
-    color: #1e40af;
-    min-width: 200px;
-  }
-  
-  .equipo-investigador-nombre {
-    color: #374151;
-  }
-  
-  @media (max-width: 768px) {
-    .equipo-grupos {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    
-    .equipo-investigador {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    
-    .equipo-investigador-rol {
-      min-width: auto;
-      margin-bottom: 0.5rem;
-    }
-  }
+}
+
+/* ── Grupos (si se usan) ── */
+.equipo-grupos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.equipo-grupo {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  border-top: 4px solid #2563eb;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.equipo-grupo-icono {
+  font-size: 1.5rem;
+  color: #2563eb;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+.equipo-grupo-titulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.4rem;
+}
+.equipo-grupo-descripcion {
+  color: #6b7280;
+  line-height: 1.5;
+  font-size: 0.87rem;
+}
+
+/* Encabezado */
+.tm-eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 0.6rem;
+}
+.tm-heading {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+.tm-subheading {
+  color: #6b7280;
+  font-size: 1rem;
+  max-width: 38rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}

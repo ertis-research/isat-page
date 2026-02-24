@@ -1,0 +1,79 @@
+{{/* Hugo Blox: Hero Metrics — Tarjetas de navegación con métricas destacadas */}}
+{{ $css := resources.Get "css/hero-metrics.css" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+
+<section class="hm-section py-16 lg:py-20">
+  <div class="container mx-auto px-6 lg:px-8">
+
+    {{/* Encabezado */}}
+    {{ with $block.content.title }}
+      <div class="text-center mb-14">
+        <h2 class="hm-heading text-3xl font-bold tracking-tight sm:text-4xl">
+          {{ . | markdownify }}
+        </h2>
+        {{ with $block.content.text }}
+          <p class="hm-subheading mt-4 text-lg max-w-2xl mx-auto">
+            {{ . | $page.RenderString | emojify }}
+          </p>
+        {{ end }}
+      </div>
+    {{ end }}
+
+    {{/* Grid de tarjetas */}}
+    <div class="hm-grid">
+      {{ range $i, $item := $block.content.items }}
+        {{ $colors := slice "blue" "indigo" "emerald" "orange" }}
+        {{ $color := index $colors (mod $i (len $colors)) }}
+        {{ $itemURL := "" }}
+        {{ with $item.url }}
+          {{ if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "#") }}
+            {{ $itemURL = . }}
+          {{ else }}
+            {{ $itemURL = . | relLangURL }}
+          {{ end }}
+        {{ end }}
+
+        <a href="{{ $itemURL }}" class="hm-card hm-card--{{ $color }}">
+          {{/* Barra de acento superior */}}
+          <div class="hm-card__accent"></div>
+
+          {{/* Cabecera: icono + métrica */}}
+          <div class="hm-card__header">
+            <div class="hm-card__icon-wrap">
+              {{ if $item.icon }}
+                <i class="fas fa-{{ $item.icon }} hm-card__icon"></i>
+              {{ end }}
+            </div>
+            {{ with $item.metric }}
+              <div class="hm-card__metric-wrap">
+                <span class="hm-card__metric">{{ . }}</span>
+                {{ with $item.metric_label }}
+                  <span class="hm-card__metric-label">{{ . }}</span>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+
+          {{/* Cuerpo */}}
+          <div class="hm-card__body">
+            <h3 class="hm-card__title">{{ $item.name | markdownify }}</h3>
+            <p class="hm-card__desc">{{ $item.description | $page.RenderString | emojify }}</p>
+          </div>
+
+          {{/* Footer CTA */}}
+          <div class="hm-card__footer">
+            <span class="hm-card__cta">
+              {{ with $item.cta }}{{ . }}{{ else }}Ver más{{ end }}
+              <i class="fas fa-arrow-right hm-card__cta-arrow"></i>
+            </span>
+          </div>
+        </a>
+      {{ end }}
+    </div>
+
+  </div>
+</section>
