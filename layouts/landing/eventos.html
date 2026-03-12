@@ -14,7 +14,7 @@
   </div>
 </section>
 
-{{ $f := site.Data.events.featured }}
+{{ $f := index site.Data.events.items 0 }}
 {{ if $f }}
 <section class="py-12">
   <div class="container mx-auto px-6 max-w-5xl">
@@ -22,14 +22,20 @@
       <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
       <div class="flex flex-col md:flex-row">
         <div class="md:w-2/5 relative min-h-[250px] md:min-h-full">
-          <img src="{{ $f.image }}" alt="{{ $f.title }}" class="absolute inset-0 w-full h-full object-cover opacity-90">
+          {{ if $f.image }}
+            {{ if hasPrefix $f.image "http" }}
+              <img src="{{ $f.image }}" alt="{{ $f.title }}" class="absolute inset-0 w-full h-full object-cover opacity-90">
+            {{ else }}
+              {{ $fimg := resources.Get $f.image }}
+              {{ if $fimg }}<img src="{{ $fimg.RelPermalink }}" alt="{{ $f.title }}" class="absolute inset-0 w-full h-full object-cover opacity-90">{{ end }}
+            {{ end }}
+          {{ end }}
           <div class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-lg animate-pulse">{{ $f.status }}</div>
         </div>
 
         <div class="md:w-3/5 p-8 md:p-12 text-white relative z-10">
           {{ $dformat := default "2 Jan, 2006" .Site.Params.eventos.date_format }}
-          {{ $fdate := time $f.date }}
-          <div class="flex items-center gap-2 mb-4 text-blue-300 font-semibold text-sm uppercase tracking-wider"><i class="far fa-calendar-check"></i> {{ with $fdate }}{{ .Format $dformat }}{{ else }}{{ $f.date }}{{ end }}</div>
+          <div class="flex items-center gap-2 mb-4 text-blue-300 font-semibold text-sm uppercase tracking-wider"><i class="far fa-calendar-check"></i> {{ $f.date }}</div>
           <h2 class="text-3xl font-bold mb-4 leading-tight">{{ $f.title }}</h2>
           <p class="text-blue-100 mb-8 leading-relaxed">{{ $f.description }}</p>
           <div class="flex flex-wrap gap-4">
@@ -98,7 +104,7 @@
   <div class="container mx-auto px-6 max-w-5xl">
     <h3 class="text-2xl font-bold text-gray-900 mb-10">Eventos Realizados</h3>
     <div class="grid md:grid-cols-3 gap-8">
-      {{ range .Site.Data.events.past }}
+      {{ range after 1 .Site.Data.events.items }}
       <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-md transition-shadow group">
         <div class="relative h-40 overflow-hidden">
           {{ if .image }}
@@ -112,9 +118,9 @@
           <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </div>
         <div class="p-5">
-          <span class="text-xs font-bold text-gray-400 uppercase mb-1 block">{{ .month_short }}</span>
+          <span class="text-xs font-bold text-gray-400 uppercase mb-1 block">{{ .date }}</span>
           <h4 class="font-bold text-gray-900 mb-2 line-clamp-2">{{ .title }}</h4>
-          <a href="{{ .link }}" class="text-sm text-blue-600 font-semibold hover:underline">{{ default "Leer resumen" .Site.Params.eventos.read_summary_text }}</a>
+          <a href="{{ .url }}" class="text-sm text-blue-600 font-semibold hover:underline">{{ default "Leer resumen" .Site.Params.eventos.read_summary_text }}</a>
         </div>
       </div>
       {{ end }}

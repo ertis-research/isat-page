@@ -1,122 +1,105 @@
-featured:
-  id: "featured-1"
-  date: "2017-09-25"
-  title: "Innovative On-line Monitoring and Decision Support Tool"
-  description: "Presentación de una herramienta avanzada de monitoreo en línea y soporte a la decisión (DSS) diseñada para la protección y gestión de acuíferos en zonas con alto estrés hídrico del sur de España."
-  location: "Dubrovnik, Croatia"
-  status: "Published / Presented"
-  image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop"
-  signup: false
-  program: true
-  program_url: "https://drive.google.com/file/d/1Fqy9F5xkRT63YCBqhCUKuLWuqVm030XO/view"
-  # program_url: PDF local  → "pdf/nombre-del-programa.pdf"  (coloca el archivo en assets/pdf/)
-  # program_url: URL externa → "https://ejemplo.com/programa.pdf"
-  # program_url: Página web  → "/eventos/programa-jornada/"
+﻿# ---------------------------------------------------------------------------
+# EVENTOS iSAT -- ferias, jornadas, presentaciones y apariciones mediaticas.
+# El primer elemento (mas reciente) se usa como featured automaticamente.
+#
+# Campos comunes con noticias.yaml y publicaciones.yaml:
+#   title       : Titulo del evento
+#   date        : Fecha legible (p.ej. "Septiembre 2025")
+#   date_sort   : Fecha ISO para ordenacion (YYYY-MM-DD)
+#   category    : eventos
+#   tag         : Etiqueta visible en las tarjetas
+#   tag_color   : blue | green | purple | orange | red
+#   image       : Ruta local (media/...) o URL https://...
+#   icon        : Icono FA de respaldo si no hay imagen
+#   description : Texto corto visible en tarjeta y homepage
+#   url         : Enlace destino del evento
+#   cta         : Texto del boton en la vista featured (opcional)
+#
+# Campos opcionales especificos de eventos:
+#   location    : Lugar del evento
+#   status      : Etiqueta de estado ("Realizado", "Proximamente", etc.)
+#   signup      : true -> boton de inscripcion
+#   program     : true -> boton de programa PDF
+#   program_url : URL del programa (PDF local, externo, o pagina interna)
+#
+# ORDEN: mas reciente primero -> el primero se muestra como featured.
+# ---------------------------------------------------------------------------
 
-past:
-  - id: "p-sept2025"
-    month_short: "Sept 2025"
-    title: "Microcharla: ¿Y si mañana no sale agua de tu grifo? Cuidemos el agua invisible…"
+items:
+  - title: "Nueva jornada de demostracion en la UMA"
+    date: "Febrero 2026"
+    date_sort: "2026-02-01"
+    category: "eventos"
+    tag: "Evento"
+    tag_color: "green"
+    image: "media/tebas/1764688478809.jpg"
+    icon: "calendar-check"
+    description: "Sesion abierta para mostrar sensores virtuales, operacion en campo y analisis de datos en tiempo real."
+    url: "/eventos/"
+    cta: "Ver detalles"
+    location: "Universidad de Malaga"
+    status: "Realizado"
+
+  - title: "Microcharla: Y si manana no sale agua de tu grifo? Cuidemos el agua invisible"
+    date: "Septiembre 2025"
+    date_sort: "2025-09-01"
+    category: "eventos"
+    tag: "Evento"
+    tag_color: "green"
     image: "media/aguaimag-760x470.png"
-    link: "https://lanochedelosinvestigadores.fundaciondescubre.es/actividades/y-si-manana-no-sale-agua-de-tu-grifo-cuidemos-el-agua-invisible/"
+    icon: "calendar-check"
+    description: "Participacion del equipo iSAT en La Noche de los Investigadores, con una microcharla sobre la importancia del agua subterranea y las sequias en zonas karsticas."
+    url: "https://lanochedelosinvestigadores.fundaciondescubre.es/actividades/y-si-manana-no-sale-agua-de-tu-grifo-cuidemos-el-agua-invisible/"
+    cta: "Ver evento"
+    location: "Fundacion Descubre"
+    status: "Realizado"
 
-  - id: "p-mar2025"
-    month_short: "Mar 2025"
-    title: "Programa Tesis de Canal Sur: La gestión de las Aguas Subterráneas"
+  - title: "Programa Tesis de Canal Sur: La gestion de las Aguas Subterraneas"
+    date: "Marzo 2025"
+    date_sort: "2025-03-02"
+    category: "eventos"
+    tag: "Evento"
+    tag_color: "purple"
     image: "media/a8a798a79a094a599593df8c691d6bab.png"
-    link: "https://www.canalsurmas.es/videos/detail/222408-tesis-02032025"
+    icon: "tv"
+    description: "Entrevista en el programa Tesis de Canal Sur sobre la gestion sostenible de los recursos hidricos subterraneos en Andalucia."
+    url: "https://www.canalsurmas.es/videos/detail/222408-tesis-02032025"
+    cta: "Ver programa"
+    location: "Canal Sur, Sevilla"
+    status: "Realizado"
 
-# ─────────────────────────────────────────────────────────────────────────────
-# EJEMPLOS COMENTADOS — copia y descomenta la sección que necesites
-# ─────────────────────────────────────────────────────────────────────────────
+  - title: "Innovative On-line Monitoring and Decision Support Tool"
+    date: "25 Septiembre, 2017"
+    date_sort: "2017-09-25"
+    category: "eventos"
+    tag: "Congreso"
+    tag_color: "blue"
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop"
+    icon: "microphone"
+    description: "Presentacion de una herramienta avanzada de monitoreo en linea y soporte a la decision (DSS) para la proteccion y gestion de acuiferos en zonas con alto estres hidrico del sur de Espana."
+    url: "https://drive.google.com/file/d/1Fqy9F5xkRT63YCBqhCUKuLWuqVm030XO/view"
+    cta: "Ver programa"
+    location: "Dubrovnik, Croatia"
+    status: "Realizado"
+    program: true
+    program_url: "https://drive.google.com/file/d/1Fqy9F5xkRT63YCBqhCUKuLWuqVm030XO/view"
 
-# ── EVENTO DESTACADO (featured) ───────────────────────────────────────────────
-# Solo puede haber uno. Se muestra en la tarjeta grande con imagen de fondo.
-#
-# featured:
-#   id: "featured-1"
-#   # Identificador único (no se muestra en pantalla)
-#
-#   date: "2024-05-15"
-#   # Fecha en formato YYYY-MM-DD; se formatea automáticamente en la web
-#
-#   title: "Título del Evento Destacado"
-#   # Admite comillas dobles; escapa las internas con \"
-#
-#   description: "Descripción breve del evento que aparece bajo el título."
-#
-#   location: "Lugar del evento (ciudad, sala, plataforma...)"
-#
-#   status: "Próximamente"
-#   # Etiqueta que aparece en la esquina de la imagen (texto libre)
-#
-#   image: "https://url-de-la-imagen.jpg"
-#   # URL de la imagen de portada del evento destacado
-#
-#   signup: true
-#   # true  → muestra el botón «Inscribirse Gratis»
-#   # false o ausente → no muestra el botón
-#
-#   program: true
-#   # true  → muestra el botón «Programa (PDF)»
-#   # false o ausente → no muestra el botón
-#
-#   program_url: "pdf/nombre-del-programa.pdf"
-#   # URL del programa. Tres opciones:
-#   #   PDF en assets/ → "pdf/nombre-del-archivo.pdf"  (se descarga automáticamente)
-#   #   URL externa    → "https://ejemplo.com/programa.pdf"
-#   #   Página interna → "/eventos/programa-jornada/"  (navega a la página)
-
-
-# ── EVENTOS PRÓXIMOS (upcoming) ───────────────────────────────────────────────
-# Lista de eventos futuros que aparecen en la «Agenda Próxima».
-#
-# upcoming:
-#   - id: "e-01ene"
-#     # Identificador único (no se muestra en pantalla)
-#
-#     date: "2025-01-01"
-#     # Fecha completa (solo informativa, no se renderiza directamente en la tarjeta)
-#
-#     day: "01"
-#     # Número de día que se muestra en el «badge» de fecha (2 dígitos)
-#
-#     month: "Ene"
-#     # Mes abreviado que se muestra bajo el día en el badge
-#
-#     title: "Título del evento próximo"
-#
-#     description: "Descripción corta que aparece bajo el título en la tarjeta."
-#
-#     location: "Ciudad o plataforma online"
-#
-#     status: "Inscripción Abierta"
-#     # Etiqueta de estado. El color depende del mapeado en params.yaml
-#     # (status_classes). Ejemplos habituales:
-#     #   "Inscripción Abierta"  → badge verde
-#     #   "Próximamente"         → badge azul
-#     #   "Completo"             → badge rojo
-#
-#     waiting: true
-#     # true  → muestra el botón deshabilitado «Esperando fecha» (sin enlace)
-#     # false o ausente → muestra el botón «Detalles» con enlace
-
-
-# ── EVENTOS PASADOS (past) ────────────────────────────────────────────────────
-# Tarjetas de imagen en la sección «Eventos Realizados».
-#
-# past:
-#   - id: "p-ene2025"
-#     # Identificador único (no se muestra en pantalla)
-#
-#     month_short: "Ene 2025"
-#     # Texto que aparece sobre el título como etiqueta de fecha
-#
-#     title: "Titulo del evento pasado"
-#     # Título que aparece en la tarjeta (se recorta a 2 líneas si es largo)
-#
-#     image: "https://url-de-la-imagen.jpg"
-#     # Imagen de portada de la tarjeta (relación de aspecto recomendada 16:9)
-#
-#     link: "/ruta/al/resumen/"
-#     # URL del enlace «Leer resumen»; usa "#" si aún no hay página
+# ---------------------------------------------------------------------------
+# EJEMPLO DE NUEVA ENTRADA -- copia, descomenta y aniade al inicio de items:
+# ---------------------------------------------------------------------------
+#   - title: "Titulo del Evento"
+#     date: "Mes YYYY"
+#     date_sort: "YYYY-MM-DD"
+#     category: "eventos"
+#     tag: "Evento"
+#     tag_color: "green"      # blue | green | purple | orange | red
+#     image: "media/mi-imagen.jpg"
+#     icon: "calendar-check"
+#     description: "Descripcion breve del evento."
+#     url: "/eventos/"
+#     cta: "Ver detalles"
+#     location: "Ciudad, Institucion"
+#     status: "Proximamente"  # Realizado | Proximamente | En curso
+#     signup: false           # true -> boton inscripcion
+#     program: false          # true -> boton programa
+#     program_url: ""

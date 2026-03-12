@@ -41,8 +41,8 @@
   background: white;
 }
 
-.logo-placeholder { filter: grayscale(100%); opacity: 0.7; transition: all 0.3s; }
-.logo-placeholder:hover { filter: grayscale(0%); opacity: 1; }
+.logo-placeholder { filter: grayscale(0%); opacity: 1; transition: all 0.3s; }
+.logo-placeholder:hover { filter: grayscale(100%); opacity: 0.7; }
 
 /* Small utilities specific to this page */
 .financiacion-table thead th { font-weight: 700; }

@@ -3,7 +3,7 @@ title: "Impacto Esperado - iSAT"
 date: 2025-12-10
 type: landing
 layout: impacto_esperado
-subtitle: "Impacto socioeconómico y ambiental del proyecto iSAT"
+subtitle: "Impacto socioeconómico"
 sections:
   - block: hero
     id: hero
@@ -20,35 +20,20 @@ sections:
     content:
       title: "Beneficios Directos"
       items:
-        - name: "Optimización de Captación"
-          description: "Reducción de pérdidas y mejor toma de decisiones operativas en el proceso."
+        - name: "Optimización de tareas de captación"
+          description: "Mejora de la toma de decisiones operativas en el proceso de explotación "
           icon: "faucet-drip"
-        - name: "Mitigación de Riesgos"
-          description: "Alerta temprana ante contaminación y análisis predictivo en tiempo real."
+        - name: "Mitigación de riesgos"
+          description: "Detección temprana de eventos de contaminación y periodos de sequía"
           icon: "shield-virus"
-        - name: "Resiliencia a Sequías"
-          description: "Mayor control de caudales y calidad ante episodios de sequía extrema."
+        - name: "Resiliencia a sequías"
+          description: "Mayor control de caudales de extracción y niveles del acuífero en tiempo real"
           icon: "sun"
-        - name: "Herramienta Inteligente"
-          description: "Solución digital flexible y de bajo coste para modernizar redes."
+        - name: "Gestión económica y versátil"
+          description: "Solución digital flexible, innovadora y de bajo coste"
           icon: "mobile-screen-button"
     design:
       columns: '4'
-
-  - block: stats
-    id: eficiencia
-    content:
-      title: "Eficiencia Operativa Estimada"
-      items:
-        - name: "Ahorro anual de agua"
-          value: "50.000 m³"
-          desc: "Por abastecimiento piloto"
-        - name: "Reducción Energética"
-          value: "10%"
-          desc: "Ahorro en sistemas de bombeo"
-        - name: "Menos Desplazamientos"
-          value: "10%"
-          desc: "Reducción de visitas técnicas"
 
   - block: split
     id: hidrogeo_dig
@@ -73,7 +58,7 @@ sections:
   - block: projection
     id: proyeccion
     content:
-      title: "Proyección y Alcance"
+      title: "Impacto esperado"
       items:
         - name: "Divulgación Social"
           bullets:

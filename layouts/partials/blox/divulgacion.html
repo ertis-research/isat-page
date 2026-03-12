@@ -1,4 +1,4 @@
-{{/* Hugo Blox: Divulgación — Layout 60/40 featured + feed secundario */}}
+﻿{{/* Hugo Blox: Divulgacion -- Layout 60/40 featured + feed con filtros (noticias, eventos, publicaciones) */}}
 {{ $css := resources.Get "css/divulgacion.css" }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -6,13 +6,18 @@
 {{ $page := .wcPage }}
 {{ $block := .wcBlock }}
 
-<section class="dv-section lg:py-20">
+{{/* Datos desde los tres YAMLs */}}
+{{ $noticias      := site.Data.noticias }}
+{{ $eventos       := site.Data.events }}
+{{ $publicaciones := site.Data.publicaciones }}
+
+<section class="dv-section" id="dv-section">
   <div class="container mx-auto px-6 lg:px-8">
 
     {{/* Encabezado */}}
     {{ with $block.content.title }}
-      <div class="text-center mb-12">
-        <span class="dv-eyebrow">Divulgación</span>
+      <div class="text-center mb-8">
+        <span class="dv-eyebrow">Divulgacion</span>
         <h2 class="dv-heading">{{ . | markdownify }}</h2>
         {{ with $block.content.text }}
           <p class="dv-subheading">{{ . | $page.RenderString | emojify }}</p>
@@ -20,13 +25,28 @@
       </div>
     {{ end }}
 
+    {{/* Filtros */}}
+    <div class="dv-filters">
+      <button class="dv-filter-btn dv-filter-btn--active" data-dv-filter="all">
+        <i class="fas fa-th-large"></i> Todo
+      </button>
+      <button class="dv-filter-btn" data-dv-filter="noticias">
+        <i class="fas fa-newspaper"></i> Noticias
+      </button>
+      <button class="dv-filter-btn" data-dv-filter="eventos">
+        <i class="fas fa-calendar-check"></i> Eventos
+      </button>
+      <button class="dv-filter-btn" data-dv-filter="publicaciones">
+        <i class="fas fa-file-alt"></i> Publicaciones
+      </button>
+    </div>
+
     {{/* Layout 60/40 */}}
     <div class="dv-layout">
 
-      {{/* ── NOTICIA DESTACADA (izquierda) ── */}}
-      {{ with $block.content.featured }}
+      {{/* NOTICIA DESTACADA (izquierda) */}}
+      {{ with index $noticias.items 0 }}
         {{ $feat := . }}
-        {{ $featColor := $feat.tag_color | default "blue" }}
         {{ $featURL := "" }}
         {{ with $feat.url }}
           {{ if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "#") }}
@@ -48,7 +68,7 @@
               {{ with $feat.tag }}<span class="dv-card__tag dv-card__tag--light">{{ . }}</span>{{ end }}
               {{ with $feat.date }}<span class="dv-featured__date"><i class="far fa-calendar-alt"></i> {{ . }}</span>{{ end }}
             </div>
-            <h2 class="dv-featured__title">{{ $feat.name | markdownify }}</h2>
+            <h2 class="dv-featured__title">{{ $feat.title | markdownify }}</h2>
             <p class="dv-featured__desc">{{ $feat.description | $page.RenderString }}</p>
             <span class="dv-featured__cta">
               {{ with $feat.cta }}{{ . }}{{ else }}Leer noticia completa{{ end }}
@@ -58,49 +78,102 @@
         </a>
       {{ end }}
 
-      {{/* ── FEED SECUNDARIO (derecha) ── */}}
+      {{/* FEED SECUNDARIO (derecha) */}}
       <div class="dv-feed">
-        {{ range $i, $item := $block.content.items }}
-          {{ $tag_color := $item.tag_color | default "blue" }}
-          {{ $itemURL := "" }}
-          {{ with $item.url }}
-            {{ if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "#") }}
-              {{ $itemURL = . }}
-            {{ else }}
-              {{ $itemURL = . | relLangURL }}
-            {{ end }}
-          {{ end }}
-          {{ $itemImg := $item.image }}
-          {{ if and $itemImg (not (hasPrefix $itemImg "http")) }}
-            {{ $res := resources.Get $itemImg }}
-            {{ if $res }}{{ $itemImg = $res.RelPermalink }}{{ end }}
-          {{ end }}
 
-          <a href="{{ $itemURL }}" class="dv-feed-card dv-feed-card--{{ $tag_color }}">
-            {{/* Miniatura */}}
+        {{/* Noticias -- saltar el item featured */}}
+        {{ range after 1 $noticias.items }}
+          {{ $tc := .tag_color | default "blue" }}
+          {{ $url := "" }}
+          {{ with .url }}{{ if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "#") }}{{ $url = . }}{{ else }}{{ $url = . | relLangURL }}{{ end }}{{ end }}
+          {{ $img := .image }}
+          {{ if and $img (not (hasPrefix $img "http")) }}{{ $r := resources.Get $img }}{{ if $r }}{{ $img = $r.RelPermalink }}{{ end }}{{ end }}
+          <a href="{{ $url }}" class="dv-feed-card dv-feed-card--{{ $tc }}" data-dv-type="noticias">
             <div class="dv-feed-card__thumb">
-              {{ if $itemImg }}
-                <img src="{{ $itemImg }}" alt="{{ $item.name }}" class="dv-feed-card__img">
-              {{ else }}
-                <div class="dv-feed-card__icon-fallback dv-feed-card__icon-fallback--{{ $tag_color }}">
-                  {{ if $item.icon }}<i class="fas fa-{{ $item.icon }}"></i>{{ end }}
-                </div>
-              {{ end }}
+              {{ if $img }}<img src="{{ $img }}" alt="{{ .title }}" class="dv-feed-card__img">
+              {{ else }}<div class="dv-feed-card__icon-fallback dv-feed-card__icon-fallback--{{ $tc }}">{{ if .icon }}<i class="fas fa-{{ .icon }}"></i>{{ end }}</div>{{ end }}
             </div>
-            {{/* Contenido */}}
             <div class="dv-feed-card__content">
               <div class="dv-feed-card__meta">
-                {{ with $item.tag }}<span class="dv-card__tag dv-card__tag--{{ $tag_color }}">{{ . }}</span>{{ end }}
-                {{ with $item.date }}<span class="dv-card__date"><i class="far fa-calendar-alt"></i> {{ . }}</span>{{ end }}
+                {{ with .tag }}<span class="dv-card__tag dv-card__tag--{{ $tc }}">{{ . }}</span>{{ end }}
+                {{ with .date }}<span class="dv-card__date"><i class="far fa-calendar-alt"></i> {{ . }}</span>{{ end }}
               </div>
-              <h3 class="dv-feed-card__title">{{ $item.name | markdownify }}</h3>
-              <p class="dv-feed-card__desc">{{ $item.description | $page.RenderString }}</p>
+              <h3 class="dv-feed-card__title">{{ .title | markdownify }}</h3>
+              <p class="dv-feed-card__desc">{{ .description | $page.RenderString }}</p>
             </div>
             <i class="fas fa-chevron-right dv-feed-card__arrow"></i>
           </a>
         {{ end }}
-      </div>
+
+        {{/* Eventos */}}
+        {{ range $eventos.items }}
+          {{ $tc := .tag_color | default "green" }}
+          {{ $url := "" }}
+          {{ with .url }}{{ if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "#") }}{{ $url = . }}{{ else }}{{ $url = . | relLangURL }}{{ end }}{{ end }}
+          {{ $img := .image }}
+          {{ if and $img (not (hasPrefix $img "http")) }}{{ $r := resources.Get $img }}{{ if $r }}{{ $img = $r.RelPermalink }}{{ end }}{{ end }}
+          <a href="{{ $url }}" class="dv-feed-card dv-feed-card--{{ $tc }}" data-dv-type="eventos">
+            <div class="dv-feed-card__thumb">
+              {{ if $img }}<img src="{{ $img }}" alt="{{ .title }}" class="dv-feed-card__img">
+              {{ else }}<div class="dv-feed-card__icon-fallback dv-feed-card__icon-fallback--{{ $tc }}">{{ if .icon }}<i class="fas fa-{{ .icon }}"></i>{{ end }}</div>{{ end }}
+            </div>
+            <div class="dv-feed-card__content">
+              <div class="dv-feed-card__meta">
+                {{ with .tag }}<span class="dv-card__tag dv-card__tag--{{ $tc }}">{{ . }}</span>{{ end }}
+                {{ with .date }}<span class="dv-card__date"><i class="far fa-calendar-alt"></i> {{ . }}</span>{{ end }}
+              </div>
+              <h3 class="dv-feed-card__title">{{ .title | markdownify }}</h3>
+              <p class="dv-feed-card__desc">{{ .description | $page.RenderString }}</p>
+            </div>
+            <i class="fas fa-chevron-right dv-feed-card__arrow"></i>
+          </a>
+        {{ end }}
+
+        {{/* Publicaciones */}}
+        {{ range $publicaciones.items }}
+          {{ $tc := .tag_color | default "purple" }}
+          {{ $url := "" }}
+          {{ with .url }}{{ if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "#") }}{{ $url = . }}{{ else }}{{ $url = . | relLangURL }}{{ end }}{{ end }}
+          {{ $img := .image }}
+          {{ if and $img (not (hasPrefix $img "http")) }}{{ $r := resources.Get $img }}{{ if $r }}{{ $img = $r.RelPermalink }}{{ end }}{{ end }}
+          <a href="{{ $url }}" class="dv-feed-card dv-feed-card--{{ $tc }}" data-dv-type="publicaciones">
+            <div class="dv-feed-card__thumb">
+              {{ if $img }}<img src="{{ $img }}" alt="{{ .title }}" class="dv-feed-card__img">
+              {{ else }}<div class="dv-feed-card__icon-fallback dv-feed-card__icon-fallback--{{ $tc }}">{{ if .icon }}<i class="fas fa-{{ .icon }}"></i>{{ end }}</div>{{ end }}
+            </div>
+            <div class="dv-feed-card__content">
+              <div class="dv-feed-card__meta">
+                {{ with .tag }}<span class="dv-card__tag dv-card__tag--{{ $tc }}">{{ . }}</span>{{ end }}
+                {{ with .date }}<span class="dv-card__date"><i class="far fa-calendar-alt"></i> {{ . }}</span>{{ end }}
+              </div>
+              <h3 class="dv-feed-card__title">{{ .title | markdownify }}</h3>
+              <p class="dv-feed-card__desc">{{ .description | $page.RenderString }}</p>
+            </div>
+            <i class="fas fa-chevron-right dv-feed-card__arrow"></i>
+          </a>
+        {{ end }}
+
+      </div>{{/* /dv-feed */}}
 
     </div>{{/* /dv-layout */}}
   </div>
 </section>
+
+<script>
+(function () {
+  var section = document.getElementById('dv-section');
+  if (!section) return;
+  var btns  = section.querySelectorAll('.dv-filter-btn');
+  var cards = section.querySelectorAll('.dv-feed .dv-feed-card');
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var filter = this.getAttribute('data-dv-filter');
+      btns.forEach(function (b) { b.classList.remove('dv-filter-btn--active'); });
+      this.classList.add('dv-filter-btn--active');
+      cards.forEach(function (card) {
+        card.style.display = (filter === 'all' || card.getAttribute('data-dv-type') === filter) ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>

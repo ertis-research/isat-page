@@ -1,0 +1,96 @@
+﻿# ---------------------------------------------------------------------------
+# PUBLICACIONES iSAT -- articulos, tesis y ponencias en congresos.
+# El primer elemento (mas reciente) se usa como featured automaticamente.
+#
+# Campos comunes con noticias.yaml y events.yaml:
+#   title       : Titulo de la publicacion
+#   date        : Fecha legible (p.ej. "2025")
+#   date_sort   : Fecha ISO para ordenacion (YYYY-MM-DD)
+#   category    : journal | thesis | conference
+#   tag         : Etiqueta visible en las tarjetas
+#   tag_color   : blue | green | purple | orange | red
+#   image       : Imagen de portada (opcional)
+#   icon        : Icono FA de respaldo (p.ej. "file-invoice", "graduation-cap")
+#   description : Resumen breve visible en tarjeta
+#   url         : Enlace al DOI o pagina de la publicacion
+#   cta         : Texto del boton en la vista featured (opcional)
+#
+# Campos opcionales especificos de publicaciones:
+#   authors     : Autores (texto libre)
+#   venue       : Revista, congreso o institucion
+#   badges      : Lista de etiquetas ["Q1", "OA", "Deep Learning", ...]
+#   topics      : Lista de tematicas para filtrado ["Hidrogeologia", "IoT", ...]
+#   links:
+#     doi       : URL del DOI
+#     pdf       : Ruta local (pdf/...) o URL externa al PDF
+#     abstract  : URL del abstract en el editor
+#
+# ORDEN: mas reciente primero -> el primero se muestra como featured.
+# ---------------------------------------------------------------------------
+
+items:
+  - title: "A soft sensor open-source methodology for inexpensive monitoring of water quality: A case study of NO3- concentrations"
+    date: "2024"
+    date_sort: "2024-06-01"
+    category: "journal"
+    tag: "Articulo"
+    tag_color: "blue"
+    icon: "file-invoice"
+    description: "Esta investigacion introduce un framework de Deep Learning para la identificacion automatizada de microfosiles y analisis bioestratigrafico de alta precision aplicado a la calidad del agua."
+    url: "https://www.sciencedirect.com/science/article/pii/S1877750324003156"
+    cta: "Leer articulo"
+    authors: "A.J. Chaves, J. Fernandez-Ortega, C. Martin, M. Diaz, L. Llopis Torres, J.A. Barbera, B. Andreo"
+    venue: "Journal of Computational Science (ScienceDirect / Elsevier)"
+    badges:
+      - "AI-Driven"
+      - "Deep Learning"
+      - "High Precision"
+    topics:
+      - "Deep Learning"
+      - "Computer Vision"
+      - "Automated Data Analysis"
+      - "Hidrogeologia"
+    links:
+      doi: "https://www.sciencedirect.com/science/article/pii/S1877750324003156"
+      pdf: "pdf/1-s2.0-S1877750324003156-main.pdf"
+
+  - title: "Algoritmos predictivos para la gestion de la calidad del agua en acuiferos sobreexplotados"
+    date: "2024"
+    date_sort: "2024-01-01"
+    category: "thesis"
+    tag: "Tesis"
+    tag_color: "purple"
+    icon: "graduation-cap"
+    description: "Evaluacion de la contaminacion por nitratos en fuentes de abastecimiento urbano en Malaga para apoyar la gestion sostenible de los recursos hidricos subterraneos."
+    url: "#"
+    cta: "Ver tesis"
+    authors: "A. Romero Sencianes"
+    venue: "Master's Thesis (Master in Water Resources and Environment, UMA)"
+    badges:
+      - "Master Tesis"
+    topics:
+      - "Contaminacion por Nitratos"
+      - "Abastecimiento Urbano"
+      - "Hidrogeologia"
+    links: {}
+
+# ---------------------------------------------------------------------------
+# EJEMPLO DE NUEVA ENTRADA -- copia, descomenta y aniade al inicio de items:
+# ---------------------------------------------------------------------------
+#   - title: "Titulo de la publicacion"
+#     date: "YYYY"
+#     date_sort: "YYYY-MM-DD"
+#     category: "journal"     # journal | thesis | conference
+#     tag: "Articulo"
+#     tag_color: "blue"       # blue | green | purple | orange | red
+#     icon: "file-invoice"
+#     description: "Resumen breve del trabajo."
+#     url: "https://doi.org/..."
+#     cta: "Leer articulo"
+#     authors: "Apellido, N., Apellido2, N2."
+#     venue: "Nombre de la Revista (Editorial)"
+#     badges: ["Q1", "OA"]
+#     topics: ["Hidrogeologia", "IoT"]
+#     links:
+#       doi: "https://doi.org/..."
+#       pdf: "pdf/mi-articulo.pdf"

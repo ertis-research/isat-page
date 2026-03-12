@@ -102,24 +102,4 @@
 {{ end }}
 
 
-{{ $equip := index (where .Params.sections "id" "equipamiento") 0 }}
-{{ if $equip }}
-<section class="py-16 bg-gradient-to-br from-slate-900 to-blue-900 text-white">
-	<div class="container mx-auto px-6 max-w-5xl">
-		<h2 class="text-2xl font-bold mb-8 flex items-center gap-3"><i class="fas fa-microchip text-blue-400"></i> {{ $equip.content.title }}</h2>
-		<p class="text-blue-100 mb-8 max-w-3xl">{{ $equip.content.subtitle }}</p>
-		<div class="grid md:grid-cols-3 gap-6">
-			{{ range $equip.content.items }}
-			<div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10 hover:bg-white/20 transition-all">
-				<div class="text-{{ .color }} text-3xl mb-4"><i class="fas fa-{{ .icon }}"></i></div>
-				<h3 class="font-bold text-lg mb-2">{{ .name }}</h3>
-				<p class="text-sm text-gray-300">{{ .description }}</p>
-			</div>
-			{{ end }}
-		</div>
-	</div>
-</section>
-{{ end }}
-
-
 {{ end }}

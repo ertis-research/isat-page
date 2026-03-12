@@ -14,14 +14,32 @@
   color: #6b7280;
 }
 
-/* Grid — 4 columnas en desktop, 2 en tablet, 1 en mobile */
+/* Grid — 5 columnas en desktop, 3 en tablet, 2 en móvil grande, 1 en móvil */
 .hm-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  max-width: 90rem;
+  margin: 0 auto;
 }
-@media (max-width: 1024px) {
-  .hm-grid { grid-template-columns: repeat(2, 1fr); }
+/* 5 items: en pantallas medias usar 3 col (2 últimas centradas) */
+@media (max-width: 1200px) {
+  .hm-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.25rem;
+  }
+  .hm-card { grid-column: span 2; }
+  .hm-card:nth-child(4) { grid-column: 2 / span 2; }
+  .hm-card:nth-child(5) { grid-column: 4 / span 2; }
+}
+@media (max-width: 900px) {
+  .hm-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .hm-card { grid-column: span 1; }
+  .hm-card:nth-child(4) { grid-column: span 1; }
+  .hm-card:nth-child(5) { grid-column: span 1; }
 }
 @media (max-width: 600px) {
   .hm-grid { grid-template-columns: 1fr; }
@@ -54,6 +72,7 @@
 .hm-card--blue   .hm-card__accent { background: linear-gradient(90deg, #3b82f6, #2563eb); }
 .hm-card--indigo .hm-card__accent { background: linear-gradient(90deg, #6366f1, #4f46e5); }
 .hm-card--emerald .hm-card__accent { background: linear-gradient(90deg, #10b981, #059669); }
+.hm-card--teal   .hm-card__accent { background: linear-gradient(90deg, #14b8a6, #0d9488); }
 .hm-card--orange .hm-card__accent { background: linear-gradient(90deg, #f97316, #ea580c); }
 
 /* Cabecera: icono + métrica */
@@ -77,6 +96,7 @@
 .hm-card--blue   .hm-card__icon-wrap { background: #eff6ff; }
 .hm-card--indigo .hm-card__icon-wrap { background: #eef2ff; }
 .hm-card--emerald .hm-card__icon-wrap { background: #ecfdf5; }
+.hm-card--teal   .hm-card__icon-wrap { background: #f0fdfa; }
 .hm-card--orange .hm-card__icon-wrap { background: #fff7ed; }
 
 .hm-card__icon {
@@ -85,6 +105,7 @@
 .hm-card--blue   .hm-card__icon { color: #2563eb; }
 .hm-card--indigo .hm-card__icon { color: #4f46e5; }
 .hm-card--emerald .hm-card__icon { color: #059669; }
+.hm-card--teal   .hm-card__icon { color: #0d9488; }
 .hm-card--orange .hm-card__icon { color: #ea580c; }
 
 /* Métrica */
@@ -100,6 +121,7 @@
 .hm-card--blue   .hm-card__metric { color: #2563eb; }
 .hm-card--indigo .hm-card__metric { color: #4f46e5; }
 .hm-card--emerald .hm-card__metric { color: #059669; }
+.hm-card--teal   .hm-card__metric { color: #0d9488; }
 .hm-card--orange .hm-card__metric { color: #ea580c; }
 
 .hm-card__metric-label {
@@ -145,6 +167,7 @@
 .hm-card--blue   .hm-card__cta { color: #2563eb; }
 .hm-card--indigo .hm-card__cta { color: #4f46e5; }
 .hm-card--emerald .hm-card__cta { color: #059669; }
+.hm-card--teal   .hm-card__cta { color: #0d9488; }
 .hm-card--orange .hm-card__cta { color: #ea580c; }
 
 .hm-card__cta-arrow {
@@ -167,3 +190,4 @@
 .hm-card:nth-child(2) { animation-delay: 0.12s; }
 .hm-card:nth-child(3) { animation-delay: 0.19s; }
 .hm-card:nth-child(4) { animation-delay: 0.26s; }
+.hm-card:nth-child(5) { animation-delay: 0.33s; }

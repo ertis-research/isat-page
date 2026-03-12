@@ -10,7 +10,7 @@ main:
   - parent: Inicio
     name: Problemática
     url: problematica/
-    weight: 30
+    weight: 10
   - parent: Inicio
     name: Objetivos
     url: objetivos/
@@ -18,15 +18,15 @@ main:
   - parent: Inicio
     name: Metodologia
     url: metodologia/
-    weight: 15
+    weight: 30
   - parent: Inicio
     name: Impacto esperado
     url: impacto_esperado/
-    weight: 10
+    weight: 40
   - parent: Inicio
     name: Financiación
     url: financiacion/
-    weight: 10
+    weight: 50
   - name: Equipo
     url: /#equipo
     weight: 20

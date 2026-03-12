@@ -20,6 +20,20 @@ sections:
       items:
         - label: 
           image: "media/JuntaAndalucia.png"
+        - label: 
+          image: "media/logo_uma.svg"
+        - label: 
+          image: "media/ertis_icon.svg"
+        - label: 
+          image: "media/logo_uma_cehiuma.jpg"
+        - label: 
+          image: "media/escudo_cuevas.png"
+        - label: 
+          image: "media/escudo_tebas.webp"
+        - label: 
+          image: "media/escudo_villanueva.webp"
+        - label: 
+          image: "media/escudo_yeguas.webp"
 
   - block: ficha
     id: ficha_administrativa
@@ -31,7 +45,7 @@ sections:
           icon: "tag"
           bg: "indigo-100"
           color: "indigo-600"
-        - label: "Naturaleza"
+        - label: "Nivel de madurez tecnológica"
           value: "Prototipo y validación real (TRL7)"
           icon: "rocket"
           bg: "emerald-100"
@@ -77,24 +91,5 @@ sections:
   #         amount: "1.200,00 €"
   #         percent: "0.4%"
   #         dot: "slate-500"
-
-  - block: equipamiento
-    id: equipamiento
-    content:
-      title: "Dotación Tecnológica"
-      subtitle: "Adquisición e instalación de instrumentación de alta precisión"
-      items:
-        - name: "Sondas Multiparamétricas"
-          icon: "water"
-          color: "blue-400"
-          description: "Medición en continuo de nivel, conductividad eléctrica, temperatura, turbidez y oxígeno disuelto."
-        - name: "Sensores UV Específicos"
-          icon: "eye"
-          color: "purple-400"
-          description: "Sondas avanzadas de espectrometría para la detección precisa de nitratos mediante tecnología UV."
-        - name: "Sistemas de Transmisión"
-          icon: "satellite-dish"
-          color: "emerald-400"
-          description: "Módulos de comunicación dual (GPRS/Satélite) para garantizar la telemetría en zonas remotas."
 
 ---

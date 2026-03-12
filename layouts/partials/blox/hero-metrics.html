@@ -26,7 +26,7 @@
     {{/* Grid de tarjetas */}}
     <div class="hm-grid">
       {{ range $i, $item := $block.content.items }}
-        {{ $colors := slice "blue" "indigo" "emerald" "orange" }}
+        {{ $colors := slice "blue" "indigo" "emerald" "teal" "orange" }}
         {{ $color := index $colors (mod $i (len $colors)) }}
         {{ $itemURL := "" }}
         {{ with $item.url }}
@@ -48,11 +48,11 @@
                 <i class="fas fa-{{ $item.icon }} hm-card__icon"></i>
               {{ end }}
             </div>
-            {{ with $item.metric }}
+            {{ with $item.metric_label }}
               <div class="hm-card__metric-wrap">
-                <span class="hm-card__metric">{{ . }}</span>
-                {{ with $item.metric_label }}
-                  <span class="hm-card__metric-label">{{ . }}</span>
+                <span class="hm-card__metric-label">{{ . }}</span>
+                {{ with $item.metric }}
+                  <span class="hm-card__metric">{{ . }}</span>
                 {{ end }}
               </div>
             {{ end }}

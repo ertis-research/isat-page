@@ -37,10 +37,12 @@
                 {{ if $step.icon }}
                   <i class="fas fa-{{ $step.icon }}"></i>
                 {{ else }}
-                  {{ $step.number }}
+                  {{ add $i 1 }}
                 {{ end }}
               </div>
-              <span class="sol-step__num">0{{ $step.number }}</span>
+              {{ if $step.number }}
+                <span class="sol-step__num">0{{ $step.number or add $i 1 }}</span>
+              {{ end }}
             </div>
             {{/* Texto */}}
             <div class="sol-step__body">

@@ -15,7 +15,7 @@
 
 {{ if $block }}
 
-<section class="py-20 bg-slate-900 text-white relative">
+<section class="pt-12 pb-20 bg-slate-900 text-white relative">
   <div class="container mx-auto px-6 max-w-6xl relative z-10">
     <div class="text-center mb-12">
       <span class="text-blue-400 font-bold uppercase tracking-widest text-xs">{{ with $block.content.announcement }}{{ . }}{{ else }}Ubicación Estratégica{{ end }}</span>
@@ -102,8 +102,16 @@
                 var icon = createColoredIcon(color);
                 
                 var marker = L.marker([coords.lat, coords.lon], { icon: icon })
-                  .bindPopup('<strong>' + point.title + '</strong><br/>' + (point.subtitle || ''))
+                  .bindTooltip('<strong>' + point.title + '</strong><br/>' + (point.subtitle || ''), { direction: 'top', offset: [0, -18] })
                   .addTo(map);
+
+                // Navigate to point URL on click
+                (function(p) {
+                  marker.on('click', function() {
+                    if (p.url) { window.location.href = p.url; }
+                  });
+                })(point);
+
                 markers.push(marker);
               } else {
                 console.warn('iSAT Map: No coordinates found for:', point.title);
@@ -137,11 +145,21 @@
         <ul class="space-y-2 text-sm">
           {{ range $points }}
           <li class="flex items-start gap-2 {{ if .opacity }}opacity-70{{ end }}">
-            <i class="fas fa-map-marker-alt {{ if .color }}{{ .color }}{{ else }}text-gray-500{{ end }} mt-1"></i>
-            <div>
-              <span class="font-semibold block">{{ .title }}</span>
-              <span class="text-xs text-gray-500">{{ .subtitle }}</span>
-            </div>
+            {{ $legendURL := "" }}
+            {{ with .url }}
+              {{ if or (hasPrefix . "http://") (hasPrefix . "https://") (hasPrefix . "#") }}
+                {{ $legendURL = . }}
+              {{ else }}
+                {{ $legendURL = . | relLangURL }}
+              {{ end }}
+            {{ end }}
+            {{ if $legendURL }}<a href="{{ $legendURL }}" class="flex items-start gap-2 hover:underline w-full">{{ end }}
+              <i class="fas fa-map-marker-alt {{ if .color }}{{ .color }}{{ else }}text-gray-500{{ end }} mt-1"></i>
+              <div>
+                <span class="font-semibold block">{{ .title }}</span>
+                <span class="text-xs text-gray-500">{{ .subtitle }}</span>
+              </div>
+            {{ if $legendURL }}</a>{{ end }}
           </li>
           {{ end }}
         </ul>

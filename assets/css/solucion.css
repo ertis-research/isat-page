@@ -51,9 +51,9 @@
 .sol-timeline {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 0;
-  max-width: 72rem;
+  max-width: 80rem;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -62,8 +62,8 @@
 .sol-timeline__line {
   position: absolute;
   top: 2.75rem;
-  left: calc(2rem + 12.5%);
-  right: calc(2rem + 12.5%);
+  left: calc(2rem + 10%);
+  right: calc(2rem + 10%);
   height: 2px;
   background: linear-gradient(90deg, #bfdbfe, #3b82f6, #1d4ed8, #3b82f6, #bfdbfe);
   z-index: 0;
@@ -168,13 +168,20 @@
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .sol-timeline {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     padding: 0 1rem;
   }
   .sol-timeline__line { display: none; }
+}
+@media (max-width: 700px) {
+  .sol-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
 }
 @media (max-width: 540px) {
   .sol-timeline { grid-template-columns: 1fr; gap: 1.5rem; }

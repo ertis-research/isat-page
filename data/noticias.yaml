@@ -1,0 +1,60 @@
+﻿# ---------------------------------------------------------------------------
+# NOTICIAS iSAT -- solo noticias de prensa y comunicados del proyecto.
+# Fuente unica para el bloque divulgacion (homepage) y la pagina /noticias/.
+# El primer elemento (mas reciente) se usa como featured automaticamente.
+#
+# Campos comunes con events.yaml y publicaciones.yaml:
+#   title       : Titulo de la noticia
+#   date        : Fecha legible (p.ej. "15 Marzo, 2025")
+#   date_sort   : Fecha ISO para ordenacion (YYYY-MM-DD)
+#   category    : noticias | tecnologia | institucional
+#   tag         : Etiqueta visible en las tarjetas
+#   tag_color   : blue | green | purple | orange | red
+#   image       : Ruta local (media/...) o URL https://...
+#   icon        : Icono FA de respaldo si no hay imagen
+#   description : Texto corto visible en tarjeta y homepage
+#   url         : Enlace destino de la noticia
+#   cta         : Texto del boton en la vista featured (opcional)
+#
+# ORDEN: mas reciente primero -> el primero se muestra como featured.
+# ---------------------------------------------------------------------------
+
+items:
+  - title: "'iSAT', la solucion innovadora que propone la UMA para hacer frente a la falta de agua en Malaga"
+    date: "15 Marzo, 2025"
+    date_sort: "2025-03-15"
+    category: "tecnologia"
+    tag: "Tecnologia"
+    tag_color: "blue"
+    image: "media/noticias_youtube.png"
+    icon: "play-circle"
+    description: "Optimizar la explotacion del agua subterranea en Malaga es el objetivo principal del iSAT, seleccionado por la Junta para dar respuesta al PLAnd Sequia Andalucia."
+    url: "https://www.youtube.com/watch?v=W1dJWIaObQM"
+    cta: "Ver noticia"
+
+  - title: "Proyecto de la UMA para la optimizacion del agua subterranea en Malaga"
+    date: "15 Enero, 2025"
+    date_sort: "2025-01-15"
+    category: "noticias"
+    tag: "Noticias"
+    tag_color: "orange"
+    image: "media/noticia_diario_sur.webp"
+    icon: "newspaper"
+    description: "El equipo tecnico completo el despliegue del nodo piloto; los primeros datos de nitratos ya llegan a la plataforma cloud."
+    url: "https://www.diariosur.es/cronicauma/investigacion/proyecto-uma-optimizacion-agua-subterranea-malaga-20250115200353-nt.html"
+    cta: "Leer articulo"
+
+# ---------------------------------------------------------------------------
+# EJEMPLO DE NUEVA ENTRADA -- copia, descomenta y aniade al inicio de items:
+# ---------------------------------------------------------------------------
+#   - title: "Titulo de la noticia"
+#     date: "Mes YYYY"
+#     date_sort: "YYYY-MM-DD"
+#     category: "noticias"    # noticias | tecnologia | institucional
+#     tag: "Noticias"
+#     tag_color: "blue"       # blue | green | purple | orange | red
+#     image: "media/mi-imagen.jpg"
+#     icon: "newspaper"
+#     description: "Descripcion breve visible en tarjeta y homepage."
+#     url: "https://..."
+#     cta: "Leer noticia completa"
