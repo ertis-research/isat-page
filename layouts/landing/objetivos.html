@@ -29,6 +29,11 @@
 </section>
 {{ end }}
 
+
+{{/* ─── TIMELINE (FLUJO DE DATOS) ───────────────────────────────────────── */}}
+{{ $timeline := index (where .Params.sections "block" "timeline") 0 }}
+{{ if $timeline }}{{ partial "landing/timeline.html" (dict "section" $timeline) }}{{ end }}
+
 {{ $objSpec := index (where .Params.sections "id" "objetivos-especificos") 0 }}
 {{ if $objSpec }}
 <section class="py-24 bg-gray-50">

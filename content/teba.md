@@ -23,7 +23,7 @@ sections:
     id: infraestructura
     content:
       title: "Gestión Inteligente en Guadalteba"
-      text: "La zona piloto de Teba constituye un nodo esencial en la red de monitorización del proyecto iSAT. En este emplazamiento, se ha instrumentalizado la captación principal para controlar la evolución dinámica del nivel piezométrico y la hidroquímica del agua subterránea."
+      text: "El manantial kárstico de Torrox se ubica en la sierra de Peñarrubia  y el caudal que drena se aprovecha parcialmente para el abastecimiento de agua potable a la población homónima. Esta surgencia presenta una cierta influencia de la infiltración del río de la Venta, afectado por los vertidos de purines asociados a actividades ganaderas de la zona, a través del cañón fluviokárstico del Tajo del Molino. Por este motivo, los niveles de nitrato pueden llegar a valores cercanos al máximo establecido en el RD 03/2023 en momentos puntuales."
       items:
         - title: "Instalación iSAT"
           text: "Sistema completo con sensores de conductividad y nitratos para monitorización continua."
@@ -32,10 +32,12 @@ sections:
     id: ficha
     content:
       title: "Resumen Técnico"
-      objective: "Seguridad hídrica y control de calidad."
-      hardware: "Prototipo iSAT + Módulo Nitratos"
-      connectivity: "GPRS / 4G"
-      estado: "Validación Operativa (TRL 7)"
+      system: "Sierra de Peñarrubia"
+      masa_agua: "ES060MSBT060.035"
+      poblacion: "3.708"
+      problematica: "Infiltración de río contaminado"
+      tech: "Predicción de variaciones de nitrato en eventos de recarga"
+      estado: "Mejora de la calidad química a corto/medio plazo"
 
   - block: galeria
     id: galeria

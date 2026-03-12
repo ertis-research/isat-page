@@ -46,7 +46,7 @@ sections:
   - block: team
     id: team
     content:
-      title: "Equipo de Desarrollo"
+      title: "Equipo de Desarrollador"
       items:
         - name: "Dr. Manuel Díaz"
           role: "Catedrático"

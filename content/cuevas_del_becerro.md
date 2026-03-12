@@ -24,18 +24,18 @@ sections:
     content:
       title: "Vigilancia Activa del Manantial"
       text: |
-        El piloto situado en Cuevas del Becerro monitoriza una de las surgencias kársticas más importantes de la provincia. Debido a la naturaleza permeable del terreno, este tipo de fuentes son vulnerables a variaciones rápidas en la calidad del agua (picos de turbidez o arrastre de contaminantes) tras eventos de precipitación intensa.
-
-        La tecnología iSAT instalada permite caracterizar en tiempo real la hidrodinámica del manantial. Mediante el uso de sondas de oxígeno disuelto, turbidez y conductividad, combinadas con algoritmos de Inteligencia Artificial, el sistema es capaz de predecir la llegada de flujos de agua con carga de sedimentos o contaminantes, permitiendo a los operadores desviar el suministro preventivamente si fuera necesario.
+        El manantial kárstico del Carrizal es el principal punto de drenaje de la sierra de Carrasco y el caudal que drena se aprovecha parcialmente para el abastecimiento de agua potable a la población de Cuevas del Becerro. Control químico de las aguas subterráneas drenadas por la surgencia, en la cual se ha detectado un aumento sostenido de la concentración de nitratos en la última década principalmente asociado a focos puntuales de contaminación en área de recarga del acuífero.
 
   - block: ficha
     id: ficha
     content:
       title: "Resumen Técnico"
-      system: "Karst de la Sierra de las Nieves"
-      sensors: ["Turbidez","Nitratos (UV)"]
-      tech: "Predicción de eventos de turbidez/contaminación"
-      estado: "Protección salud pública"
+      system: "Sierra de Carrasco"
+      masa_agua: "ES060MSBT060.043"
+      poblacion: "1.618"
+      problematica: "Tendencia al alza de nitrato"
+      tech: "Predicción de variaciones de nitrato en eventos de recarga"
+      estado: "Mejora de la calidad química a medio/largo plazo"
 
   - block: galeria
     id: galeria

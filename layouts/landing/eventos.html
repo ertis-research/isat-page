@@ -39,6 +39,9 @@
           <h2 class="text-3xl font-bold mb-4 leading-tight">{{ $f.title }}</h2>
           <p class="text-blue-100 mb-8 leading-relaxed">{{ $f.description }}</p>
           <div class="flex flex-wrap gap-4">
+            {{ with $f.url }}
+              <a class="bg-white text-blue-900 hover:bg-blue-50 font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:-translate-y-1 flex items-center gap-2" href="{{ . | safeURL }}">{{ default "Ver evento" $f.cta }} <i class="fas fa-arrow-right"></i></a>
+            {{ end }}
             {{ if $f.signup }}
               <a class="bg-white text-blue-900 hover:bg-blue-50 font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:-translate-y-1 flex items-center gap-2" href="#">{{ default "Inscribirse Gratis" .Site.Params.eventos.register_text }} <i class="fas fa-arrow-right"></i></a>
             {{ end }}

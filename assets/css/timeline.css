@@ -1,0 +1,344 @@
+/* ============================================================
+   Timeline Horizontal Alterno - Flujo de Datos iSAT
+   Idéntico al archivo ejemplo — desktop horizontal + mobile vertical
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ─── Sección ─── */
+.tl-section {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+    position: relative;
+    overflow: hidden;
+}
+
+.tl-wrap {
+    max-width: 80rem;         /* max-w-7xl */
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ─── Cabecera ─── */
+.tl-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.tl-title {
+    font-size: clamp(1.875rem, 4vw, 2.25rem);
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.tl-subtitle {
+    color: #64748b;
+    max-width: 42rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+/* ================================================================
+   DESKTOP — Timeline Horizontal Alterno  (>= 1024 px)
+   ================================================================ */
+.tl-desktop {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .tl-desktop {
+        display: block;
+        position: relative;
+        width: 100%;
+        padding: 16rem 0;
+        margin-top: 2rem;
+    }
+
+    /* Línea central horizontal */
+    .tl-hline {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        right: 1rem;
+        height: 0.25rem;
+        background-color: #cbd5e1;       /* bg-slate-300 */
+        transform: translateY(-50%);
+        border-radius: 9999px;
+        z-index: 0;
+    }
+
+    /* Contenedor flex de los nodos */
+    .tl-nodes {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 10;
+        padding: 0 1rem;
+    }
+
+    /* Cada nodo individual */
+    .tl-node {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Círculo numerado */
+    .tl-circle {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 9999px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.875rem;
+        font-weight: 700;
+        border: 4px solid #f8fafc;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        z-index: 20;
+        transition: transform 0.3s ease;
+    }
+
+    .tl-node:hover .tl-circle {
+        transform: scale(1.25);
+    }
+
+    /* Línea conectora vertical */
+    .tl-connector {
+        position: absolute;
+        left: 50%;
+        width: 2px;
+        height: 3rem;
+        transform: translateX(-50%);
+        z-index: 10;
+        transition: height 0.3s ease;
+    }
+
+    .tl-node:hover .tl-connector {
+        height: 3.5rem;
+    }
+
+    /* Conector abajo (impares) */
+    .tl-node--down .tl-connector {
+        top: 1rem;
+    }
+
+    /* Conector arriba (pares) */
+    .tl-node--up .tl-connector {
+        bottom: 1rem;
+    }
+
+    /* Tarjeta */
+    .tl-card {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10rem;
+        background: #fff;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+        border: 1px solid #e2e8f0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        z-index: 15;
+    }
+
+    @media (min-width: 1280px) {
+        .tl-card {
+            width: 12rem;
+        }
+    }
+
+    /* Tarjeta abajo (impares) */
+    .tl-node--down .tl-card {
+        top: 4rem;
+    }
+
+    .tl-node--down:hover .tl-card {
+        transform: translateX(-50%) translateY(-0.25rem);
+        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    }
+
+    /* Tarjeta arriba (pares) */
+    .tl-node--up .tl-card {
+        bottom: 4rem;
+    }
+
+    .tl-node--up:hover .tl-card {
+        transform: translateX(-50%) translateY(0.25rem);
+        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    }
+
+    /* Imagen dentro de tarjeta */
+    .tl-card__img-wrap {
+        height: 5rem;
+        overflow: hidden;
+        position: relative;
+    }
+
+    @media (min-width: 1280px) {
+        .tl-card__img-wrap {
+            height: 6rem;
+        }
+    }
+
+    .tl-card__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .tl-node:hover .tl-card__img {
+        transform: scale(1.1);
+    }
+
+    /* Texto dentro de tarjeta */
+    .tl-card__body {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .tl-card__title {
+        font-weight: 700;
+        font-size: 0.75rem;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+
+    @media (min-width: 1280px) {
+        .tl-card__title {
+            font-size: 0.875rem;
+        }
+    }
+
+    .tl-card__desc {
+        font-size: 10px;
+        color: #475569;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    @media (min-width: 1280px) {
+        .tl-card__desc {
+            font-size: 11px;
+        }
+    }
+}
+
+/* ================================================================
+   MOBILE / TABLET — Timeline Vertical  (< 1024 px)
+   ================================================================ */
+.tl-mobile {
+    display: block;
+    position: relative;
+    margin-top: 3rem;
+    max-width: 32rem;         /* max-w-lg */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 1024px) {
+    .tl-mobile {
+        display: none;
+    }
+}
+
+/* Línea lateral izquierda */
+.tl-vline {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1.5rem;
+    width: 0.25rem;
+    background-color: #e2e8f0;
+    border-radius: 9999px;
+}
+
+.tl-mobile__list {
+    padding: 1.5rem 0;
+}
+
+/* Cada fila móvil */
+.tl-mrow {
+    position: relative;
+    padding-left: 4rem;
+    padding-right: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.tl-mrow:last-child {
+    margin-bottom: 0;
+}
+
+/* Círculo lateral */
+.tl-mrow__circle {
+    position: absolute;
+    left: 0.625rem;
+    top: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border: 4px solid #f8fafc;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+/* Tarjeta horizontal */
+.tl-mrow__card {
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.tl-mrow__img-wrap {
+    width: 33.333%;
+    min-height: 100px;
+    background-color: #f1f5f9;
+    flex-shrink: 0;
+}
+
+.tl-mrow__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.tl-mrow__body {
+    width: 66.666%;
+    padding: 1rem;
+}
+
+.tl-mrow__title {
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+}
+
+.tl-mrow__desc {
+    font-size: 11px;
+    color: #475569;
+    line-height: 1.5;
+}

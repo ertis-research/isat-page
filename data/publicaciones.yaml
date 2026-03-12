@@ -61,7 +61,7 @@ items:
     tag: "Tesis"
     tag_color: "purple"
     icon: "graduation-cap"
-    description: "Evaluacion de la contaminacion por nitratos en fuentes de abastecimiento urbano en Malaga para apoyar la gestion sostenible de los recursos hidricos subterraneos."
+    description: "Caracterización preliminar sobre la contaminación por nitratos en captaciones destinadas al abastecimiento urbano en diferentes áreas de la provincia de Málaga."
     url: "#"
     cta: "Ver tesis"
     authors: "A. Romero Sencianes"
@@ -73,6 +73,27 @@ items:
       - "Abastecimiento Urbano"
       - "Hidrogeologia"
     links: {}
+
+  - title: "Innovative On-line Monitoring and Decision Support Tool"
+    date: "2017"
+    date_sort: "2017-09-25"
+    category: "conference"
+    tag: "Congreso"
+    tag_color: "blue"
+    icon: "microphone"
+    description: "Presentacion de una herramienta avanzada de monitoreo en linea y soporte a la decision (DSS) para la proteccion y gestion de acuiferos en zonas con alto estres hidrico del sur de Espana."
+    url: "https://drive.google.com/file/d/1Fqy9F5xkRT63YCBqhCUKuLWuqVm030XO/view"
+    cta: "Ver programa"
+    authors: "Equipo iSAT"
+    venue: "Congreso Internacional, Dubrovnik (Croatia)"
+    badges:
+      - "DSS"
+      - "Monitoring"
+    topics:
+      - "Hidrogeologia"
+      - "IoT"
+    links:
+      pdf: "https://drive.google.com/file/d/1Fqy9F5xkRT63YCBqhCUKuLWuqVm030XO/view"
 
 # ---------------------------------------------------------------------------
 # EJEMPLO DE NUEVA ENTRADA -- copia, descomenta y aniade al inicio de items:

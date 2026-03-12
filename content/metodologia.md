@@ -29,93 +29,82 @@ sections:
       steps:
         - number: "1"
           icon: "drafting-compass"
-          title: "Diseño y especificación"
-          label: "Meses 1–8"
+          title: "Diseño de modulos hidrogeológicas y operacional"
           description: "Definición de requisitos técnicos, selección de sensores y diseño de la arquitectura de comunicaciones y nodos IoT."
         - number: "2"
           icon: "microchip"
-          title: "Desarrollo e integración"
-          label: "Meses 4–14"
+          title: "Desarrollo e integración del prototipo"
           description: "Ensamblado de nodos, programación de firmware, integración con la plataforma cloud y entrenamiento de modelos IA."
         - number: "3"
           icon: "satellite-dish"
-          title: "Despliegue en campo"
-          label: "Meses 12–20"
+          title: "Herramienta predictiva"
           description: "Instalación en los 4 sitios piloto, campañas de medición intensivas y ajuste de parámetros en tiempo real."
         - number: "4"
           icon: "file-alt"
-          title: "Validación y difusión"
-          label: "Meses 18–24"
+          title: "Validación del prototipo"
           description: "Análisis estadístico integral, publicaciones científicas y presentación de resultados a gestores del agua."
 
   - block: features
     id: tecnologia
     content:
-      title: "Innovación en el Corazón de iSAT"
+      title: "Concepto innovador y versátil"
+      subtitle: "Especificaciones técnicas, protocolos y capacidades del hardware y software desarrollado ad-hoc para el proyecto iSAT."
       items:
         - name: "Inteligencia Artificial y Soft Sensors"
-          description: "iSAT utiliza soft sensors basados en IA para estimar parámetros complejos, como nitratos, a partir de mediciones más sencillas y económicas."
-          icon: microchip
-        - name: "Sistema Abierto y Flexible"
-          description: "Frente a soluciones propietarias, iSAT es configurable y permite acoplar un número flexible de sensores."
-          icon: sliders-h
-        - name: "Bajo Coste y Bajo Consumo"
-          description: "El diseño reduce costes de hardware y software para facilitar su despliegue y escalado."
-          icon: dollar-sign
-        - name: "Conectividad Total"
-          description: "El sistema incorpora comunicación multi-protocolo, incluyendo GPRS y satélite LEO para zonas con cobertura limitada."
-          icon: signal
-    design:
-      spacing:
-        padding: ["1rem", 0, "1rem", 0]
-  
-  - block: despliegue
-    id: despliegue
-    content:
-      title: "Validación en los sitios piloto"
-      subtitle: "El sistema iSAT se prueba en condiciones reales en cuatro municipios andaluces representativos de la problemática hídrica de la región."
-      steps:
-        - number: "01"
-          title: "Teba"
-          label: "Serranía de Ronda"
-          description: "Acuífero kárstico con alta variabilidad de calidad y nivel durante eventos de lluvia y sequía."
-          image: "media/tebas/1764688478809.jpg"
-          url: "/teba/"
-        - number: "02"
-          title: "Cuevas del Becerro"
-          label: "Serranía de Ronda"
-          description: "Acuífero vulnerable a contaminación agrícola con captación de abastecimiento urbano activa."
-          image: "media/cuevas_del_becerro/1764688483083.jpg"
-          url: "/cuevas_del_becerro/"
-        - number: "03"
-          title: "Sierra de Yeguas"
-          label: "Comarca NORNORMA"
-          description: "Zona de especial sensibilidad hídrica en el entorno de Málaga interior sujeta a periodos de sequía prolongados."
-          image: "media/sierra_yeguas/1764688479676.jpg"
-          url: "/sierra_de_yeguas/"
-        - number: "04"
-          title: "Villanueva de Tapia"
-          label: "Comarca NORNORMA"
-          description: "Municipio con dependencia crítica de aguas subterráneas para el suministro municipal en situaciones de sequía."
-          image: "media/tapia/1764688484025.jpg"
-          url: "/villanueva_de_tapia/"
+          icon: "microchip"
+          color: "blue-600"
+          description: "iSAT utiliza sensores virtuales (soft sensors) basados en arquitecturas de Machine Learning para estimar parámetros complejos, como nitratos o E. coli, a partir de mediciones más sencillas y económicas (conductividad, turbidez)."
+          bullets:
+            - "Procesamiento en la nube (Cloud) o en el borde (Edge AI)."
+            - "Algoritmos calibrados mediante validación cruzada en laboratorio."
 
-  - block: equipamiento
-    id: equipamiento
+        - name: "Sistema Abierto y Flexible"
+          icon: "sliders-h"
+          color: "indigo-600"
+          description: "Frente a los 'vendor lock-ins' de soluciones propietarias cerradas, la PCB de iSAT ha sido diseñada con una arquitectura modular que permite acoplar un número flexible de sensores industriales de diversos fabricantes."
+          bullets:
+            - "Puertos físicos: Múltiples entradas analógicas y digitales."
+            - "Estándares industriales: Soporte nativo para buses SDI-12, RS-485 (Modbus RTU), I2C y UART."
+
+        - name: "Bajo Coste y Bajo Consumo"
+          icon: "dollar-sign"
+          color: "emerald-600"
+          description: "El diseño se fundamenta en microcontroladores de alto rendimiento y bajo coste (familia ESP32), optimizando tanto el coste de hardware (CAPEX) como los gastos de operación del software (OPEX) para facilitar su escalado."
+          bullets:
+            - "Power Management: Modos Deep Sleep programables."
+            - "Alimentación: Operación a 12V/24V, compatible con paneles solares para ubicaciones remotas aisladas de la red eléctrica."
+
+        - name: "Conectividad Total Multiprotocolo"
+          icon: "signal"
+          color: "amber-600"
+          description: "El nodo incorpora un módulo de comunicaciones híbrido para asegurar la transmisión de datos sin importar la orografía. Prioriza redes móviles pero activa el respaldo satelital ante caídas de cobertura."
+          bullets:
+            - "Redes Híbridas: GPRS / 4G / NB-IoT + Satélite LEO (ej. Iridium)."
+            - "Protocolos IoT: Envío de telemetría segura y ligera mediante MQTT, HTTP RESTful y CoAP."
+
+  - block: timeline
+    id: flujo-datos
     content:
-      title: "Dotación Tecnológica"
-      subtitle: "Adquisición e instalación de instrumentación de alta precisión"
+      title: "El Flujo de Datos iSAT"
+      subtitle: "Un proceso continuo y automatizado: desde la medición física en el acuífero hasta la toma de decisiones en la nube."
       items:
-        - name: "Sondas Multiparamétricas"
-          icon: "water"
-          color: "blue-400"
-          description: "Medición en continuo de nivel, conductividad eléctrica, temperatura, turbidez y oxígeno disuelto."
-        - name: "Sensores UV Específicos"
-          icon: "eye"
-          color: "purple-400"
-          description: "Sondas avanzadas de espectrometría para la detección precisa de nitratos mediante tecnología UV."
-        - name: "Sistemas de Transmisión"
-          icon: "satellite-dish"
-          color: "emerald-400"
-          description: "Módulos de comunicación dual (GPRS/Satélite) para garantizar la telemetría en zonas remotas."
+        - name: "Sondas en campo"
+          image: "ruta/a/imagen-sondas.jpg"
+          color: "blue-600"
+          description: "Instrumentación física sumergida en el punto de captación (pozo o manantial). Incluye sondas multiparamétricas industriales calibradas para la medición ininterrumpida de variables clave: nivel, conductividad eléctrica, temperatura y turbidez."
+        
+        - name: "PLC"
+          image: "ruta/a/imagen-plc.jpg"
+          color: "indigo-600"
+          description: "El 'cerebro' local. Controlador lógico e interfaz de adquisición de datos (Datalogger) instalado en la caseta. Recibe las señales eléctricas de las sondas, empaqueta la información y gestiona la telemetría enviándola hacia los servidores seguros."
+        
+        - name: "Resultado gráfico soft sensor"
+          image: "ruta/a/imagen-grafico.jpg"
+          color: "emerald-600"
+          description: "Procesamiento de los datos crudos mediante Inteligencia Artificial (Redes Neuronales). El sistema infiere y genera gráficamente la concentración de contaminantes complejos a partir de los datos físico-químicos básicos en tiempo real."
+        
+        - name: "Grafana / alertas"
+          image: "ruta/a/imagen-grafana.jpg"
+          color: "amber-500"
+          description: "Plataforma de visualización en la nube. Los gestores visualizan el estado de la captación a través de paneles interactivos en Grafana y reciben notificaciones inmediatas si los algoritmos detectan superaciones de los umbrales de riesgo."
 ---

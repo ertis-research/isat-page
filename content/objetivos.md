@@ -12,17 +12,8 @@ sections:
         text: "Misión del Proyecto"
       title: "Objetivos del Proyecto"
       text: >-
-        iSAT persigue mejorar la gestión de aguas subterráneas en sequía mediante un Sistema de Alerta Temprana inteligente que integra monitorización continua, comunicaciones y analítica avanzada.
+        Pasar de una gestión reactiva a una gestión anticipada.
       align: "center"
-      features:
-        - icon: "tower-broadcast"
-          label: "Monitorización"
-        - icon: "bell"
-          label: "Alertas"
-        - icon: "chart-line"
-          label: "Predicción"
-        - icon: "clipboard-check"
-          label: "Validación"
 
   - block: markdown
     id: objetivo-general
@@ -30,7 +21,48 @@ sections:
       title: "Objetivo General"
       text: "Pasar de una gestión <span class=\"text-red-400 line-through decoration-2\">reactiva</span> a una gestión <span class=\"text-green-400\">anticipativa</span>."
       subtitle: >-
-        Desarrollar y validar un Sistema de Alerta Temprana inteligente (iSAT) para el control de extracciones y la detección/anticipación de episodios de contaminación en aguas subterráneas durante periodos de sequía, combinando instrumentación, conectividad y plataforma de datos para apoyar la toma de decisiones.
+        Desarrollar un sistema inteligente e integrado de monitorización continua de parámetros físicoquímicos que sirva de herramienta preventiva y predictiva para la identificación temprana de patrones de afectación a caudales/niveles de agua subterránea y la detección de episodios de contaminación en abastecimientos urbanos.
+
+  - block: timeline
+    id: flujo-datos
+    content:
+      title: "Fases del Proyecto (TRL 4 - TRL 7)"
+      subtitle: "Evolución metodológica: desde la definición en laboratorio hasta la validación operativa en los pilotos municipales."
+      items:
+        - name: "Diseño Hidrogeológico y Operacional"
+          image: "ruta/a/imagen-sondas.jpg"
+          color: "blue-600"
+          description: "Definición de funcionalidades del SAT, umbrales paramétricos e instrumentación."
+        
+        - name: "Desarrollo e Integración Hardware"
+          image: "ruta/a/imagen-plc.jpg"
+          color: "indigo-600"
+          description: "Diseño electrónico y fabricación del prototipo (datalogger) con comunicación híbrida."
+        
+        - name: "Arquitectura de Software Cloud"
+          image: "ruta/a/imagen-grafico.jpg"
+          color: "emerald-600"
+          description: "Sistema basado en microservicios para visualizar datos y gestionar alertas."
+        
+        - name: "Algoritmos Predictivos (IA)"
+          image: "ruta/a/imagen-grafana.jpg"
+          color: "amber-500"
+          description: "Entrenamiento y validación de Soft Sensors para predecir concentraciones."
+        
+        - name: "Validación en Laboratorio"
+          image: "ruta/a/imagen-grafana.jpg"
+          color: "amber-500"
+          description: "Pruebas del demostrador físico en circuito cerrado (HidroLab)."
+        
+        - name: "Implementación en Entorno Real"
+          image: "ruta/a/imagen-grafana.jpg"
+          color: "amber-500"
+          description: "Instalación in-situ en captaciones piloto de agua subterránea."
+        
+        - name: "Demostración Operativa"
+          image: "ruta/a/imagen-grafana.jpg"
+          color: "amber-500"
+          description: "Calibración final de iSAT y validación con los gestores del abastecimiento."
 
   - block: features
     id: objetivos-especificos
@@ -38,35 +70,19 @@ sections:
       title: "Objetivos Específicos"
       items:
         - name: "Versatilidad y despliegue en campo"
-          description: "Diseñar un sistema adaptable a distintas tipologías de captación y operación, incl. ubicaciones remotas."
+          description: "Maximizar la versatilidad de SAT a la hora de su implementación en diferentes esquemas de captación de aguas subterráneas"
           icon: "map-location-dot"
         - name: "Prototipo precomercial"
-          description: "Integrar adquisición, transmisión, almacenamiento y gestión de alertas." 
+          description: "Crear un dispositivo electrónico pre-comercial, altamente configurable, autónomo energéticamente y con sistema de comunicación multi-protocolo, para su implementación en captaciones de agua subterránea de abastecimientos urbanos" 
           icon: "microchip"
         - name: "Capacidad predictiva"
-          description: "Incorporar modelos predictivos y soft sensors basados en IA."
+          description: "Mejorar la capacidad predictiva de la herramienta de gestión a partir de la
+          integración de técnicas de IA"
           icon: "brain"
         - name: "Validación en pilotos reales"
-          description: "Validar en pilotos representativos para ajustar escalabilidad."
+          description: "Validar la tecnología desarrollada en entornos controlados y de operación"
           icon: "mountain-sun"
     design:
       columns: '2'
-
-  - block: features
-    id: beneficios
-    content:
-      title: "Impacto en la Gestión"
-      items:
-        - name: "Decisiones con datos"
-          description: "Información actualizada en continuo para operación y planificación eficiente."
-          icon: "database"
-        - name: "Alertas y anticipación"
-          description: "Detección temprana de anomalías y predicción de tendencias."
-          icon: "bolt"
-        - name: "Replicabilidad"
-          description: "Diseño modular orientado al despliegue rápido y escalado."
-          icon: "expand"
-    design:
-      columns: '3'
 ---
 

@@ -26,19 +26,6 @@
 # ---------------------------------------------------------------------------
 
 items:
-  - title: "Nueva jornada de demostracion en la UMA"
-    date: "Febrero 2026"
-    date_sort: "2026-02-01"
-    category: "eventos"
-    tag: "Evento"
-    tag_color: "green"
-    image: "media/tebas/1764688478809.jpg"
-    icon: "calendar-check"
-    description: "Sesion abierta para mostrar sensores virtuales, operacion en campo y analisis de datos en tiempo real."
-    url: "/eventos/"
-    cta: "Ver detalles"
-    location: "Universidad de Malaga"
-    status: "Realizado"
 
   - title: "Microcharla: Y si manana no sale agua de tu grifo? Cuidemos el agua invisible"
     date: "Septiembre 2025"
@@ -67,22 +54,6 @@ items:
     cta: "Ver programa"
     location: "Canal Sur, Sevilla"
     status: "Realizado"
-
-  - title: "Innovative On-line Monitoring and Decision Support Tool"
-    date: "25 Septiembre, 2017"
-    date_sort: "2017-09-25"
-    category: "eventos"
-    tag: "Congreso"
-    tag_color: "blue"
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop"
-    icon: "microphone"
-    description: "Presentacion de una herramienta avanzada de monitoreo en linea y soporte a la decision (DSS) para la proteccion y gestion de acuiferos en zonas con alto estres hidrico del sur de Espana."
-    url: "https://drive.google.com/file/d/1Fqy9F5xkRT63YCBqhCUKuLWuqVm030XO/view"
-    cta: "Ver programa"
-    location: "Dubrovnik, Croatia"
-    status: "Realizado"
-    program: true
-    program_url: "https://drive.google.com/file/d/1Fqy9F5xkRT63YCBqhCUKuLWuqVm030XO/view"
 
 # ---------------------------------------------------------------------------
 # EJEMPLO DE NUEVA ENTRADA -- copia, descomenta y aniade al inicio de items:

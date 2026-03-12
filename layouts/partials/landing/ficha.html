@@ -14,6 +14,36 @@
     </div>
     {{ end }}
 
+    {{ with $sec.content.masa_agua }}
+    <div>
+      <div class="flex items-center gap-2 mb-2 text-blue-600">
+        <i class="fas fa-water"></i>
+        <span class="font-bold text-sm uppercase">Masa de Agua Subterránea</span>
+      </div>
+      <p class="text-sm text-gray-600 font-medium font-mono">{{ . }}</p>
+    </div>
+    {{ end }}
+
+    {{ with $sec.content.poblacion }}
+    <div>
+      <div class="flex items-center gap-2 mb-2 text-amber-600">
+        <i class="fas fa-users"></i>
+        <span class="font-bold text-sm uppercase">Población Abastecida</span>
+      </div>
+      <p class="text-sm text-gray-600 font-medium">{{ . }}</p>
+    </div>
+    {{ end }}
+
+    {{ with $sec.content.problematica }}
+    <div>
+      <div class="flex items-center gap-2 mb-2 text-red-500">
+        <i class="fas fa-triangle-exclamation"></i>
+        <span class="font-bold text-sm uppercase">Problemática</span>
+      </div>
+      <p class="text-sm text-gray-600 font-medium">{{ . }}</p>
+    </div>
+    {{ end }}
+
     {{ with $sec.content.objective }}
     <div>
       <div class="flex items-center gap-2 mb-2 text-indigo-600">

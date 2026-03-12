@@ -122,7 +122,7 @@
     <div class="text-center max-w-2xl mx-auto mb-16 animate-fade-in">
       <span class="inline-block uppercase tracking-widest text-xs font-bold text-blue-500 mb-3">Innovación Tecnológica</span>
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{{ $tec.content.title }}</h2>
-      <p class="text-gray-500 leading-relaxed">Tecnologías clave que hacen posible la monitorización continua y anticipada de acuíferos y ríos.</p>
+      <p class="text-gray-500 leading-relaxed">Conoce las principales innovaciones y avances tecnológicos del producto</p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -135,6 +135,16 @@
           <div>
             <h3 class="text-lg font-bold text-gray-900 mb-2">{{ $item.name }}</h3>
             <p class="text-gray-600 text-sm leading-relaxed">{{ $item.description }}</p>
+            {{ if $item.bullets }}
+            <ul class="mt-3 space-y-1.5">
+              {{ range $item.bullets }}
+              <li class="flex items-start gap-2 text-sm text-gray-500">
+                <span class="text-blue-500 mt-0.5 flex-shrink-0"><i class="fas fa-check-circle text-xs"></i></span>
+                <span>{{ . }}</span>
+              </li>
+              {{ end }}
+            </ul>
+            {{ end }}
           </div>
         </div>
       </div>
@@ -145,95 +155,28 @@
 </section>
 {{ end }}
 
-{{/* ─── DESPLIEGUE EN CAMPO (image-steps) ─────────────────────────────── */}}
-{{ $desp := index (where .Params.sections "id" "despliegue") 0 }}
-{{ if $desp }}
-<section class="py-20 bg-white" id="despliegue">
-  <div class="container mx-auto px-6 max-w-6xl">
-
-    <div class="text-center max-w-2xl mx-auto mb-16 animate-fade-in">
-      <span class="inline-block uppercase tracking-widest text-xs font-bold text-blue-500 mb-3">En Campo</span>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{{ $desp.content.title }}</h2>
-      {{ with $desp.content.subtitle }}<p class="text-gray-500 leading-relaxed">{{ . }}</p>{{ end }}
-    </div>
-
-    <div class="relative">
-      {{/* Línea conectora (desktop) */}}
-      <div class="hidden md:block absolute top-[90px] left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-gray-100 via-blue-300 to-gray-100 z-0"></div>
-
-      <div class="grid md:grid-cols-4 gap-6">
-        {{ range $i, $step := $desp.content.steps }}
-        {{ $img := "" }}
-        {{ if $step.image }}{{ $r := resources.Get $step.image }}{{ if $r }}{{ $img = $r.RelPermalink }}{{ end }}{{ end }}
-
-        <div class="flex flex-col items-center text-center relative z-10 animate-fade-in delay-{{ add 100 (mul $i 100) }}">
-
-          {{/* Imagen con badge de etiqueta */}}
-          <div class="relative w-full rounded-xl overflow-hidden shadow-lg mb-1 group" style="aspect-ratio:16/9">
-            {{ if $img }}
-              <img src="{{ $img }}" alt="{{ $step.title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-            {{ else }}
-              <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
-                {{ if $step.icon }}<i class="fas fa-{{ $step.icon }} text-white text-3xl"></i>{{ end }}
-              </div>
-            {{ end }}
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            {{ with $step.label }}
-              <span class="absolute bottom-2 left-2 text-xs font-semibold text-white bg-blue-600/80 px-2 py-0.5 rounded-full backdrop-blur-sm">{{ . }}</span>
-            {{ end }}
-          </div>
-
-          {{/* Círculo numerado (superpuesto al borde inferior de la imagen) */}}
-          <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold shadow-md -mt-5 relative z-20 ring-2 ring-white mb-4">{{ $step.number }}</div>
-
-          <h3 class="text-base font-bold text-gray-900 mb-2">{{ $step.title }}</h3>
-          <p class="text-sm text-gray-500 leading-relaxed px-1">{{ $step.description }}</p>
-          {{ with $step.url }}
-            <a href="{{ . }}" class="mt-3 text-xs font-bold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1 transition-colors">
-              Ver sitio <i class="fas fa-arrow-right text-xs"></i>
-            </a>
-          {{ end }}
-
-        </div>
-        {{ end }}
-      </div>
-    </div>
-
-  </div>
-</section>
-{{ end }}
-
-{{/* ─── EQUIPAMIENTO ───────────────────────────────────────────────────── */}}
-{{ $equip := index (where .Params.sections "id" "equipamiento") 0 }}
-{{ if $equip }}
-<section class="py-16 bg-gradient-to-br from-slate-900 to-blue-900 text-white" id="equipamiento">
-  <div class="container mx-auto px-6 max-w-5xl">
-    <h2 class="text-2xl font-bold mb-8 flex items-center gap-3"><i class="fas fa-microchip text-blue-400"></i> {{ $equip.content.title }}</h2>
-    <p class="text-blue-100 mb-8 max-w-3xl">{{ $equip.content.subtitle }}</p>
-    <div class="grid md:grid-cols-3 gap-6">
-      {{ range $equip.content.items }}
-      <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10 hover:bg-white/20 transition-all">
-        <div class="text-{{ .color }} text-3xl mb-4"><i class="fas fa-{{ .icon }}"></i></div>
-        <h3 class="font-bold text-lg mb-2">{{ .name }}</h3>
-        <p class="text-sm text-gray-300">{{ .description }}</p>
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
+{{/* ─── TIMELINE (FLUJO DE DATOS) ───────────────────────────────────────── */}}
+{{ $timeline := index (where .Params.sections "block" "timeline") 0 }}
+{{ if $timeline }}{{ partial "landing/timeline.html" (dict "section" $timeline) }}{{ end }}
 
 {{/* ─── CTA FINAL ───────────────────────────────────────────────────────── */}}
-<section class="py-20 bg-gradient-to-br from-blue-900 to-slate-900 text-white text-center">
-  <div class="container mx-auto px-6 max-w-3xl">
-    <h2 class="text-2xl md:text-3xl font-bold mb-5 leading-snug">¿Listo para conocer los resultados en campo?</h2>
-    <p class="text-gray-300 mb-8 text-lg">Visita los sitios piloto donde iSAT está siendo probado en condiciones reales.</p>
+<section class="py-24 bg-gradient-to-br from-blue-900 to-slate-900 text-white text-center relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+  <div class="container mx-auto px-6 max-w-5xl relative z-10">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">Descubre el Sistema iSAT en Acción</h2>
+    <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">Nuestra metodología y arquitectura tecnológica ya están desplegadas y validándose en entornos reales. Explora los resultados en nuestros emplazamientos estratégicos:</p>
     <div class="flex flex-wrap justify-center gap-4">
-      <a href="/#ubicacion" class="inline-flex items-center gap-3 bg-blue-500 hover:bg-blue-400 text-white px-8 py-4 rounded-full text-base font-bold shadow-lg hover:shadow-blue-500/40 hover:-translate-y-1 transition-all duration-300">
-        <i class="fas fa-map-marker-alt"></i> Ver sitios piloto
+      <a href="/villanueva_de_tapia/" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-3 hover:-translate-y-1 shadow-lg hover:shadow-xl">
+        <i class="fas fa-map-marker-alt text-orange-400"></i> Villanueva de Tapia
       </a>
-      <a href="/publicaciones/" class="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full text-base font-bold border border-white/20 hover:-translate-y-1 transition-all duration-300">
-        <i class="fas fa-file-alt"></i> Publicaciones
+      <a href="/sierra_de_yeguas/" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-3 hover:-translate-y-1 shadow-lg hover:shadow-xl">
+        <i class="fas fa-map-marker-alt text-emerald-400"></i> Sierra de Yeguas
+      </a>
+      <a href="/teba/" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-3 hover:-translate-y-1 shadow-lg hover:shadow-xl">
+        <i class="fas fa-map-marker-alt text-indigo-400"></i> Teba
+      </a>
+      <a href="/cuevas_del_becerro/" class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-3 hover:-translate-y-1 shadow-lg hover:shadow-xl">
+        <i class="fas fa-map-marker-alt text-cyan-400"></i> Cuevas del Becerro
       </a>
     </div>
   </div>

@@ -22,18 +22,18 @@ sections:
     id: infraestructura
     content:
       title: "Implementación del Sistema iSAT"
-      text: "En el municipio de Villanueva de Tapia se ha procedido a la instalación de un nodo completo del sistema iSAT adaptado a las condiciones de bombeo existentes. La actuación ha consistido en el despliegue de sondas multiparamétricas para la medición en continuo de variables físico-químicas (conductividad, temperatura, nivel piezométrico)."
-      items:
-        - title: "Validación de Algoritmos"
-          text: "Este piloto valida la capacidad de los algoritmos de Inteligencia Artificial en la detección de anomalías en tiempo real, facilitando alertas remotas a los gestores locales."
+      text: "El acuífero kárstico de la sierra de Archidona se usa para abastecimiento de varias poblaciones además de otros usos industriales y agrícolas. De este modo, lo niveles piezométricos llevan varias décadas en constante descenso. Ese es también el caso del sondeo investigado en este proyecto, localizado en el extremo NE de la sierra, en una zona conocida como El Umbral. Además de la sobreexplotación del sistema, los fertilizantes aplicados en las actividades agrícolas desarrolladas en el entorno de la captación son responsables de la acumulación de nitrato de en el suelo y que posteriormente es lavado hacia la zona saturada del acuífero."
 
   - block: ficha
     id: ficha
     content:
       title: "Ficha Técnica"
-      sensors: ["Nivel", "Conductividad", "Temperatura", "Turbidez", "Nitratos"]
-      connectivity: "GPRS con respaldo Satelital (Híbrido)."
-      estado: "En Operación / Validación TRL7"
+      system: "Sierra de Archidona-El Umbral"
+      masa_agua: "ES060MSBT060.030"
+      poblacion: "1.393"
+      problematica: "Sobreexplotación y tendencia al alza de nitrato"
+      tech: "Predicción de variaciones estacionales de nitrato y eventos de sequía"
+      estado: "Mejora de la calidad química a corto/medio plazo"
 
   - block: galeria
     id: galeria

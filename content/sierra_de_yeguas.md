@@ -22,7 +22,7 @@ sections:
     id: infraestructura
     content:
       title: "Monitorización frente a la Presión Agrícola"
-      text: "La zona piloto de Sierra de Yeguas integra sensores físicos y Soft Sensors para inferir contaminantes como nitratos en tiempo real, optimizando el uso del agua en riego y abastecimiento."
+      text: "La descarga natural de aguas subterráneas en la sierra de los Caballos se producía por un manantial que, debido a la sobreexplotación, lleva seco varias décadas. En la actualidad, múltiples sondeos se han realizado en el borde sur de la sierra, como el que se analiza en esta investigación y que se destina al abastecimiento de agua potable en la población de Sierra de Yeguas. Las aguas subterráneas captadas en este punto presentan valores de nitrato por encima del máximo establecido en el RD 03/2023 debido a la afección de las actividades ganaderas desarrolladas en los alrededores del sondeo. Este hecho encarece en gran medida las labores de suministro de agua potable ya que es necesaria la potabilización de las aguas subterráneas mediante osmosis inversa."
       items:
         - title: "Soft Sensors y Predicción"
           text: "Modelos de IA entrenados para inferir concentración de nitratos sin reactivos costosos."
@@ -31,10 +31,12 @@ sections:
     id: ficha
     content:
       title: "Resumen Técnico"
-      sensors: ["Nitratos (NO3-)", "Conductividad"]
-      tech: "Sensor Virtual (Soft Sensor) — Predicción de contaminantes mediante IA."
-      objective: "Optimización del bombeo en función de la calidad química."
-      collaborators: "Ayuntamientos y operadores locales."
+      system: "Sierra de los Caballos"
+      masa_agua: "ES050MSBT000054302"
+      poblacion: "3.418"
+      problematica: "Sobreexplotación y concentraciones de nitrato superiores al RD 03/2023"
+      tech: "Predicción de variaciones estacionales de nitrato y eventos de sequía"
+      estado: "Mejora de la disponibilidad y de la calidad química a corto/medio plazo"
 
   - block: galeria
     id: galeria

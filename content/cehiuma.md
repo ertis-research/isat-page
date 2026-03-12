@@ -30,7 +30,7 @@ sections:
         - icon: "layer-group"
           bg: "cyan-100"
           color: "cyan-600"
-          title: "Definición Hidrogeológica"
+          title: "Gestión del módulo hidrogeológico"
           text: "Determinación de las funcionalidades del SAT, selección de umbrales paramétricos y diseño de la configuración de sensores adaptada a acuíferos kársticos."
         - icon: "flask"
           bg: "emerald-100"
