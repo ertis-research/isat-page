@@ -12,7 +12,7 @@ sections:
         text: "Surgencia Kárstica"
       title: "Zona Piloto:"
       highlight: "Cuevas del Becerro"
-      image: "media/cuevas_del_becerro/1764688483083.jpg"
+      image: "media/cuevas_del_becerro/14_Cuevas.jpeg"
       variant: "man"
       left_title: "Tipología de Captación"
       left_text: "Manantial (Surgencia Natural)"
@@ -42,15 +42,10 @@ sections:
     content:
       title: "Galería de Actuaciones"
       items:
-        - image: "media/cuevas_del_becerro/1764688483083.jpg"
-          title: "El Nacimiento"
-          caption: "Surgencia kárstica principal."
-        - image: "media/cuevas_del_becerro/1764688483594.jpg"
-          title: "Punto de Medida"
-          caption: "Cámara de carga del manantial."
-        - image: "media/cuevas_del_becerro/1764688483496.jpg"
-          title: "Sondas iSAT"
-          caption: "Turbidez, temperatura y conductividad."
+        - image: "media/cuevas_del_becerro/15_Cuevas.jpeg"
+        - image: "media/cuevas_del_becerro/16_Calizas_Carrasco.jpg"
+        - image: "media/cuevas_del_becerro/17_AlvaroCuevas.jpeg"
+        - image: "media/cuevas_del_becerro/18_Cuevas.jpeg"
 
   - block: ubicacion
     id: ubicacion

@@ -55,16 +55,14 @@
                     <div class="tl-connector" style="background-color: {{ $hex }};"></div>
                     <!-- Tarjeta -->
                     <div class="tl-card">
+                        {{ if $imgURL }}
                         <div class="tl-card__img-wrap">
-                            {{ if $imgURL }}
                             <img src="{{ $imgURL }}" alt="{{ $item.name }}" class="tl-card__img">
-                            {{ else }}
-                            <div style="width:100%;height:100%;background:#f1f5f9;"></div>
-                            {{ end }}
                         </div>
+                        {{ end }}
                         <div class="tl-card__body">
                             <h3 class="tl-card__title">{{ $item.name }}</h3>
-                            <p class="tl-card__desc">{{ $item.description }}</p>
+                            <p class="tl-card__desc" onclick="this.classList.toggle('expanded')" title="Haz clic para ver más">{{ $item.description }}</p>
                         </div>
                     </div>
                 </div>
@@ -73,16 +71,14 @@
                 <div class="tl-node tl-node--up">
                     <!-- Tarjeta -->
                     <div class="tl-card">
+                        {{ if $imgURL }}
                         <div class="tl-card__img-wrap">
-                            {{ if $imgURL }}
                             <img src="{{ $imgURL }}" alt="{{ $item.name }}" class="tl-card__img">
-                            {{ else }}
-                            <div style="width:100%;height:100%;background:#f1f5f9;"></div>
-                            {{ end }}
                         </div>
+                        {{ end }}
                         <div class="tl-card__body">
                             <h3 class="tl-card__title">{{ $item.name }}</h3>
-                            <p class="tl-card__desc">{{ $item.description }}</p>
+                            <p class="tl-card__desc" onclick="this.classList.toggle('expanded')" title="Haz clic para ver más">{{ $item.description }}</p>
                         </div>
                     </div>
                     <!-- Línea conectora -->
@@ -119,16 +115,14 @@
                 <div class="tl-mrow">
                     <div class="tl-mrow__circle" style="background-color: {{ $hex }};">{{ $num }}</div>
                     <div class="tl-mrow__card">
+                        {{ if $imgURL }}
                         <div class="tl-mrow__img-wrap">
-                            {{ if $imgURL }}
                             <img src="{{ $imgURL }}" alt="{{ $item.name }}" class="tl-mrow__img">
-                            {{ else }}
-                            <div style="width:100%;height:100%;background:#f1f5f9;"></div>
-                            {{ end }}
                         </div>
-                        <div class="tl-mrow__body">
+                        {{ end }}
+                        <div class="tl-mrow__body{{ if not $imgURL }} tl-mrow__body--full{{ end }}">
                             <h3 class="tl-mrow__title">{{ $item.name }}</h3>
-                            <p class="tl-mrow__desc">{{ $item.description }}</p>
+                            <p class="tl-mrow__desc" onclick="this.classList.toggle('expanded')" title="Haz clic para ver más">{{ $item.description }}</p>
                         </div>
                     </div>
                 </div>

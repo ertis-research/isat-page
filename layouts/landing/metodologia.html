@@ -60,57 +60,7 @@
 {{/* ─── FLUJO METODOLÓGICO ─────────────────────────────────────────────── */}}
 {{ $flujo := index (where .Params.sections "id" "flujo") 0 }}
 {{ if $flujo }}
-<section class="py-20 bg-slate-900 text-white relative overflow-hidden" id="flujo">
-
-  {{/* Decoración de fondo */}}
-  <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
-    <i class="fas fa-diagram-project absolute top-10 left-10 text-9xl"></i>
-    <i class="fas fa-route absolute bottom-10 right-10 text-8xl"></i>
-  </div>
-
-  <div class="container mx-auto px-6 relative z-10">
-
-    {{/* Cabecera — igual que objetivo-general en objetivos.html */}}
-    <div class="max-w-4xl mx-auto text-center animate-fade-in delay-100 mb-16">
-      <h2 class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-4">Sistema iSAT</h2>
-      <h3 class="text-3xl md:text-4xl font-bold mb-8 leading-tight">{{ $flujo.content.title }}</h3>
-      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-10 border border-white/10 shadow-2xl">
-        <p class="text-lg md:text-xl text-gray-200 leading-relaxed mb-3 font-medium">{{ $flujo.content.subtitle }}</p>
-        <p class="text-gray-400 leading-relaxed">{{ $flujo.content.description }}</p>
-      </div>
-    </div>
-
-    {{/* Pasos conectados */}}
-    <div class="relative max-w-5xl mx-auto">
-
-      {{/* Línea conectora (escritorio) */}}
-      <div class="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-blue-900 via-blue-500 to-blue-900 opacity-60 z-0"></div>
-
-      <div class="grid md:grid-cols-4 gap-0 md:gap-0">
-        {{ range $i, $step := $flujo.content.steps }}
-        <div class="flex flex-col items-center text-center px-3 relative z-10 mb-8 md:mb-0 animate-fade-in delay-{{ add 100 (mul $i 100) }}">
-
-          {{/* Círculo icono */}}
-          <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center text-xl shadow-lg shadow-blue-900/40 border-4 border-slate-900 mb-3 relative z-10 transition-transform duration-300 hover:-translate-y-1">
-            <i class="fas fa-{{ $step.icon }}"></i>
-          </div>
-          <span class="text-xs font-bold tracking-widest text-blue-500 uppercase mb-4">
-            {{ with $step.label }}{{ . }}{{ else }}Paso {{ $step.number }}{{ end }}
-          </span>
-
-          {{/* Tarjeta */}}
-          <div class="bg-slate-800 border border-slate-700 border-t-2 border-t-blue-500 rounded-xl p-5 w-full hover:bg-slate-700/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-900/30">
-            <h3 class="text-base font-bold text-white mb-2">{{ $step.title }}</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">{{ $step.description }}</p>
-          </div>
-
-        </div>
-        {{ end }}
-      </div>
-    </div>
-
-  </div>
-</section>
+  {{ partial "blox/solucion.html" (dict "wcPage" $ "wcBlock" $flujo) }}
 {{ end }}
 
 {{/* ─── TECNOLOGÍA ─────────────────────────────────────────────────────── */}}

@@ -12,7 +12,7 @@ sections:
         text: "Emplazamiento Activo"
       title: "Zona Piloto:"
       highlight: "Villanueva de Tapia"
-      image: "media/tapia/1764688484025.jpg"
+      image: "media/tapia/29_Tapia.jpeg"
       left_title: "Tipología de Captación"
       left_text: "Bombeo Urbano"
       right_title: "Reto Específico"
@@ -40,15 +40,10 @@ sections:
     content:
       title: "Galería de Actuaciones"
       items:
-        - image: "media/tapia/WhatsApp Image 2025-11-25 at 20.33.07 (3).jpeg"
-          title: "Instalación Hidráulica"
-          caption: "Tubería de impulsión y puntos de inserción."
-        - image: "media/tapia/WhatsApp Image 2025-12-16 at 10.34.41.jpeg"
-          title: "Sondas iSAT"
-          caption: "Sondas multiparamétricas y de nitratos."
-        - image: "media/tapia/WhatsApp Image 2025-12-16 at 10.34.44.jpeg"
-          title: "Validación In-situ"
-          caption: "Lectura de datos en tiempo real."
+        - image: "media/tapia/30_Tapia.jpeg"
+        - image: "media/tapia/31_Tapia.jpg"
+        - image: "media/tapia/32_Tapia.jpeg"
+        - image: "media/tapia/33_Tapia.jpeg"
 
   - block: ubicacion
     id: ubicacion

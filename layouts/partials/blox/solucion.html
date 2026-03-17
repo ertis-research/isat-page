@@ -2,30 +2,57 @@
 {{ $css := resources.Get "css/solucion.css" }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
 {{ $page := .wcPage }}
 {{ $block := .wcBlock }}
 
-<section class="sol-section">
+{{ $isDark := false }}
+{{ if isset $block "design" }}
+  {{ if isset $block.design "dark_mode" }}
+    {{ $isDark = $block.design.dark_mode }}
+  {{ else if eq $block.design.background "dark" }}
+    {{ $isDark = true }}
+  {{ end }}
+{{ end }}
+{{/* Si manualmentte lo quieres forzar en el frontmatter */}}
+{{ if and (isset $block "content") (isset $block.content "dark_mode") }}
+  {{ $isDark = $block.content.dark_mode }}
+{{ end }}
+
+<section class="sol-section {{ if $isDark }}sol-dark{{ end }}" {{ with $block.id }}id="{{ . }}"{{ end }}>
+  
+  {{/* Decoración de fondo oscuro */}}
+  {{ if $isDark }}
+  <div class="sol-bg-decor">
+    <i class="fas fa-diagram-project"></i>
+    <i class="fas fa-route"></i>
+  </div>
+  {{ end }}
+
   <div class="container mx-auto px-6 lg:px-8">
 
-    {{/* Encabezado sin fondo */}}
+    {{/* Encabezado */}}
     <div class="sol-header">
       <span class="sol-eyebrow">Sistema iSAT</span>
       {{ with $block.content.title }}
         <h2 class="sol-heading">{{ . | markdownify }}</h2>
       {{ end }}
-      {{ with $block.content.subtitle }}
-        <p class="sol-subtitle">{{ . | $page.RenderString | emojify }}</p>
-      {{ end }}
-      {{ with $block.content.description }}
-        <p class="sol-description">{{ . | $page.RenderString | emojify }}</p>
-      {{ end }}
+      <div class="sol-header-inner">
+        {{ with $block.content.subtitle }}
+          <p class="sol-subtitle">{{ . | $page.RenderString | emojify }}</p>
+        {{ end }}
+        {{ with $block.content.description }}
+          <p class="sol-description">{{ . | $page.RenderString | emojify }}</p>
+        {{ end }}
+      </div>
     </div>
 
     {{/* Timeline de pasos */}}
     {{ with $block.content.steps }}
-      <div class="sol-timeline">
+      {{/* Contamos el número de tarjetas insertadas */}}
+      {{ $n := len . }}
+      <div class="sol-timeline" style="--sol-cols: {{ $n }};">
         {{/* Línea conectora */}}
         <div class="sol-timeline__line"></div>
 
@@ -41,11 +68,30 @@
                 {{ end }}
               </div>
               {{ if $step.number }}
-                <span class="sol-step__num">0{{ $step.number or add $i 1 }}</span>
+                <span class="sol-step__num">0{{ $step.number }}</span>
+              {{ else }}
+                <span class="sol-step__num">0{{ add $i 1 }}</span>
               {{ end }}
             </div>
             {{/* Texto */}}
             <div class="sol-step__body">
+              {{ if $step.image }}
+                {{ $imgURL := $step.image }}
+                {{ if and $step.image (not (hasPrefix $step.image "http")) }}
+                  {{ $cleanPath := replaceRE "^/?(assets/|static/)" "" $step.image }}
+                  {{ $res := resources.Get $cleanPath }}
+                  {{ if not $res }}{{ $res = resources.Get (path.Join "media" $cleanPath) }}{{ end }}
+                  {{ if $res }}{{ $imgURL = $res.RelPermalink }}{{ end }}
+                {{ end }}
+                <a href="{{ $imgURL }}" class="glightbox sol-step__img-wrap group" data-gallery="gallery-solucion" data-title="{{ $step.title }}">
+                  <img src="{{ $imgURL }}" alt="{{ $step.title }}" class="sol-step__img">
+                  <div class="gallery-overlay absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="bg-black/40 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                      <i class="fas fa-expand text-xs"></i>
+                    </span>
+                  </div>
+                </a>
+              {{ end }}
               <h3 class="sol-step__title">{{ $step.title }}</h3>
               <p class="sol-step__desc">{{ $step.description | $page.RenderString | emojify }}</p>
             </div>
@@ -65,3 +111,12 @@
 
   </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof GLightbox !== 'undefined') {
+      GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true, autoplayVideos: false });
+    }
+  });
+</script>

@@ -12,7 +12,7 @@ sections:
         text: "Entorno Agrícola"
       title: "Zona Piloto:"
       highlight: "Sierra de Yeguas"
-      image: "media/sierra_yeguas/1764688479676.jpg"
+      image: "media/sierra_yeguas/24_Yeguas.jpeg"
       left_title: "Tipología de Captación"
       left_text: "Sondeo Abastecimiento/Riego"
       right_title: "Reto Específico"
@@ -44,21 +44,10 @@ sections:
       title: "Galería de Actuaciones"
       items:
 
-        - image: "media/sierra_yeguas/1764688479676.jpg"
-          title: "Cabezal de Pozo"
-          caption: "Infraestructura de bombeo intervenida."
-        - image: "media/sierra_yeguas/1764688480807.jpg"
-          title: "Instrumentación"
-          caption: "Alojamiento de células de medida."
-        - image: "media/sierra_yeguas/1764688479770.jpg"
-          title: "Calibración IA"
-          caption: "Toma de muestras manuales."
-        - image: "media/sierra_yeguas/1764688483830.jpg"
-          title: "Cuadro de Control"
-          caption: "Integración del datalogger iSAT."
-        - image: "media/sierra_yeguas/1764688480005.jpg"
-          title: "Mantenimiento"
-          caption: "Verificación de sondas."
+        - image: "media/sierra_yeguas/25_Yeguas.jpeg"
+        - image: "media/sierra_yeguas/26_Yeguas.jpg"
+        - image: "media/sierra_yeguas/27_Yeguas.jpeg"
+        - image: "media/sierra_yeguas/28_Yeguas.jpg"
 
   - block: map
     id: ubicacion

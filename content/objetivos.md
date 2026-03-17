@@ -30,7 +30,7 @@ sections:
       subtitle: "Evolución metodológica: desde la definición en laboratorio hasta la validación operativa en los pilotos municipales."
       items:
         - name: "Diseño Hidrogeológico y Operacional"
-          image: "ruta/a/imagen-sondas.jpg"
+          image: "media/metodologia/5_Modulo_Hidrogeológico.png"
           color: "blue-600"
           description: "Definición de funcionalidades del SAT, umbrales paramétricos e instrumentación."
         

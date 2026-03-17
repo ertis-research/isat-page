@@ -12,7 +12,7 @@ sections:
         text: "Comarca de Guadalteba"
       title: "Zona Piloto:"
       highlight: "Teba"
-      image: "media/tebas/1764688478809.jpg"
+      image: "media/tebas/19_Torrox.jpg"
       variant: "guad"
       left_title: "Tipología de Captación"
       left_text: "Acuífero Carbonatado"
@@ -44,15 +44,18 @@ sections:
     content:
       title: "Galería de Actuaciones"
       items:
-        - image: "media/tebas/1764688485334.jpg"
+        - image: "media/tebas/20_Teba.jpeg"
           title: "Entorno de Teba"
           caption: "Relieves carbonatados y zonas de cultivo."
-        - image: "media/tebas/1764688478809.jpg"
+        - image: "media/tebas/21_Teba.jpeg"
           title: "Caseta de Bombeo"
           caption: "Caseta de bombeo municipal."
-        - image: "media/tebas/1764688478897.jpg"
+        - image: "media/tebas/22_Teba.jpeg"
           title: "Montaje de Sensores"
           caption: "Detalle del manifold de derivación."
+        - image: "media/tebas/23_Teba.jpg"
+          title: "Entorno de Teba"
+          caption: "Relieves carbonatados y zonas de cultivo."
 
   - block: ubicacion
     id: ubicacion

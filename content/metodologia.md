@@ -26,23 +26,28 @@ sections:
       title: "Flujo metodológico"
       subtitle: "Del dato en campo a la decisión operativa."
       description: "La metodología iSAT integra adquisición continua de datos, comunicaciones robustas y analítica para anticipar cambios en disponibilidad y calidad del agua."
+      dark_mode: true
       steps:
         - number: "1"
           icon: "drafting-compass"
           title: "Diseño de modulos hidrogeológicas y operacional"
           description: "Definición de requisitos técnicos, selección de sensores y diseño de la arquitectura de comunicaciones y nodos IoT."
+          image: "media/metodologia/5_Modulo_Hidrogeológico.png"
         - number: "2"
           icon: "microchip"
           title: "Desarrollo e integración del prototipo"
           description: "Ensamblado de nodos, programación de firmware, integración con la plataforma cloud y entrenamiento de modelos IA."
+          image: "media/metodologia/6_Prototipo.jpeg"
         - number: "3"
           icon: "satellite-dish"
           title: "Herramienta predictiva"
           description: "Instalación en los 4 sitios piloto, campañas de medición intensivas y ajuste de parámetros en tiempo real."
+          image: "media/metodologia/5_Modulo_Hidrogeológico.png"
         - number: "4"
           icon: "file-alt"
           title: "Validación del prototipo"
           description: "Análisis estadístico integral, publicaciones científicas y presentación de resultados a gestores del agua."
+          image: "media/metodologia/8_Validacion.jpeg"
 
   - block: features
     id: tecnologia
@@ -89,22 +94,18 @@ sections:
       subtitle: "Un proceso continuo y automatizado: desde la medición física en el acuífero hasta la toma de decisiones en la nube."
       items:
         - name: "Sondas en campo"
-          image: "ruta/a/imagen-sondas.jpg"
           color: "blue-600"
           description: "Instrumentación física sumergida en el punto de captación (pozo o manantial). Incluye sondas multiparamétricas industriales calibradas para la medición ininterrumpida de variables clave: nivel, conductividad eléctrica, temperatura y turbidez."
         
         - name: "PLC"
-          image: "ruta/a/imagen-plc.jpg"
           color: "indigo-600"
           description: "El 'cerebro' local. Controlador lógico e interfaz de adquisición de datos (Datalogger) instalado en la caseta. Recibe las señales eléctricas de las sondas, empaqueta la información y gestiona la telemetría enviándola hacia los servidores seguros."
         
         - name: "Resultado gráfico soft sensor"
-          image: "ruta/a/imagen-grafico.jpg"
           color: "emerald-600"
           description: "Procesamiento de los datos crudos mediante Inteligencia Artificial (Redes Neuronales). El sistema infiere y genera gráficamente la concentración de contaminantes complejos a partir de los datos físico-químicos básicos en tiempo real."
         
         - name: "Grafana / alertas"
-          image: "ruta/a/imagen-grafana.jpg"
           color: "amber-500"
           description: "Plataforma de visualización en la nube. Los gestores visualizan el estado de la captación a través de paneles interactivos en Grafana y reciben notificaciones inmediatas si los algoritmos detectan superaciones de los umbrales de riesgo."
 ---

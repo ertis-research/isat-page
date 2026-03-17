@@ -13,10 +13,10 @@ sections:
     content:
       image: "media/logo_proy.png"
       gallery:
-        - "media/tebas/1764688478809.jpg"
-        - "media/sierra_yeguas/1764688479676.jpg"
-        - "media/tapia/1764688484025.jpg"
-        - "media/cuevas_del_becerro/1764688483083.jpg"
+        - "media/landing/1_Archidona.jpeg"
+        - "media/landing/2_TajoDelMolino.jpeg"
+        - "media/landing/3_CuevasDelBecerro.jpeg"
+        - "media/landing/4_ElUmbral.jpeg"
       title: "iSAT"
       text: "Desarrollo de un sistema de alerta temprana inteligente para control de extracciones y de la contaminación de aguas subterráneas en abastecimiento urbanos durante períodos de sequía.
       "

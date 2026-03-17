@@ -78,7 +78,7 @@ sections:
           text: "Laboratorio de análisis avanzados de agua equipado con tecnología puntera (cromatografía iónica, espectrometría, etc.) para el control de calidad preciso de las muestras."
         - title: "Demostrador Físico (Ada Byron)"
           text: "Instalación de circuito de flujo en el edificio de investigación de la UMA. Permite simular escenarios de mezclas controladas para entrenar los algoritmos de IA antes del despliegue."
-      media: "media/lab.jpg"
+      media: "media/12_Laboratorio.jpg"
 
   - block: experiencia
     id: experiencia

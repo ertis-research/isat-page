@@ -1,163 +1,69 @@
----
-title: "Problemática: sequía y deterioro de la calidad del agua"
-date: 2025-12-10
+﻿---
+title: "La Problemática - iSAT"
+date: 2026-03-17
 type: landing
 layout: problematica
-subtitle: "En periodos de sequía la disponibilidad disminuye y, además, la calidad puede empeorar. La mayor dependencia de aguas subterráneas incrementa el riesgo de sobreexplotación y de episodios de contaminación."
 sections:
-
   - block: hero
     id: hero
     content:
       announcement:
-        text: "Problema a resolver"
+        text: "Contexto del Proyecto"
+      title: "La"
+      highlight: "Problemática"
+      text: "Análisis de los tres grandes retos hídricos actuales: la escasez por sequía severa, la extrema vulnerabilidad de los acuíferos subterráneos y la ineficacia operativa por falta de alerta temprana."
       align: "center"
-      title: "Problemática: sequía y deterioro de la calidad del agua"
-      text: >-
-        En periodos de sequía la disponibilidad disminuye y, además, la calidad puede empeorar. La mayor dependencia de aguas subterráneas incrementa el riesgo de sobreexplotación y de episodios de contaminación.
-      image: "media/CAPTACIONES.png"
-      primary_action:
-        text: "Ver Publicaciones"
-        url: "/publicaciones"
-      secondary_action:
-        text: "¿Qué objetivos tenemos?"
-        url: "/objetivos"
 
-  - block: features
-    id: hero-metrics
-    content:
-      title: "Indicadores clave: cantidad y calidad"
-      items:
-        - name: "Cantidad"
-          description: "Nivel, caudal y sostenibilidad del acuífero."
-          icon: "tint"
-        - name: "Calidad"
-          description: "Conductividad, turbidez, oxígeno disuelto y parámetros microbiológicos."
-          icon: "flask"
-    design:
-      columns: '2'
+  - id: retos
+    items:
+      - title: "Los acuíferos carbonatados kársticos en la provincia de Málaga"
+        icon: "sun"
+        color: "orange"
+        label: "Reto 01"
+        image: "media/problematica/9_karst_malaga.png"
+        text: Las aguas subterráneas procedentes de acuíferos carbonatados kársticos (calizas, dolomías y
+              mármoles) constituyen un recurso abundante y de buena calidad, que se aprovecha para
+              abastecimiento urbano, entre otros usos. En la provincia de Málaga, este tipo de afloramientos
+              ocupa una extensión de 987 km2 y los recursos hídricos son de 435 hm3/año.
+              Aproximadamente, el 65% de los municipios que forman parte de la provincia, se abastecen
+              exclusivamente de las aguas subterráneas procedentes de este tipo de afloramientos
+              permeables.
+        
+      - title: "Vulnerabilidad a la contaminación"
+        icon: "layer-group"
+        color: "teal"
+        label: "Reto 02"
+        image: "media/problematica/10_CONTAMINACION.png"
+        text: Los acuíferos kársticos presentan una elevada vulnerabilidad a la contaminación debido a la
+              existencia de una red de fracturas y conductos que favorece la circulación rápida del agua
+              subterránea con escasa atenuación natural de los contaminantes. El desarrollo de actividades
+              antrópicas potencialmente contaminantes como la agricultura, ganadería intensiva e industria
+              en la zona de recarga de estos acuíferos, puede conllevar la contaminación de las aguas
+              subterráneas, lo que supone una degradación de la calidad química del agua subterránea que
+              se destinan al abastecimiento urbano.
 
-  - block: markdown
-    id: sequia-intro
-    content:
-      title: "Sequía: menos disponibilidad y mayor presión"
-      text: >-
-        La sequía reduce la recarga y hace que los sistemas dependan más del agua subterránea. Esa presión aumenta el riesgo de extracciones excesivas y de descensos de niveles y caudales, con impacto directo en el abastecimiento.
-      subtitle: "Memoria iSAT 1"
+              Uno de los contaminantes más comunes como consecuencia de estas actividades es el nitrato
+              (NO3-), cuya presencia en fuentes de agua potable pueden provocar graves problemas de
+              salud, como la metahemoglobinemia en bebés, comúnmente conocida como "síndrome del
+              bebé azul", efectos tiroideos o incluso un mayor riesgo de cáncer gástrico.
+      - title: "Sobreexplotación"
+        icon: "triangle-exclamation"
+        color: "red"
+        label: "Reto 03"
+        image: "media/problematica/11_SOBREEXPLOTADOS.png"
+        text: La descarga de los acuíferos se puede producir de forma natural a través de manantiales o de
+              forma antropizada, regulada por sondeos. La regulación artificial y en general la explotación de
+              los acuíferos se suele producir mediante bombeos en sondeos. Si se realiza adecuadamente, el
+              aprovechamiento de agua mejora, se facilitan las tareas de abastecimiento y se aumenta la
+              garantía de suministro. Esta situación provoca el descenso local o generalizado de los niveles
+              piezométricos, y no conlleva la desaparición de los manantiales. La situación es diferente
+              cuando la explotación se produce de forma desordenada y abusiva, que puede provocar unos
+              descensos piezométricos muy acusados y el agotamiento completo de los manantiales.
 
-  - block: features
-    id: sequia-facts
+  - id: cierre
     content:
-      title: "Datos rápidos"
-      items:
-        - name: "Mayor dependencia del acuífero"
-          description: "Se incrementa la extracción y disminuye el margen operativo."
-          icon: "signal"
-        - name: "Menor margen de maniobra"
-          description: "Menos reservas disponibles y menor capacidad de respuesta."
-          icon: "clock"
-        - name: "Necesidad de decisiones basadas en datos"
-          description: "Decisiones en tiempo real reducen incertidumbre y riesgos."
-          icon: "chart-line"
-    design:
-      columns: '3'
-
-  - block: markdown
-    id: calidad-intro
-    content:
-      title: "Calidad: por qué la sequía puede agravar la contaminación"
-      text: >-
-        En acuíferos —especialmente kársticos— las variaciones de flujo y el descenso de niveles reducen la capacidad de dilución y pueden provocar episodios puntuales de contaminación que afectan directamente al abastecimiento.
-      subtitle: "Memoria iSAT 1"
-
-  - block: features
-    id: calidad-indicadores
-    content:
-      title: "Indicadores físico-químicos"
-      items:
-        - name: "Conductividad"
-          description: "Sensor para salinidad y entrada de iones disueltos."
-          icon: "tachometer-alt"
-        - name: "Turbidez"
-          description: "Detecta partículas en suspensión y arrastres."
-          icon: "water"
-        - name: "Oxígeno disuelto"
-          description: "Indicador de condiciones biológicas y calidad."
-          icon: "wind"
-    design:
-      columns: '3'
-
-  - block: features
-    id: calidad-contaminantes
-    content:
-      title: "Contaminantes y control"
-      items:
-        - name: "Nitratos"
-          description: "Indicador de presión agrícola y una amenaza para la potabilidad."
-          icon: "vial"
-        - name: "Cloruros / Sulfatos"
-          description: "Pueden indicar intrusión salina o vertidos industriales."
-          icon: "flask"
-        - name: "Microbiología (E. coli)"
-          description: "Requiere muestreo complementario y análisis específicos."
-          icon: "microscope"
-    design:
-      columns: '3'
-
-  - block: features
-    id: riesgos-operativos
-    content:
-      title: "Riesgos operativos"
-      items:
-        - name: "Interrupciones o restricciones"
-          description: "Cortes temporales o racionamiento que afectan a redes de abastecimiento."
-          icon: "exclamation-triangle"
-        - name: "Aumento de costes"
-          description: "Mayor gasto energético en bombeos, tratamientos y desplazamientos."
-          icon: "dollar-sign"
-        - name: "Dificultad de reacción"
-          description: "Sin predicción ni datos en tiempo real, la respuesta llega tarde."
-          icon: "clock"
-    design:
-      columns: '3'
-
-  - block: features
-    id: limitaciones
-    content:
-      title: "Limitaciones del enfoque tradicional"
-      items:
-        - name: "Muestreos puntuales"
-          description: "Una foto puntual no refleja la dinámica real."
-          icon: "camera"
-        - name: "Sin capacidad predictiva"
-          description: "No anticipar tendencias limita la gestión proactiva."
-          icon: "eye-slash"
-        - name: "Conectividad en zonas remotas"
-          description: "Operar y transmitir datos en entornos aislados es un reto técnico."
-          icon: "satellite-dish"
-    design:
-      columns: '3'
-
-  - block: solucion
-    id: que-necesita-gestor
-    content:
-      title: "Qué necesita un gestor"
-      subtitle: "Requisitos para un SAT efectivo"
-      steps:
-        - number: "1"
-          icon: "satellite-dish"
-          title: "Medición continua"
-          description: "Medición en tiempo real de parámetros de cantidad y calidad."
-        - number: "2"
-          icon: "bell"
-          title: "Detección de anomalías"
-          description: "Alertas tempranas ante variaciones relevantes."
-        - number: "3"
-          icon: "brain"
-          title: "Predicción"
-          description: "Soft sensors y modelos para anticipar tendencias."
-        - number: "4"
-          icon: "satellite"
-          title: "Operación remota"
-          description: "Sistemas resistentes con comunicaciones robustas."
+      title: "Hacia un Modelo Inteligente"
+      text: "El proyecto <strong class=\"text-white\">iSAT</strong> nace para dar respuesta a esta triple problemática, digitalizando y optimizando el ciclo del agua subterránea mediante sensores IoT e Inteligencia Artificial."
+      button_text: "Conoce nuestra solución"
+      button_url: "/solucion/"
 ---
