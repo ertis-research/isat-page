@@ -141,19 +141,19 @@ sections:
         - title: "Teba"
           subtitle: "Comarca Serranía de Ronda"
           color: "text-indigo-600"
-          url: "/teba/"
+          url: "teba/"
         - title: "Cuevas del Becerro"
           subtitle: "Comarca Serranía de Ronda"
           color: "text-blue-500"
-          url: "/cuevas_del_becerro/"
+          url: "cuevas_del_becerro/"
         - title: "Sierra de Yeguas"
           subtitle: "Comarca NORNORMA"
           color: "text-emerald-500"
-          url: "/sierra_de_yeguas/"
+          url: "sierra_de_yeguas/"
         - title: "Villanueva de Tapia"
           subtitle: "Comarca NORNORMA"
           color: "text-orange-500"
-          url: "/villanueva_de_tapia/"
+          url: "villanueva_de_tapia/"
 
   # Sección de Divulgación
   - block: divulgacion
