@@ -15,6 +15,7 @@ sections:
       text: "ERTIS aporta la fuerza ingenieril al proyecto. Experiencia en integración de hardware/firmware y sistemas edge/cloud para iSAT."
       short: "Ingeniería aplicada: sensórica, comunicaciones y Cloud/Edge."
       logo: "media/ertis_icon.svg"
+      logo_url: "https://ertis.uma.es/"
 
   - block: roles
     id: roles
@@ -68,21 +69,6 @@ sections:
           role: "Desarrollador"
           image: "media/members/ertis/migue.png"
           bio: "Desarrollo e integración de firmware y pruebas en campo."
-
-  - block: experiencia
-    id: experiencia
-    content:
-      title: "Experiencia y Proyectos Relevantes"
-      items:
-        - title: "GEDIER"
-          text: "Gemelos digitales para sostenibilidad en regadío."
-          borderclass: "indigo-500"
-        - title: "SAID"
-          text: "Sistemas de apoyo a la toma de decisiones para infraestructuras hídricas."
-          borderclass: "cyan-500"
-        - title: "Colaboraciones con CEHIUMA"
-          text: "Sinergias en algoritmos y pruebas de campo (EnBiC2-Lab)."
-          borderclass: "emerald-500"
 
 ---
 

@@ -59,11 +59,4 @@ sections:
               piezométricos, y no conlleva la desaparición de los manantiales. La situación es diferente
               cuando la explotación se produce de forma desordenada y abusiva, que puede provocar unos
               descensos piezométricos muy acusados y el agotamiento completo de los manantiales.
-
-  - id: cierre
-    content:
-      title: "Hacia un Modelo Inteligente"
-      text: "El proyecto <strong class=\"text-white\">iSAT</strong> nace para dar respuesta a esta triple problemática, digitalizando y optimizando el ciclo del agua subterránea mediante sensores IoT e Inteligencia Artificial."
-      button_text: "Conoce nuestra solución"
-      button_url: "/solucion/"
 ---

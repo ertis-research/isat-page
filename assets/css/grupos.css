@@ -15,6 +15,60 @@ body { font-family: 'Inter', sans-serif; }
 .profile-card { transition: all 0.3s ease; }
 .profile-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); }
 
+/* Partner hero logo */
+.partner-logo-card {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  animation: logoAmbient 8s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+.partner-logo-card:hover,
+.partner-logo-card:focus-visible {
+  animation-play-state: paused;
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+  box-shadow: 0 16px 30px -24px rgba(15, 23, 42, 0.32);
+}
+
+.partner-logo-image {
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.partner-logo-card:hover .partner-logo-image,
+.partner-logo-card:focus-visible .partner-logo-image {
+  transform: scale(1.015);
+  filter: saturate(1.02);
+}
+
+@keyframes logoAmbient {
+  0%,
+  100% {
+    transform: translateY(0);
+    border-color: #e2e8f0;
+    box-shadow: 0 8px 18px -20px rgba(15, 23, 42, 0.24);
+  }
+  50% {
+    transform: translateY(-1px);
+    border-color: #dbeafe;
+    box-shadow: 0 12px 24px -22px rgba(30, 64, 175, 0.26);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-logo-card,
+  .partner-logo-image {
+    animation: none;
+    transition: none;
+  }
+
+  .partner-logo-card:hover,
+  .partner-logo-card:focus-visible {
+    transform: none;
+  }
+}
+
 /* Utility for badges */
 .badge { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 9999px; font-weight: 700; font-size: 0.75rem; }
 

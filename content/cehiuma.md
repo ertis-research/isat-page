@@ -15,6 +15,7 @@ sections:
       text: "El CEHIUMA es un centro de referencia especializado en la gestión y protección de los recursos hídricos, con una trayectoria consolidada de varias décadas en la investigación de aguas subterráneas y superficiales."
       short: "Transferencia de resultados al sector productivo y administrativo del agua."
       logo: "media/logo_uma_cehiuma.jpg"
+      logo_url: "https://cehiuma.uma.es/"
 
   - block: roles
     id: roles

@@ -30,37 +30,30 @@ sections:
       subtitle: "Evolución metodológica: desde la definición en laboratorio hasta la validación operativa en los pilotos municipales."
       items:
         - name: "Diseño Hidrogeológico y Operacional"
-          image: "media/metodologia/5_Modulo_Hidrogeológico.png"
           color: "blue-600"
           description: "Definición de funcionalidades del SAT, umbrales paramétricos e instrumentación."
         
         - name: "Desarrollo e Integración Hardware"
-          image: "ruta/a/imagen-plc.jpg"
           color: "indigo-600"
           description: "Diseño electrónico y fabricación del prototipo (datalogger) con comunicación híbrida."
         
         - name: "Arquitectura de Software Cloud"
-          image: "ruta/a/imagen-grafico.jpg"
           color: "emerald-600"
           description: "Sistema basado en microservicios para visualizar datos y gestionar alertas."
         
         - name: "Algoritmos Predictivos (IA)"
-          image: "ruta/a/imagen-grafana.jpg"
           color: "amber-500"
           description: "Entrenamiento y validación de Soft Sensors para predecir concentraciones."
         
         - name: "Validación en Laboratorio"
-          image: "ruta/a/imagen-grafana.jpg"
           color: "amber-500"
           description: "Pruebas del demostrador físico en circuito cerrado (HidroLab)."
         
         - name: "Implementación en Entorno Real"
-          image: "ruta/a/imagen-grafana.jpg"
           color: "amber-500"
           description: "Instalación in-situ en captaciones piloto de agua subterránea."
         
         - name: "Demostración Operativa"
-          image: "ruta/a/imagen-grafana.jpg"
           color: "amber-500"
           description: "Calibración final de iSAT y validación con los gestores del abastecimiento."
 
