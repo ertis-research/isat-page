@@ -68,9 +68,9 @@
                 {{ end }}
               </div>
               {{ if $step.number }}
-                <span class="sol-step__num">0{{ $step.number }}</span>
+                <span class="sol-step__num">{{ $step.number }}</span>
               {{ else }}
-                <span class="sol-step__num">0{{ add $i 1 }}</span>
+                <span class="sol-step__num">{{ add $i 1 }}</span>
               {{ end }}
             </div>
             {{/* Texto */}}
