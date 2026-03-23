@@ -58,7 +58,7 @@ sections:
           image: "media/members/cehiuma/Bartolome.jpg"
           bio: "Definición y configuración de los Sistemas de Alerta Temprana (SAT). Experto internacional en acuíferos kársticos y recursos hídricos."
         - name: "Dr. Matías Mudarra"
-          role: "Profesor Titular"
+          role: "Profesor Titular de Universidad"
           image: "media/members/cehiuma/team__0000_mmm.jpg"
           bio: "Diseño del módulo operacional y validación en campo. Especialista en funcionamiento hidrodinámico de acuíferos y modelización."
         - name: "Jaime Fernández Ortega"
