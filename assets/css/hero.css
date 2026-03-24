@@ -150,6 +150,20 @@
       transform: translateY(-2px);
       border-color: rgba(255, 255, 255, 0.4);
     }
+
+    /* Variante para heroes de fondo claro */
+    .btn-modern-secondary-light {
+      background: #f3f4f6;
+      color: #374151;
+      border-color: #e5e7eb;
+      backdrop-filter: none;
+    }
+
+    .btn-modern-secondary-light:hover {
+      background: #e5e7eb;
+      color: #1f2937;
+      border-color: #d1d5db;
+    }
     
     .btn-modern-secondary::after {
       transition: transform 0.3s ease;

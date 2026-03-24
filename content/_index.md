@@ -23,10 +23,7 @@ sections:
       primary_action:
         id: btn-technology
         text: "Conoce la Metodología"
-        url: "/Metodología/#tecnologia"
-      secondary_action:
-        text: "Grupos"
-        url: "#pilotos"
+        url: "/metodologia/"
     design:
       spacing:
         padding: [0, 0, 0, 0]
