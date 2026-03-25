@@ -74,7 +74,7 @@ sections:
         - name: "Bajo Coste y Bajo Consumo"
           icon: "dollar-sign"
           color: "emerald-600"
-          description: "El diseño se fundamenta en microcontroladores de alto rendimiento y bajo coste (familia ESP32), optimizando tanto el coste de hardware (CAPEX) como los gastos de operación del software (OPEX) para facilitar su escalado."
+          description: "El diseño se fundamenta en microcontroladores de alto rendimiento y bajo coste (familia STM32), optimizando tanto el coste de hardware como los gastos de operación del software para facilitar su escalado."
           bullets:
             - "Power Management: Modos Deep Sleep programables."
             - "Alimentación: Operación a 12V/24V, compatible con paneles solares para ubicaciones remotas aisladas de la red eléctrica."
@@ -84,8 +84,8 @@ sections:
           color: "amber-600"
           description: "El nodo incorpora un módulo de comunicaciones híbrido para asegurar la transmisión de datos sin importar la orografía. Prioriza redes móviles pero activa el respaldo satelital ante caídas de cobertura."
           bullets:
-            - "Redes Híbridas: GPRS / 4G / NB-IoT + Satélite LEO (ej. Iridium)."
-            - "Protocolos IoT: Envío de telemetría segura y ligera mediante MQTT, HTTP RESTful y CoAP."
+            - "Redes Híbridas: WiFi / GPRS / 4G / Satélite LEO (ej. Skylo)."
+            - "Protocolos IoT: Envío de telemetría segura y ligera mediante MQTT, HTTP o CoAP."
 
   - block: timeline
     id: flujo-datos
@@ -97,15 +97,15 @@ sections:
           color: "blue-600"
           description: "Instrumentación física sumergida en el punto de captación (pozo o manantial). Incluye sondas multiparamétricas industriales calibradas para la medición ininterrumpida de variables clave: nivel, conductividad eléctrica, temperatura y turbidez."
         
-        - name: "PLC"
+        - name: "PLC Desarrollado"
           color: "indigo-600"
           description: "El 'cerebro' local. Controlador lógico e interfaz de adquisición de datos (Datalogger) instalado en la caseta. Recibe las señales eléctricas de las sondas, empaqueta la información y gestiona la telemetría enviándola hacia los servidores seguros."
         
-        - name: "Resultado gráfico soft sensor"
+        - name: "Resultado predicción soft sensor"
           color: "emerald-600"
           description: "Procesamiento de los datos crudos mediante Inteligencia Artificial (Redes Neuronales). El sistema infiere y genera gráficamente la concentración de contaminantes complejos a partir de los datos físico-químicos básicos en tiempo real."
         
-        - name: "Grafana / alertas"
+        - name: "Visualización del estado y alertas"
           color: "amber-500"
           description: "Plataforma de visualización en la nube. Los gestores visualizan el estado de la captación a través de paneles interactivos en Grafana y reciben notificaciones inmediatas si los algoritmos detectan superaciones de los umbrales de riesgo."
 ---

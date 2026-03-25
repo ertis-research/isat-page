@@ -30,7 +30,7 @@ sections:
       subtitle: "Evolución metodológica: desde la definición en laboratorio hasta la validación operativa en los pilotos municipales."
       items:
         - name: "Diseño Hidrogeológico y Operacional"
-          color: "blue-600"
+          color: "indigo-600"
           description: "Definición de funcionalidades del SAT, umbrales paramétricos e instrumentación."
         
         - name: "Desarrollo e Integración Hardware"
@@ -38,11 +38,11 @@ sections:
           description: "Diseño electrónico y fabricación del prototipo (datalogger) con comunicación híbrida."
         
         - name: "Arquitectura de Software Cloud"
-          color: "emerald-600"
+          color: "indigo-600"
           description: "Sistema basado en microservicios para visualizar datos y gestionar alertas."
         
         - name: "Algoritmos Predictivos (IA)"
-          color: "amber-500"
+          color: "emerald-600"
           description: "Entrenamiento y validación de Soft Sensors para predecir concentraciones."
         
         - name: "Validación en Laboratorio"

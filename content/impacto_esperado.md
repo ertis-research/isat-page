@@ -67,7 +67,7 @@ sections:
             - "Vídeo promocional (>1.000 visualizaciones)."
         - name: "Impacto Científico"
           bullets:
-            - "6-8 Artículos científicos de alto impacto (Q1)."
+            - "2-4 Artículos científicos de alto impacto."
             - "Congresos internacionales (IAH, Eurokarst)."
             - "Nuevos modelos predictivos exportables."
         - name: "Internacionalización"
@@ -80,15 +80,13 @@ sections:
     id: kpi
     content:
       items:
-        - name: "50.000 m³/año"
-          icon: "droplet"
         - name: "-10% Energía"
           icon: "bolt"
-        - name: "-10% Desplazamientos"
+        - name: "-25% Desplazamientos"
           icon: "car"
         - name: "2 Pilotos"
           icon: "map-pin"
-        - name: ">6 Papers Q1"
+        - name: ">2 Papers Q2 o más"
           icon: "book"
         - name: "1.000 Visitas Web"
           icon: "globe"

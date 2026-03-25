@@ -32,7 +32,7 @@ sections:
           bg: "indigo-50"
           color: "indigo-600"
           title: "Comunicaciones"
-          text: "Conectividad híbrida (4G/5G, LPWAN, satélite) para despliegues remotos."
+          text: "Conectividad híbrida (4G/5G, NB-IoT, satélite) para despliegues remotos."
         - icon: "brain"
           bg: "cyan-50"
           color: "cyan-600"
